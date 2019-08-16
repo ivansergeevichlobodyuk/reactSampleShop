@@ -1,0 +1,47 @@
+version: '2'
+services:
+  client_shop:
+    build:
+      context: ./client
+    #command: npm install
+    #command: bash -c "npm run-script build && npm install -g serve && serve -s build"
+    #restart: on-failure
+    volumes:
+      - ./client/:/usr/app
+      - /usr/app/node_modules
+    depends_on:
+      - php_shop
+    ports:
+      - "3888:5000"
+  php_shop:
+    build:
+      context: ./serverphp
+    volumes:
+      - ./serverphp/cheeseking:/var/www/html
+      - ./include/php/php.ini:/usr/local/etc/php/php.ini
+    container_name: php-shop
+    ports:
+      - "8331:80"
+      - "8332:8080"
+    links:
+      - mysql_shop
+  mysql_shop:
+    image: mysql
+    container_name: mysql-shop
+    # or use ALTER USER root IDENTIFIED WITH mysql_native_password BY 'password';
+    command: --default-authentication-plugin=mysql_native_password
+    ports:
+      - 8333:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: nh4d3jf3
+    volumes:
+      - ./include/db:/home/
+  phpmyadmin_shop:
+    image: phpmyadmin/phpmyadmin
+    links:
+      - mysql_shop
+    environment:
+      PMA_HOST: mysql_shop
+      PMA_PORT: 3306
+    ports:
+      - '8334:80'
