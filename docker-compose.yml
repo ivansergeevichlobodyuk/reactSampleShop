@@ -4,7 +4,7 @@ services:
     build:
       context: ./client
     #command: npm install
-    #command: bash -c "npm run-script build && npm install -g serve && serve -s build"
+    #command: npm start
     #restart: on-failure
     volumes:
       - ./client/:/usr/app
@@ -12,7 +12,7 @@ services:
     depends_on:
       - php_shop
     ports:
-      - "3888:5000"
+      - "3888:3000"
   php_shop:
     build:
       context: ./serverphp

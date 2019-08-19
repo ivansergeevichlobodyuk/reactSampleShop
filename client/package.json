@@ -47,6 +47,7 @@
     "postcss-preset-env": "6.5.0",
     "postcss-safe-parser": "4.0.1",
     "react": "^16.8.2",
+    "react-scripts": "2.1.5",
     "react-app-polyfill": "^0.2.1",
     "react-dev-utils": "^7.0.3",
     "react-dom": "^16.8.2",
@@ -73,7 +74,7 @@
     "workbox-webpack-plugin": "3.6.3"
   },
   "scripts": {
-    "start": "npm-run-all -p watch-css start-js",
+    "start": "react-scripts start",
     "build": "npm-run-all build-css build-js",
     "test": "node scripts/test.js --env=jsdom",
     "build-css": "node-sass --include-path src  --include-path ./node_modules src/ -o src/compiled",
