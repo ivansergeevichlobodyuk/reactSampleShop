@@ -1,0 +1,355 @@
+@import "../src/less/uikit.theme.less";
+
+//@main-color: #491701;
+@main-color: #DDA940;
+//@secondary-color: #833a00;
+@secondary-color: #DD8740;
+@simple-color: #904C15;
+* {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.h4{
+  color: #dda940;
+}
+
+.uk-accordion-title
+{
+  display: block;
+  font-size: 1.25rem;
+  line-height: 1.4;
+   color: #dda940;
+  overflow: hidden;
+}
+  //uikit styles
+.uk-input,
+.uk-select,
+.uk-textarea {
+  border: none !important;
+
+}
+
+.uk-input:focus,
+.uk-select:focus,
+.uk-textarea:focus {
+  border: 2px solid @secondary-color !important;
+
+}
+
+.uk-form-label {
+  color: #FFFFFF;
+}
+
+.uk-checkbox:checked, .uk-checkbox:indeterminate, .uk-radio:checked {
+  background-color: @secondary-color !important;
+  border-color: transparent;
+}
+
+.uk-checkbox:focus, .uk-radio:focus {
+  border-color: @simple-color !important;
+}
+
+.uk-checkbox:checked:focus, .uk-checkbox:indeterminate:focus, .uk-radio:checked:focus {
+  background-color: @secondary-color !important;
+}
+
+.uk-checkbox, .uk-radio {
+  border: 1px solid @secondary-color;
+  background-color: #FFFFFF;
+}
+
+.uk-slidenav {
+  color: @secondary-color !important;
+}
+
+//default style
+.simple-btn {
+  background: @secondary-color;
+  color: #FFFFFF;
+  text-transform: capitalize;
+
+  &:hover {
+    background: @simple-color;
+    color: #FFFFFF;
+  }
+}
+
+.cke_textarea_inline {
+  border: 1px solid #FFFFFF;
+  margin-bottom: 10px;
+  padding-left: 10px;
+  color: #FFFFFF;
+}
+
+//.simple-btn--success{
+//  background: ;
+//}
+
+body {
+  background: url('bundles/eshopsample/img/ch-background.jpg');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: 50%;
+  min-width: 320px;
+}
+
+.ch-nav-mb {
+  display: none;
+
+  .uk-list,
+  .uk-list > li:nth-child(n+2),
+  .uk-list > li > ul {
+    margin: 0;
+  }
+
+  a {
+    &:hover {
+      color: #e09601;
+      text-decoration: none;
+    }
+  }
+}
+
+.ch-nav-mb__icon {
+  color: #FFFFFF;
+  width: 35px;
+}
+
+.ch-nav-mb__text {
+  color: #FFFFFF;
+  font-size: 14px;
+}
+
+.ch-nav-mb__social-link {
+  display: inline-block;
+  color: @main-color;
+  width: 35px;
+
+  &:hover {
+    color: @simple-color;
+  }
+}
+
+.ch-header-nav {
+  background: @main-color !important;
+  height: 50px;
+  margin-top: 0px;
+}
+
+.ch-header-nav__select-lng {
+  height: 25px !important;
+  max-width: 55px;
+
+}
+
+.ch-header__text {
+  color: #FFFFFF !important;
+  font-size: 12px;
+}
+
+.ch-header-nav__logo {
+  width: 105px;
+}
+
+.ch-simle-text {
+  color: #FFFFFF !important;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.ch-about-as__text {
+  color: #FFFFFF;
+}
+
+.slider {
+  .uk-dotnav > * > * {
+    border: 1px solid #FFFFFF;
+  }
+
+  .uk-dotnav > .uk-active > * {
+    background: #FFFFFF;
+  }
+}
+
+footer {
+  background: @secondary-color;
+}
+
+.footer__svg-icon {
+  width: 35px;
+  color: #FFFFFF;
+}
+
+.footer__text {
+  color: #FFFFFF;
+}
+
+.footer__link {
+  color: #FFFFFF !important;
+}
+
+.show-admin_panel {
+  position: fixed;
+  bottom: 120px;
+  right: 3px;
+  background: #FFFFFF;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.show-admin_panel__btn {
+  outline: none;
+  cursor: pointer;
+}
+
+.to-top {
+  position: fixed;
+  bottom: 40px;
+  right: 2%;
+  color: @simple-color;
+  display: none;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.to-top__img {
+  width: 40px;
+  height: 40px;
+}
+
+.small-icon {
+  width: 25px;
+  color: @main-color;
+}
+
+#map {
+  height: 300px;
+}
+
+//admin panel style
+.inactive {
+  background: #cccccc;
+  opacity: 0.7;
+}
+
+.ch-admin-panel__pos-inp {
+  width: 40px;
+  height: 40px;
+  text-align: center;
+}
+
+.ch-admin-panel__pos-btn {
+  width: 40px;
+  cursor: pointer;
+}
+
+.ch-admin-panel__pos--up {
+  transform: rotate(180deg);
+}
+
+.ch-admin-panel__prev-img {
+  max-width: 100px;
+}
+
+.ch-admin-panel__btn-remove {
+  color: #aa1111;
+}
+
+.ch-select-file-icon {
+  background: @secondary-color;
+  color: #FFFFFF;
+}
+
+.ch-dropzone::before {
+  content: 'Виберіть або перетягніть файл сюди';
+  color: #000;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background-image: url('bundles/eshopsample/img/add-image-icon.svg');
+  width: 355px;
+  height: 50px;
+  background-repeat: no-repeat;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-position: 0px;
+  transform: translate(-50%, -50%);
+}
+
+.ch-dz-remove-btn {
+  margin-top: 10px;
+}
+
+.dz-preview {
+  display: inline-block;
+  margin: 5px;
+}
+
+.ch-dz-filename {
+  display: block;
+  width: 130px;
+  white-space: nowrap;
+  overflow: hidden;
+  padding: 5px;
+  text-overflow: ellipsis;
+}
+
+.ch-tab-active {
+  border-bottom: 2px solid #FFFFFF;
+}
+
+#text-ua::before {
+  content: '';
+  display: inline-block;
+  color: red;
+  width: 30px;
+  height: 30px;
+  background: url('bundles/eshopsample/img/flag-ua.png');
+  background-size: 100%;
+}
+#text-ru::before {
+  content: '';
+  display: inline-block;
+  color: red;
+  width: 30px;
+  height: 30px;
+  background: url('bundles/eshopsample/img/flag-ru.png');
+  background-size: 100%;
+}
+//login page
+.start-page-wrap {
+  height: 100vh;
+}
+
+
+.ch-start-page__right-block {
+  display: flex;
+  align-items: center;
+  height: auto;
+}
+
+@media screen and (min-width: 640px) {
+  body {
+    background-size: 100%;
+  }
+
+  .ch-nav-mb {
+    display: flex;
+  }
+
+  .ch-header-nav {
+    margin-top: 20px;
+  }
+
+  .ch-header__mb-nav {
+    display: none;
+  }
+
+  .ch-nav-mb__social-link {
+    width: 45px;
+  }
+}

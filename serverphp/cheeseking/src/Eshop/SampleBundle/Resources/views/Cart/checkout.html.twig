@@ -1,0 +1,126 @@
+{% trans_default_domain 'translations' %}
+    {%  extends '@!EshopSample/base.html.twig' %}
+    {% block content %}
+        {% javascripts
+        '@EshopSampleBundle/Resources/public/js/cart/startcheckout.js' %}
+        <script src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+        <script type="text/javascript">
+        var url_create_order = "{{ path("checkoutCart") }}";
+        var url_payment_type = "{{ path("checkoutChoose") }}";
+        var msg_order_created = "{{ "CHECKOUT_ORDER_CREATED_REDIRECT"|trans }}";
+        var offline_checkout_success_page = "{{ path("offline_checkout_success_page") }}";
+        </script>
+        <div id="loaded-data" class="uk-hidden uk-container uk-width-1-1 uk-padding-remove">
+            <div id="loader" uk-spinner="ratio: 3" class="uk-hidden"></div>
+            <form id="checkout-start" class="uk-form-horizontal uk-align-center uk-flex uk-flex-between uk-flex-wrap">
+                <div class="uk-width-medium uk-width-1-2@s uk-align-center">
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="form-name">{{ "CHECKOUT_FIRSTNAME"|trans }}</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input uk-form-small uk-width-medium" id="form-name" value="{{ data.firstname }}" name="first_name" type="text" placeholder="{{ "CHECKOUT_FIRSTNAME"|trans }}">
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="form-second-name">{{ "CHECKOUT_SECONDNAME"|trans }}</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input uk-form-small uk-width-medium" id="form-second-name" value="{{ data.secondname }}" name="second_name" type="text" placeholder="{{ "CHECKOUT_SECONDNAME"|trans }}">
+                        </div>
+                    </div>
+
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="form-city">{{ "CHECKOUT_CITY"|trans }}</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input uk-form-small uk-width-medium" id="form-city" value="{{ data.city }}" name="city" type="text" placeholder="{{ "CHECKOUT_CITY"|trans }}">
+                        </div>
+                    </div>
+
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="form-address1">{{ "CHECKOUT_ADDRESS1"|trans }}</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input uk-form-small uk-width-medium" id="form-address1" value="{{ data.address }}" name="address1" type="text" placeholder="{{ "CHECKOUT_ADDRESS1"|trans }}">
+                        </div>
+                    </div>
+
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="form-phone">{{ "CHECKOUT_PHONE"|trans }}</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input uk-form-small uk-width-medium" id="form-phone" value="{{ data.phone }}" name="phone" type="text" placeholder="{{ "CHECKOUT_PHONE"|trans }}">
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="form-email">{{ "CHECKOUT_EMAIL"|trans }}</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input uk-form-small uk-width-medium" id="form-email" value="{{ data.email }}" name="email" type="text" placeholder="{{ "CHECKOUT_EMAIL"|trans }}">
+                        </div>
+                    </div>
+
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="description">{{ "CHECKOUT_DESCRIPTION"|trans }}</label>
+                        <div class="uk-form-controls">
+                            <textarea class="uk-textarea uk-width-medium" id="description" name="description"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-width-1-2@s uk-padding uk-padding-remove-vertical">
+
+                    <div class="uk-margin">
+                        <ul class="uk-list">
+                            {% for key, item in cartData.dataCart %}
+                                <li>
+                                    <span class="uk-width-1-1 uk-text-bold">
+                                     <a id="name-{{ key }}" href="{{ url("cart_item_modal",{"id":key}) }}"  target="_blank" class="uk-link uk-link-reset" uk-toggle>
+                                        {{ item.productName }}
+                                    </a>
+                                </span>
+                                <div class="checklist-content uk-flex uk-flex-middle uk-flex-between">
+                                    <div class="uk-flex uk-flex-wrap uk-flex-middle">
+                                        <span class="uk-margin-small-right" >{{ item.price|round(2) }} {{ cartData.currency.getCurCode }}</span>
+                                        {% if  item.multiply > 1 %}
+                                            <span id="item-multiply" class="qty-in-pack-{{key}} uk-display-block goods-qty uk-text-lowercase" data-pack="{{ item.multiply }}">{{ item.multiply }} {{ "qty/wtf"|trans }}</span>
+                                        {% endif %}
+                                    </div>
+
+                                    <div class="number uk-flex uk-flex-middle uk-flex-center">
+                                        <span class="checklist__qty" >{{ item.count }}</span>
+                                    </div>
+                                    <div class="uk-flex uk-flex-wrap uk-flex-middle" >
+                                        <div class="uk-margin-small-right">
+                                            <span data-total="{{ key }}" id="total_good_{{ key }}">{{ item.priceTotal }} </span>
+                                            <span>{{ cartData.currency.getCurCode }}</span>
+                                        </div>
+
+                                        {% set totalCount = item.count * item.multiply  %}
+                                            <div class="goods-qty uk-text-lowercase ">
+                                                {% if item.multiply > 1 %}
+                                                    <span  id="good_total_{{ key }}">{{ totalCount }} </span>
+                                                    <span >{{ "CHEKCUT_PCS"|trans }}</span>
+                                                {% endif %}
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </li>
+
+                            {% endfor %}
+                            <li><hr></li>
+                            <li class="uk-text-right">{{ "CHECKOUT_COUNT"|trans }}: {{ cartData.countItem }}</li>
+                            <li class="uk-text-right">{{ "CHECKOUT_TOTAL"|trans }}: {{ cartData.total }}</li>
+                        </ul>
+                    </div>
+                </div>
+
+                {% if isOnlineAllowed %}
+                <div class=" uk-width-1-1">
+                    <hr>
+                    <button id="create_order" class="uk-button cart-buy-btn uk-align-right">{{ "CHECKOUT_SUBMIT_ONLINE"|trans }}</button>
+                </div>
+                {% endif %}
+                <div class=" uk-width-1-1">
+                    <hr>
+                    <button id="create_offline_order" class="uk-button cart-buy-btn uk-align-right">{{ "CHECKOUT_SUBMIT_OFFLINE"|trans }}</button>
+                </div>
+
+            </form>
+        </div>
+    {% endblock %}

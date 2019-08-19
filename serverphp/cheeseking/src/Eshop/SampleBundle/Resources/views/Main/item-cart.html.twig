@@ -1,0 +1,86 @@
+        <div class="uk-flex uk-margin-top uk-child-width-1-2@xl uk-child-width-1-1 uk-flex-wrap">
+            <div class="good-item__main-image uk-padding-small  uk-position-relative uk-box-shadow-small">
+                {# here path to main image: ask Vitaliy #}
+                <div uk-slideshow="animation: fade">
+                    <ul class=" uk-slideshow-items" >
+                        <li>
+                            <img class="good-item__img" src="images/photo.jpg" alt="" uk-cover>
+                        </li>
+                        <li>
+                            <img class="good-item__img" src="images/dark.jpg" alt="" uk-cover>
+                        </li>
+                        <li>
+                            <img class="good-item__img" src="images/light.jpg" alt="" uk-cover>
+                        </li>
+                    </ul>
+                    <div class="uk-position-bottom-center uk-position-small">
+                        <ul class="uk-thumbnav">
+                            <li uk-slideshow-item="0"><a href="#"><img class="good-item__img-small" src="images/photo.jpg" width="100" alt=""></a></li>
+                            <li uk-slideshow-item="1"><a href="#"><img class="good-item__img-small" src="images/dark.jpg" width="100" alt=""></a></li>
+                            <li uk-slideshow-item="2"><a href="#"><img class="good-item__img-small" src="images/light.jpg" width="100" alt=""></a></li>
+                        </ul>
+                        {# {% for image in images  %}
+                                <ul class="uk-thumbnav">
+                                    <li uk-slideshow-item="0"><a href="#"><img class="good-item__img" src="images/photo.jpg" width="100" alt=""></a></li>
+                                    <li uk-slideshow-item="1"><a href="#"><img class="good-item__img" src="images/dark.jpg" width="100" alt=""></a></li>
+                                    <li uk-slideshow-item="2"><a href="#"><img class="good-item__img" src="images/light.jpg" width="100" alt=""></a></li>
+                                </ul>
+                               <div>{{ image }}</div>
+                           {% endfor %} #}
+                    </div>
+                </div>
+            </div>
+            {# end block #}
+            <div class="uk-padding-small">
+                <form>
+                    <div>
+                        <article class="uk-article">
+                            <h1 class="uk-article-title">{{ attribute(goodItem, methodName) }}</h1>
+                            <p class="uk-article-meta">{{ "DESCRIPTION"|trans }}</p>
+                            <p id="description" class="uk-text-justify">{{ goodItem.getDescription }} Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        </article>
+                        <div class="uk-margin">
+                            <p class="goods-price uk-text-primary uk-text-bold">
+                                <span class="uk-text-emphasis">{{ "ITEM_RECOMENDED_PRICE"|trans }} - </span>{{ priceRecomended }} {{ curName }}.
+                            </p>
+                            <p class="goods-reteil-price uk-text-danger">
+                                <span>{{ "ITEM_OPT_PRICE"|trans }}</span> - {{ priceOpt }} {{ curName }}.
+                            </p>
+                        </div>
+                        <div class="uk-margin">
+                            <p class="">
+                                <span>{{ "SET_MULTIPLY"|trans }}</span> - <span>{{ goodItem.multiply }}</span>
+                            </p>
+                        </div>
+                        {#  <div class="uk-margin">
+                             <label>
+                                 <div>{{ "OPT_PRICE"|trans }}</div>{{ goodItem.getPriceType2 }}
+                             </label>
+                         </div> #}
+                        <div class="uk-margin">
+                            <label class="uk-form-label" for="goods-warehouses">{{ "Warehouses"|trans }}</label>
+                            <div class="uk-form-controls">
+                                <select class="uk-select uk-width-medium@s" id="goods-warehouses">
+                                    {% for goodsToWarehouseItem in goodsWarehouses  %}
+                                        <option>
+                                            {{ goodsToWarehouseItem.warehouses.name }}
+                                            {% if goodsToWarehouseItem.countRemains > 0 %}
+                                                {{ "PRESENT"|trans }}
+                                            {% else %}
+                                                {{ "NOT PRESENT"|trans }}
+                                            {% endif %}
+                                        </option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>

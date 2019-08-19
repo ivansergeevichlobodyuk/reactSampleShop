@@ -1,0 +1,36 @@
+{% trans_default_domain 'translations' %}
+    {%  extends '@!EshopSample/main.html.twig' %}
+    {% block content %}
+        {% javascripts
+            '@EshopSampleBundle/Resources/public/js/register/reset.js' %}
+            <script src="{{ asset_url }}"></script>
+            <script>
+                var urlReset = "{{ url("user_reset_password") }}";
+                var message = "{{ "NOT_FOUND_USER"|trans }}";
+                var messageOk = "{{ "CHECK_EMAIL"|trans }}";
+                var wrongEmail = "{{ "WRONG_EMAIL"|trans }}";
+                var redirect = "{{ url("catalog_home") }}"
+            </script>
+        {% endjavascripts %}
+
+        <div class="start-page-wrap">
+            <div class="uk-position-center  uk-border-rounded uk-width-1-2 uk-width-xlarge@s">
+                <div class="uk-text-center">
+                    <div class="uk-width-small uk-align-center">
+                        <a href="{{ path('catalog_home') }}"><img src="{{ asset ('bundles/eshopsample/img/logo-cheese.png') }}" alt="Сирний сомельє"></a>
+                    </div>
+                    <h3 class="ch-simle-text">{{ "SUBMIT"|trans }}</h3>
+                </div>
+                <div class="start-page-grid uk-grid-divider uk-child-width-expand@s" uk-grid>
+                    <div>
+                        <form class="uk-width-medium uk-align-center" method="post" >
+                            <label class="ch-simle-text uk-form-label" for="username">{{ "CODE"|trans }}</label>
+                            <input class="uk-input" type="text" id="code" name="code" value="" />
+                            <input id="token" type="hidden" name="token" value="{{ csrf_token('reset-form') }}"/>
+                            <button id="reset" class="simple-btn uk-button uk-margin-top uk-align-right">{{ "RESET1"|trans }}</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endblock %}

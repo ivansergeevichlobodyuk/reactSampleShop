@@ -1,0 +1,51 @@
+# To get started with security, check out the documentation:
+# https://symfony.com/doc/current/security.html
+security:
+    encoders:
+        Eshop\SampleBundle\Entity\Users:
+            algorithm: bcrypt
+
+    providers:
+        our_db_provider_phone:
+          entity:
+            class: EshopSampleBundle:Users
+            property: phone
+        our_db_provider_email:
+          entity:
+            class: EshopSampleBundle:Users
+            property: email
+        our_db_provider:
+          chain:
+            providers: [our_db_provider_phone,our_db_provider_email]
+
+    firewalls:
+        # disables authentication for assets and the profiler, adapt it according to your needs
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        main:
+            pattern:    ^/
+            anonymous: ~
+            provider: our_db_provider
+            form_login:
+              login_path: login
+              check_path: login
+              default_target_path: admin_profile_user
+              csrf_token_generator: security.csrf.token_manager
+            logout:
+              path: /logout
+              target: /
+
+            # activate different ways to authenticate
+
+            # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
+            #http_basic: ~
+
+            # https://symfony.com/doc/current/security/form_login_setup.html
+            #form_login: ~
+    access_control:
+        - { path: ^/admin, roles: [ROLE_ADMIN] }
+        - { path: ^/user, roles: [ROLE_ADMIN, ROLE_BUYER]}
+        - { path: ^/, roles: [IS_AUTHENTICATED_ANONYMOUSLY] }
+

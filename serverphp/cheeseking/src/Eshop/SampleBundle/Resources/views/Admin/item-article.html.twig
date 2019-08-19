@@ -1,0 +1,16 @@
+{% trans_default_domain 'translations' %}
+{%  extends '@!EshopSample/base.html.twig' %}
+{% block content %}
+    <div>
+        <a class="ch-simle-text" href="{{ url("catalog_home") }}"><img class="uk-margin-small-right" src="{{ asset ('bundles/eshopsample/img/back-icon.svg') }}" uk-svg>{{ "HOME"|trans }}</a>
+        <hr>
+    </div>
+    <div class="ch-simle-text">
+        {{ article|raw }}
+    </div>
+    {% if is_granted("ROLE_ADMIN") %}
+        <a class="ch-simle-text simple-btn  uk-button uk-margin-top" href="{{ path("admin_manage_picture_item", {"id":item.getId}) }}">
+           <img src="{{ asset ('bundles/eshopsample/img/edit-icon.svg') }}" uk-svg> {{ "CLICK_TO_EDIT"|trans }}
+        </a>
+    {% endif %}
+{% endblock %}

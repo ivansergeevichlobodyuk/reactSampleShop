@@ -1,0 +1,198 @@
+CATALOG: Каталог
+SERVICES_TOP_MENU: Наші сервіси
+DELIVERY_TOP_MENU: Доставка
+CONTACTS_TOP_MENU: Контакти
+MYORDERS_TOP_MENU: Мої замовлення
+SEARCH_GOODS: Знайти продукт
+FILTERS_SEARCH_GOODS: Фільтри
+FILTERS_SORT: Сортувати
+FILTERS_SORT_BY_PRICE: За ціною
+FILTERS_SORT_BY_NAME: За назвою
+VIEW_BY_PAGE: На сторінці
+LIST_LABEL_PCS: Штук
+GOOD_ITEM_BRAND: Марка
+GOOD_ITEM_MADE_IN: Вироблено в
+GOOD_ITEM_OPTIONS: Характеристики
+GOOD_ITEM_ADD_BTN: До кошика
+ITEM_RECOMENDED_PRICE: Рекомендована ціна
+SET_MULTIPLY: Кількість в упаковці
+ITEM_OPT_PRICE: Оптова ціна
+GOOD_ITEM_COUNT: Кількість
+MSG_ADDED_TO_WISH: Додано до обраного
+MSG_ADDED_TO_CART: Додано до кошика
+MAIN_PAGE_CONTACTS: Наші контакти
+BUY_BTN_LIST: До кошика
+FILTERS_LIST: Фільтри
+CART_LIST_HEADER: Кошик
+CART_TOTAL_FOR_CART: Всього
+CART_COUNT_PACK: Штук/упаковка
+CART_PCS_PRODUCT_TOTAL: Шт
+WISH_LIST_CART_UPDATED_MSG: Список бажань оновлено
+CART_UPDATED_MSG: Кошик оновлено
+CART_CHECKOUT: Створити замовлення
+CHECKOUT_FIRSTNAME: Ім'я
+CHECKOUT_SECONDNAME: Прізвище
+CHECKOUT_CITY: Місто
+CHECKOUT_ADDRESS1: Адреса
+CHECKOUT_PHONE: Телефон
+CHECKOUT_EMAIL: Пошта
+CHECKOUT_COUNT: К-сть
+CHECKOUT_TOTAL: Всього
+CHEKCUT_PCS: Штук
+CHECKOUT_DESCRIPTION: Опис
+SUCCESS_NEW_CREATED: Замовлення створено
+CHECKOUT_ORDER_CREATED_REDIRECT: Замовлення було створено. Перенаправлення
+ORDERS_PAGE_HEADER: Замовлення
+ORDER_VIEW_ON_PAGE: На сторінці
+ORDER_ID: Номер замовлення
+ORDER_DATE: Дата замовлення
+ORDER_TOTAL: Всього
+ORDER_STATUS: Статус
+ORDER_ITEM_HEADER: Замовлення
+ORDER_ITEM_STATUS: Статус
+ORDER_PAYMENT: Оплата замовлення
+ORDER_DELIVERY_ADDR: Адреса замовлення
+ORDER_EMAIL: Пошта
+ORDER_PHONE_NUMBER: Номер замовлення
+ORDER_NAME_USER: Кому
+ORDER_PRODUCT_ARTICLE: Артикул
+ORDER_PRODUCT_PRODUCT_NAME: Назва товару
+ORDER_PRODUCT_CATEGORTY: Категорія
+ORDER_PRODUCT_QUANTITY: К-сть
+ORDER_PRODUCT_PRICE: Ціна
+ORDER_PRODUCT_TOTAL: Всього
+ORDER_COMMENTS: Коментар
+REPEAT_ORDER_OFFLINE: Повторити замовлення оффлайн
+SMART_FILTER_SUBMIT_BTN: Застосувати
+SMART_FILTER_CLEAR_BTN: Очистити
+CART_NOTHING_FOUND: Кошик порожній
+STATIC_ARTICLE_HEADER: Фурнітура меблі
+ASK_QUESTIONS: Задати питання
+ASK_NAME: Ім'я
+PHONE_NUMBER: Телефон
+SEND_QUESTION: Відправити
+ARTICLE: Природа щедро обдарувала Україну - найродючіші у світі ґрунти, сприятливий клімат, багаті поклади корисних копалин, повноводі ріки, ліси з цінними породами дерев, ласкаві моря, могутні гори, багатий рослинний і тваринний світ. Але ще, доречі, є на нашій землі дивовижні місця, що потребують уваги й турботи.
+OUR_BRANDS: Наші бренди
+ADD_TO_CART: Додати до кошика
+DELIVERY_INFO: Про доставку
+DELIVERY_TEXT: Природа щедро обдарувала Україну - найродючіші у світі ґрунти, сприятливий клімат, багаті поклади корисних копалин, повноводі ріки, ліси з цінними породами дерев, ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+PAYMENT_INFO: Оплата
+PAYMENT_TEXT: Обдарувала Україну - найродючіші у світі ґрунти, сприятливий клімат, багаті поклади корисних копалин, повноводі ріки, ліси з цінними породами дерев
+DELIVERY_PAYMENT: Доставка та оплата
+SERVICES: Наші сервіси
+EMAIL_ANY_QUESTIONS: Є запитання? Зателефонуйте
+EMAIL_ARTICLE: Артикул
+EMAIL_PRODUCT_NAME: Назва продукту
+EMAIL_PRODUCT_CATEGORY: Категорія
+EMAIL_QUANTITY: К-сть
+EMAIL_PRICE: Ціна
+EMAIL_TOTAL: Всього
+EMAIL_SAMPLE_TEXT: Привіт! Ви зробили замовлення!
+EMAIL_HEADER_ORDERS: Замовлення
+EMAIL_PAYMENT: Оплата
+EMAIL_ADDRESS: Адреса
+EMAIL_EMAIL: Пошта
+EMAIL_PHONE: Телефон
+EMAIL_USER_NAME: Ім'я
+HELLO: Привіт
+YOUR_PASSWORD_WAS_RESETTED: Ваш пароль був скинутий
+YOU_NEW_PASS: 'Тепер ваш новий пароль:'
+IF_YOU_WANT_CHANGE_GOTO: Якщо бажаєте змінити його, перейдіть за посиланням
+LINK: Посилання
+ENTER_CORRECT_NUMBER: Введіть корректний номер телефону!
+
+ADDR_STR_1: Суми, вул.Харківська, 4
+ADDR_STR_2: Суми, вул.Петропавлівська, 72
+ADDR_STR_3: Суми, вул.М.Лушпи, 45/1
+ADDR_STR_4: Суми, вул.Іллінська, 7а
+ADDR_STR1: Суми
+ADDR_STR2: Суми
+ADDR_STR3: Суми
+ADDR_STR4: Суми
+ADDR_STR1_TEXT: вул.Харківська, 4
+ADDR_STR2_TEXT: вул.Петропавлівська, 72
+ADDR_STR3_TEXT: вул.М.Лушпи, 45/1
+ADDR_STR4_TEXT: вул.Іллінська, 7а
+WORK_TIME_TITLE: Часи роботи
+WORK_TIME_STR1: Пн-Пт з 9-00 до 21-00
+WORK_TIME_STR2: Сб-Нд з 9-00 до 19-00
+WE_ON_SOCIAL: Ми в соц. мережах
+TO_CABINET: До кабінету
+LOGIN: Вхід
+SLIDER: Слайдер
+BANNER: Банер
+GALLERY: Галерея
+RESET: Відновлення пароля
+PASSWORD1: Введіть пароль
+PASSWORD2: Повторіть пароль
+CHANGE: Змінити
+WRONG_FORMAT: Пароль занадто простий! Довжина паролю має бути від 5 символів. Пароль має містити одну букву та одну цифру
+EMAIL: Пошта
+PASSWORD: Пароль
+GO_TO_SITE: Увійти
+REGISTER: Реєстрація
+RESET_PASS: Відновлення паролю
+RESET1: Відновлення паролю
+NOT_FOUND_USER: Користувач с такою поштою відсутній
+CHECK_EMAIL: Перевірте свою пошту
+WRONG_EMAIL: Невірний формат пошти! Має бути xxxx@xxx.xx
+FORGOT_PASS: Забули пароль?
+ABOUT_US: Про нас
+ABOUT_US_TEXT: ed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
+REGISTRATION: Реєстрація
+SURNAME: Прізвище
+PHONE: Телефон
+NAME: Ім'я
+REPEAT_PASSWORD: Повторіть пароль
+This value is not valid.: Поля мають співпадати!
+YOUR PROMOCODE: Ваша дисконтна карта
+CHANGE YOUR DATA: Ваш профайл
+ADDRESS: Адреса
+SAVE: Зберегти
+HOME: На головну
+PREVIEW_RU: Переглянути українську версію статті
+PREVIEW_UA: Переглянути російську версію статті
+CROP: Обрізати
+REMOVE: Видалити
+Active: Активно
+LOGOUT: Вийти?
+R_Y_SHURE_TO_REMOVE: Ви впевнені, що хочете видалити
+R_Y_SHURE_TO_REMOVE_2: Ця стаття та зображення будуть видалені безповоротно! Можна просто зняти галочку з поля "Активно"
+ADD_FILE: Додати файл
+ACTIVE: Активно
+ORDERING: Порядок
+FILE_NAME: Ім'я файла
+PICTURE: Зображення
+REMOVE_BUTTON: Видалити файл
+ORDERING_WAS_UPDATED: Послідовність оновлена!
+BAD_PASSWORD: Поганий пароль! Має бути мінімум 5 символів та складатися с букв та цифр
+WRONG_CAPTCHA: Капча не пройдена
+This value is already used.: Вже використовується іншим користувачем
+BAD_PHONE_NUMBER: Невірний формат номера телефону! +380 XXX XX XX
+USERNAME_IS_BLANK: Пусте значення! Будь ласка заповніть!
+BAD_USERNAMEFORMAT: Пошта невірний формат!
+MSG_OK_REG: Ви зареєструвались! Перевірте пошту!
+ERROR_UPLOAD: Файл не завантежено! Помилка!
+EMAIL_NOT_FOUND: Пошта не знайдена!
+CHECK_EMAIL_CHANGED: Пароль змінений! Перевірте свою пошту!
+WRONG_PASS_EQ: Паролі не співпадають
+YOU_EDITED_ITEM: Ви редагуєте картинку %number з розділу "%category"
+SMS_SERVICE_DOWN_LOGIN_WITH_YOU_CREDENTIALS_AND_TRY_LATER: Смс сервіс тимчасово недоступний. Зайдіть на сайт використовуючи свій номер телефону та пароль пізніше та спробуйте знову відправити смс для підтвердження
+SMS_WAS_SEND_OK: Вам було відправлене смс. Перевірте будь ласка.
+COUNT_SENDED_SMS_EXCEEDED: Ви перевищили кількість відправленних смс повідомлень. Спробуйте пізніше.
+COUNT_PUT_CODE_TRYING_FROM_SMS_EXCEEDED: Ви перевищили кількість невірних введень. Спробуйте пізніше.
+ALREADY_VERIFIED: Вже верифіковано
+WRONG_HASHNAME: Помилка. Невірний ідентифікатор
+COUNT_EXPIRE_PLZ_TRY_AFTER_ONE_HOUR:  Ви перевищили кількість невірних введень. Спробуйте пізніше.
+CODE_OK_YOU_CAN_LOGIN_NOW: Вітаємо! Ви підтвердили свій аккаунт!
+CODE_WRONG: Введено не вірний код з смс! Будьте уважними!
+YOUR_PASSWORD_WAS_CHANGED: Ваш пароль було змінено
+CANT_SEND_TRY_LATER: Нажаль ми не можемо виконати відновлення зараз. Спробуйте пізніше
+WRONG_PHONE: Невірний формат номеру телефону
+PLZ_PUT_OR_SEND_SMS_FOR_VERIFICATION: Введіть код з смс для верифікації на сайті та натисніть кнопку "Відправити". Якщо код не прийшлов протягом 2 хвилин, натисніть кнопку "Ще смс". Кількість смс лімітовано!
+PLZ_SEND_AND_PUT_SMS_FOR_VERIFICATION: Щоб верифікуватися на сайті відправте собі смс з кодом верифікації та введіть його в полі що з'явиться
+RESEND: Ще смс
+SUBMITCODE: Відправити
+CODE: "Код:"
+YOUR_CODE: "Ваш код:"
+EMAIL_OR_PHONE: Пошта або телефон

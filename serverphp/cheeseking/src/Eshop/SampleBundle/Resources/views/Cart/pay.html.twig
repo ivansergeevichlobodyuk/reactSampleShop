@@ -1,0 +1,14 @@
+{% trans_default_domain 'translations' %}
+    {%  extends '@!EshopSample/base.html.twig' %}
+    {% block content %}
+        {% javascripts
+            '@EshopSampleBundle/Resources/public/js/cart/additemlist.js' %}
+            <script src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+        <script type="text/javascript">
+            var cartChange = '{{ url("cart_list_update") }}';
+            var messageCartUpdated = '{{ "WISH_LIST_CART_UPDATED_MSG"|trans }}';
+        </script>
+        {{ html|raw }}
+
+    {% endblock %}

@@ -1,0 +1,54 @@
+<div class="menu-list uk-height-large uk-overflow-auto">
+    <ul id="menu" class="ar-subnav-menu" data-url-load="{{ url("menu_load_page",{"category":"_category_"}) }}" uk-accordion>
+        {% for id,menuItem in menu %}
+            <li data-category-id="{{ menuItem.data.alias }}" {% if category.0 is defined and menuItem.data.alias == category.0 and category|length != 1%}class="uk-open"{% endif %}>
+                <a href="#"  class="subnav-list__item uk-accordion-title {% if category.0 is defined and  menuItem.data.alias == category.0 and category|length == 1 %}ar-active-category{% endif %}" data-categories="{{ menuItem.data.alias  }}"><img class="ar-menu-item-icon" src="{{ asset('bundles/eshoparamis/img/simple-menu-icon.png') }}"> {{ attribute(menuItem.data, categoryNameField) }}</a>
+                {% if menuItem['child'] is defined %}
+                    <ul class="uk-accordion-content uk-list accordion-margin uk-margin-medium-left" uk-accordion>
+                        {% for idsub,menusub1 in menuItem.child %}
+                            <li {% if category.1 is defined and  menusub1.data.alias  == category.1 and category|length != 2%}class="uk-open"{% endif %}{% if category.1 is defined and  menusub1.data.alias == category.1 and category|length == 2 %}class="current uk-open"{% endif %}>
+                                <a href="#" class="{% if category.1 is defined and  menusub1.data.alias == category.1 and category|length == 2 %}ar-active-sub-category {% endif  %} ar-submenu-link uk-accordion-title uk-text-small" data-categories="{{ menuItem.data.alias ~ "-"~ menusub1.data.alias }}"><img src="{{ asset('bundles/eshoparamis/img/nav-menu-arrow.svg') }}" uk-svg> {{ attribute(menusub1.data,categoryNameField) }} </a>
+                                {% if menusub1['child'] is defined %}
+                                    <ul class="uk-accordion-content  uk-list uk-margin-remove" uk-accordion>
+                                        {% for idsub2, menusub2 in menusub1.child %}
+                                            <li {% if category.2 is defined and  menusub2.data.alias  == category.2 and category|length != 3%}class="uk-open"{% endif %}{% if category.2 is defined and  menusub2.data.alias == category.2 and category|length == 3 %}class="current uk-open"{% endif %}>
+                                                <a href="#" class="{% if category.2 is defined and  menusub2.data.alias == category.2 and category|length == 3 %}ar-active-sub-category{% endif %} ar-submenu-link uk-accordion-title uk-text-small" data-categories="{{ menuItem.data.alias ~ "-"~ menusub1.data.alias~ "-"~menusub2.data.alias }}"><img src="{{ asset('bundles/eshoparamis/img/nav-menu-arrow.svg') }}" uk-svg> {{ attribute(menusub2.data, categoryNameField) }} </a>
+                                                {% if menusub2['child'] is defined %}
+                                                    <ul class="uk-accordion-content uk-list uk-margin-remove" uk-accordion>
+                                                        {% for idsub3,menusub3 in menusub2.child %}
+                                                            <li {% if category.3 is defined and  menusub3.data.alias  == category.3 and category|length != 4%}class="uk-open"{% endif %}{% if category.3 is defined and  menusub3.data.alias == category.3 and category|length == 4 %}class="current uk-open"{% endif %}>
+                                                                <a href="#" class="{% if category.3 is defined and  menusub3.data.alias == category.3 and category|length == 4 %}ar-active-sub-category{% endif  %} ar-submenu-link uk-accordion-title uk-text-small" data-categories="{{ menuItem.data.alias ~ "-"~menusub1.data.alias ~"-"~ menusub2.data.alias ~"-"~ menusub3.data.alias }}"><img src="{{ asset('bundles/eshoparamis/img/nav-menu-arrow.svg') }}" uk-svg> {{ attribute(menusub3.data, categoryNameField) }}</a>
+                                                                {% if menusub3['child'] is defined %}
+                                                                    <ul class="uk-accordion-content uk-list uk-margin-remove" uk-accordion>
+                                                                        {% for idsub4, menusub4 in menusub3.child %}
+                                                                            <li {% if category.4 is defined and  menusub4.data.alias  == category.4 and category|length != 5%}class="uk-open"{% endif %}{% if category.4 is defined and  menusub4.data.alias == category.4 and category|length == 5 %}class="current uk-open"{% endif %}>
+                                                                                <a href="#" class="{% if category.4 is defined and  menusub4.data.alias == category.4 and category|length == 5 %}ar-active-sub-category{% endif %} ar-submenu-link uk-accordion-content uk-text-small" data-categories="{{ menuItem.data.alias ~ "-"~menusub1.data.alias ~"-"~ menusub2.data.alias ~"-"~ menusub3.data.alias~"-"~menusub4.data.alias }}"><img src="{{ asset('bundles/eshoparamis/img/nav-menu-arrow.svg') }}" uk-svg> {{ attribute(menusub4.data, categoryNameField) }}</a>
+                                                                                {% if menusub4["child"] is defined %}
+                                                                                    <ul class="uk-accordion-content uk-list uk-margin-remove" uk-accordion>
+                                                                                        {% for idsub5, menusub5 in menusub4["child"] %}
+                                                                                            <li {% if category.5 is defined and  menusub5.data.alias  == category.5 and category|length != 6%}class="uk-open"{% endif %}{% if category.5 is defined and  menusub5.data.alias == category.5 and category|length == 6 %}class="current uk-open"{% endif %}>
+                                                                                                <a href="#" class="{% if category.5 is defined and  menusub5.data.alias == category.5 and category|length == 6 %}ar-active-sub-category{% endif %}  ar-submenu-link uk-accordion-content uk-text-small" data-categories="{{ menuItem.data.alias ~ "-"~menusub1.data.alias ~"-"~ menusub2.data.alias ~"-"~ menusub3.data.alias~"-"~menusub4.data.alias~"-"~menusub5.data.alias }}"><img src="{{ asset('bundles/eshoparamis/img/nav-menu-arrow.svg') }}" uk-svg> {{ attribute(menusub5.data, categoryNameField) }}</a>
+                                                                                            </li>
+                                                                                        {% endfor %}
+                                                                                    </ul>
+                                                                                {% endif %}
+                                                                            </li>
+                                                                        {% endfor %}
+                                                                    </ul>
+                                                                {% endif %}
+                                                            </li>
+                                                        {% endfor %}
+                                                    </ul>
+                                                {% endif %}
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</div>

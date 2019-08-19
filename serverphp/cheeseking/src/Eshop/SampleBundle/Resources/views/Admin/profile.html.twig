@@ -1,0 +1,72 @@
+{% trans_default_domain 'translations' %}
+{% extends app.request.isXmlHttpRequest()?"@!EshopSample/empty.html.twig":'@!EshopSample/profile-layout.html.twig' %}
+{% block content %}
+    {% if app.request.isXmlHttpRequest() %}
+    {% else %}
+        {% javascripts
+            '@EshopSampleBundle/Resources/public/js/admin/profile.js' %}
+            <script src="{{ asset_url }}"></script>
+            <script>
+                var urlGenerateCode = "{{ url("admin_user_profile_generate") }}";
+                var urlSaveProfile = "{{ url("admin_user_profile_save") }}";
+            </script>
+        {% endjavascripts %}
+    {% endif %}
+
+    {% if app.request.isXmlHttpRequest() %}
+    {% else %}
+    <div id="update" class="uk-align-center uk-width-medium">
+        {% endif %}
+        <div>
+            <a class="ch-simle-text" href="{{ url("catalog_home") }}"><img class="uk-margin-small-right" src="{{ asset ('bundles/eshopsample/img/back-icon.svg') }}" uk-svg>{{ "HOME"|trans }}</a>
+            <hr>
+        </div>
+        <div class="uk-margin-top">
+            <h3 class="ch-simle-text uk-text-center">{{ "YOUR PROMOCODE"|trans }}</h3>
+            <div class="uk-background-default uk-width-medium uk-align-center uk-padding uk-text-center">
+                {% if user.getPromocode == 0 %}
+                    <button id="generate" class="simple-btn uk-button">
+                        {{ "GENERATE"|trans }}
+                    </button>
+                {% else %}
+                    <div class="uk-flex uk-flex-center" >{{ bcHTMLRaw1|raw }}</div>
+                    <p class="uk-text-bold">{{ user.getPromocode }}</p>
+                    <div class="uk-flex uk-flex-center" >{{ bcHTMLRaw2|raw }}</div>
+                {% endif %}
+            </div>
+        </div>
+        <div id="form" class="uk-align-center uk-width-medium">
+            <h3 class="ch-simle-text uk-text-center">{{ "CHANGE YOUR DATA"|trans }}</h3>
+            <div class="uk-margin">
+                <label for="name" class="uk-form-label">{{ "NAME"|trans }}</label>
+                <div class="uk-form-controls">
+                    <input id="name" class="uk-input uk-width-medium" type="text" name="name" value="{{ user.getName }}">
+                </div>
+            </div>
+            <div class="uk-margin">
+                <label for="surname" class="uk-form-label">{{ "SURNAME"|trans }}</label>
+                <div class="uk-form-controls">
+                    <input id="surname" class="uk-input uk-width-medium" type="text" name="surname" value="{{ user.getSurname }}">
+                </div>
+
+            </div>
+            <div class="uk-margin">
+                <label for="address" class="uk-form-label">{{ "ADDRESS"|trans }}</label>
+                <div class="uk-form-controls">
+                    <input id="address" class="uk-input uk-width-medium" type="text" name="address" value="{{ user.getAddress }}"/>
+                </div>
+            </div>
+            <button id="save" class="simple-btn uk-button uk-align-right">
+                {{ "SAVE"|trans }}
+            </button>
+            <input type="hidden" id="token" value="{{ csrf_token('profile-form') }}">
+        </div>
+
+
+
+        {% if app.request.isXmlHttpRequest() %}
+        {% else %}
+    </div>
+    {% endif %}
+
+{% endblock %}

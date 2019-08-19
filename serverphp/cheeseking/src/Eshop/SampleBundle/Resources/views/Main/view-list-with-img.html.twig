@@ -1,0 +1,98 @@
+{% trans_default_domain 'translations' %}
+    {%  extends app.request.isXmlHttpRequest()?"@!EshopSample/empty.html.twig":'@!EshopSample/base.html.twig' %}
+    {% block content %}
+
+        <script type="text/javascript">
+        var sortFieldGlobal = "{{ sortingData.0 }}";
+        {% if sortingData.1 is defined %}
+        var sortingAscetingGlobal = "{{ sortingData.1 }}";
+        {% else %}
+        var sortingAscetingGlobal = "";
+        {% endif %}
+        var path_add_wish_list = "{{ url('add_wishlist') }}";
+        var message_added_wish_list = "{{ "MSG_ADDED_TO_WISH"|trans }}";
+        </script>
+
+        <div {% if app.request.isXmlHttpRequest() %}id=""{% else %}id="loaded-data"{% endif %} class="uk-container uk-width-1-1 uk-padding-remove uk-margin-remove" uk-grid>
+            {% if pagination is empty %}
+                <div class="loader-data__not-found uk-flex uk-flex-middle uk-flex-center"><img src="{{ asset('bundles/eshopsample/img/sad-icon.png') }}" alt="{{ "NOTHING_FOUND"|trans }}"> {{ "NOTHING_FOUND"|trans }}</div>
+            {% else %}
+                <div class="cart-wrap uk-width-3-4@m" >
+                    <ul class="uk-list uk-list-divider">
+                        {% for goods in pagination %}
+                            <li class="uk-flex uk-flex-middle uk-flex-between uk-flex-wrap">
+                                <div class="uk-width-1-2@s uk-width-1-1 uk-flex uk-flex-middle">
+                                    <div class="uk-width-small uk-margin-right">
+                                        <img src="{{ asset('bundles/eshopsample/img/discount.png') }}"  alt="">
+                                    </div>
+                                    <h4 class="cart__prod-name uk-margin-remove">
+                                        {% if locale == 'en' %}
+                                            {{ goods.nameEn }}
+                                        {% elseif locale == 'ru' %}
+                                            {{ goods.nameRu }}
+                                        {% elseif locale == 'ua' %}
+                                            {{ goods.nameUa }}
+                                        {% else %}
+                                            {{ goods.nameBy }}
+                                        {% endif %}
+                                    </h4>
+                                </div>
+                                <div class="uk-width-1-2@s uk-width-1-1 uk-flex uk-flex-middle uk-flex-around uk-flex-wrap">
+                                    <p class="cart-price uk-margin-remove"><span class="uk-text-bold">{{ currencyName }} </span><span class="uk-text-bold">{{ dataPriceConvertedList[goods.id].opt|round(2) }}</span> / <span class="uk-text-small">{{ goods.getMultiply }} {{ "LIST_LABEL_PCS"|trans }}</span></p>
+                                    <div class="uk-flex uk-flex-middle uk-flex-between ">
+                                        <button  data-product-id="{{ goods.id }}"  class="cart-buy-btn uk-button">{{ "BUY_BTN_LIST"|trans }}</button>
+                                        <span  data-wish-id="{{ goods.id }}"  class="add-to-wishlist uk-margin-left {% if goods.id in wishList %}added-to-wishlist{% endif %}" {% if goods.id in wishList %}disabled="disabled"{% endif %}></span>
+                                    </div>
+                                    <button  data-wish-id="{{ goods.id }}"  class="cart-buy-btn uk-button uk-width-1-1">{{ "ADD_wish_list"|trans }}</button>
+                                    {#<button class="cart-buy-btn uk-button uk-width-small">Купити</button>#}
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                        {# <div class="cart-block uk-child-width-1-3@m uk-child-width-1-2@s" uk-grid>
+                            {% for goods in pagination %}
+                                <div>
+                                    <div class="uk-card uk-card-default uk-card-hover">
+                                        <div class="uk-card-media-top">
+                                            <img src="{{ asset('bundles/eshopsample/img/discount.png') }}" alt="">
+                                        </div>
+                                        <div class="uk-padding-small uk-text-center">
+                                            <h3 class="cart__prod-name uk-card-title">
+                                                {% if locale == 'en' %}
+                                                    <span>{{ goods.nameEn }}</span>
+                                                {% elseif locale == 'ru' %}
+                                                    <span>{{ goods.nameRu }}</span>
+                                                {% elseif locale == 'ua' %}
+                                                    <span>{{ goods.nameUa }}</span>
+                                                {% else %}
+                                                    <span>{{ goods.nameBy }}</span>
+                                                {% endif %}
+                                            </h3>
+                                            <p class="cart__stock">В наявності</p>
+                                            <p class="cart-price"><span>{{ dataPriceConvertedList[goods.id].opt|round(2) }}</span> {{ currencyName }}/<span>{{ goods.getMultiply }} шт</span></p>
+                                            <button class="cart-buy-btn uk-button uk-width-1-1">Купити</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div> #}
+                    </div>
+                {% endif %}
+                <div class="main-content-bottom uk-container uk-width-1-1 uk-margin-top">
+                    <div class="uk-text-center">
+                        {{ knp_pagination_render(pagination) }}
+                    </div>
+                    <div id="breadcrumbs-for-clone" class=" uk-margin-top uk-position-bottom-left uk-position-small">
+                        <ul class="uk-breadcrumb">
+                            <li class="breadcrumb__item"><a href="{{ path("catalog_home") }}">{{ "CATALOG"|trans }}</a></li>
+                            {% for bredcrubs in categoriesBredcrubs %}
+                                <li class="breadcrumb__item ">
+                                    <span class="breadcrumb--arrow"></span>
+                                    <a href="{{ bredcrubs.path }}"> {{ bredcrubs.name }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        {% endblock %}

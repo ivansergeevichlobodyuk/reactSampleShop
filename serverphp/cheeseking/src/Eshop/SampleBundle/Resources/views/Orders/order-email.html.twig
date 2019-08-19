@@ -1,0 +1,88 @@
+{% trans_default_domain 'translations' %}
+	    {% set attributeName = '' %}
+        {% set attributeCategoryName = '' %}
+        {% if locale == 'en' %}
+            {% set attributeName = 'nameEn' %}
+            {% set attributeCategoryName = 'categoryNameEn' %}
+        {% elseif locale == 'ru' %}
+            {% set attributeName = 'nameRu' %}
+            {% set attributeCategoryName = 'categoryNameRu' %}
+        {% elseif locale == 'by' %}
+            {% set attributeName = 'nameBy' %}
+            {% set attributeCategoryName = 'categoryNameBy' %}
+        {% elseif locale == 'ua' %}
+            {% set attributeName = 'nameUa' %}
+            {% set attributeCategoryName = 'categoryNameUa' %}
+        {% endif %}
+<table style=" width: 500px; margin: 0 auto;">
+    <tr>
+        <td colspan="2" style="font-size: 14px">
+            <p>{{ "EMAIL_SAMPLE_TEXT"|trans }}</p>
+        </td>
+    </tr>
+    <tr>
+        <th colspan="2">{{ "EMAIL_HEADER_ORDERS"|trans }} {{ id }}</th>
+    </tr>
+    <tr>
+        <td>{{ "EMAIL_PAYMENT"|trans }}:</td>
+        <td>{{ item.totalPriceOrder }} {{ item.currency.curCode }}</td>
+    </tr>
+    <tr>
+        <td>{{ "EMAIL_ADDRESS"|trans }}:</td>
+        <td>{{ dataOrder.address }}</td>
+    </tr>
+    <tr>
+        <td>{{ "EMAIL_EMAIL"|trans }}:</td>
+        <td>{{ dataOrder.email }}</td>
+    </tr>
+    <tr>
+        <td>{{ "EMAIL_PHONE"|trans }}:</td>
+        <td>{{ dataOrder.phone }}</td>
+    </tr>
+    <tr>
+        <td>{{ "EMAIL_USER_NAME"|trans }}:</td>
+        <td>{{ dataOrder.name ~ " "~ dataOrder.surname }}</td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <table style="border-collapse: collapse; font-size: 14px">
+                <tr style="border: 1px solid black; padding: 5px">
+                    <th style="border: 1px solid black; padding: 5px">№</th>
+                    <th style="border: 1px solid black; padding: 5px">{{ "EMAIL_ARTICLE"|trans }}</th>
+                    <th style="border: 1px solid black; padding: 5px">{{ "EMAIL_PRODUCT_NAME"|trans }}</th>
+                    <th style="border: 1px solid black; padding: 5px">{{ "EMAIL_PRODUCT_CATEGORY"|trans }}</th>
+                    <th style="border: 1px solid black; padding: 5px">{{ "EMAIL_QUANTITY"|trans }}</th>
+                    <th style="border: 1px solid black; padding: 5px">{{ "EMAIL_PRICE"|trans }}</th>
+                    <th style="border: 1px solid black; padding: 5px">{{ "EMAIL_TOTAL"|trans }}</th>
+                </tr>
+                {% set i = 1 %}
+                {% for itemProduct in item.products %}
+                    {% set totalCount = itemProduct.count * itemProduct.getGoods.getMultiply %}
+                    <tr style="border: 1px solid black; padding: 5px">
+                        <td style="border: 1px solid black; padding: 5px">{{ i }}</td>
+                        <td style="border: 1px solid black; padding: 5px">{{ itemProduct.getGoods.article }}</td>
+                        <td style="border: 1px solid black; padding: 5px">{{ attribute(itemProduct.getGoods,attributeName) }}</td>
+                        <td style="border: 1px solid black; padding: 5px">{{ attribute(itemProduct.getGoods.getCategories,attributeCategoryName)  }}</td>
+                        <td style="border: 1px solid black; padding: 5px">{{ totalCount }}{{ "PCS"|trans }}</td>
+                        <td style="border: 1px solid black; padding: 5px">{{ itemProduct.priceSnap }} {{ item.currency.curCode }}</td>
+                        <td style="border: 1px solid black; padding: 5px">{{ itemProduct.getTotalPrice }} {{ item.currency.curCode }}</td>
+                    </tr>
+                    {% set i=i+1 %}
+                {% endfor %}
+                <tr style="border: 1px solid black; padding: 5px">
+                    <td style="padding: 5px" colspan="4">
+                        {{ "EMAIL_DESCRIPTION"|trans }} : <br>
+                        <span>{{ item.description }}</span>
+                    </td>
+                    <td style="font-weight: 700; padding: 5px; text-align: right;">{{ "Total"|trans }} :</td>
+                    <td colspan="2" style=" padding: 5px">{{ item.getTotalPriceOrder }} {{ item.currency.curCode }}</td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" style="padding: 5px">
+            {{ "EMAIL_ANY_QUESTIONS"|trans }} <a href="tel:+380501234567">0501234567</a>
+        </td>
+    </tr>
+</table>

@@ -1,0 +1,88 @@
+{% trans_default_domain 'translations' %}
+{%  extends '@!EshopSample/base.html.twig' %}
+{% block content %}
+    {% include "CKSourceCKFinderBundle::setup.html.twig" %}
+    {% javascripts
+        '@EshopSampleBundle/Resources/cropper/dist/cropper.js'
+        '@EshopSampleBundle/Resources/public/js/crop/croppers.js'
+    %}
+    <script src="{{ asset_url }}"></script>
+          <script type="text/javascript">
+              var urlUpdate = "{{ url("admin_manage_pictures_edit",{"id":item.id}) }}";
+              var updatePic = "{{ url("admin_update_pic", {"src":asset('bundles/eshopsample/files/'~item.getPhysicFileName)} ) }}"
+              var redirectAfterRemoveItem = "{{ url("admin_manage_pictures", {"category":item.getCategory}) }}";
+              var msg_remove = "{{ "R_Y_SHURE_TO_REMOVE"|trans }}";
+              var msg_remove2 = "{{ "R_Y_SHURE_TO_REMOVE_2"|trans }}";
+              var urlDeleteItem = "{{ url("admin_delete_item") }}";
+          </script>
+    {% endjavascripts %}
+    <div class="uk-width-1-2 uk-align-center">
+        <ul class="uk-list uk-flex uk-flex-middle uk-flex-around">
+            <li class="">
+                <a class="ch-simle-text" href="{{ url("catalog_home") }}">{{ "HOME"|trans }}</a>
+            </li>
+            <li class="uk-margin-remove">
+                <a class="ch-simle-text {% if item.getCategory == 1 %}ch-tab-active{% else %}{% endif %}" href="{{ url("admin_manage_pictures",{"category":1}) }}">{{ "SLIDER"|trans }}</a>
+            </li>
+            <li class="uk-margin-remove">
+                <a class="ch-simle-text {% if item.getCategory == 2 %}ch-tab-active{% else %}{% endif %}" href="{{ url("admin_manage_pictures",{"category":2}) }}">{{ "BANNER"|trans }}</a>
+            </li>
+            <li  class="uk-margin-remove">
+                <a class="ch-simle-text {% if item.getCategory == 3 %}ch-tab-active{% else %}{% endif %}" href="{{ url("admin_manage_pictures",{"category":3}) }}">{{ "GALLERY"|trans }}</a>
+            </li>
+        </ul>
+
+    </div>
+    <div class="uk-flex uk-margin" style="color:white">
+        {{ message|raw }}
+    </div>
+    <div class="uk-margin" uk-margin>
+        <hr>
+        <div class="uk-position-relative" uk-form-custom="target: true" >
+            <input type="file"  name="image" id="image" >
+            <input class="uk-input uk-width-medium uk-text-small" type="text" placeholder="{{ "SELECT FILE"|trans }}" disabled onchange="readURL(this);">
+            <button class="ch-select-file-icon uk-position-right uk-button"><img src="{{ asset ('bundles/eshopsample/img/upload-icon.svg') }}" uk-svg></button>
+        </div>
+    </div>
+{#    <div class="uk-inline">#}
+{#        <input class="uk-input" type="file" name="image" id="image" onchange="readURL(this);"/>#}
+{#    </div>#}
+
+    <div class="image_container">
+        <div id="updatePic">
+            <img id="blah" src="{{ asset ('bundles/eshopsample/files/'~item.getPhysicFileName~'?time='~rand) }}" alt="your image" />
+        </div>
+    </div>
+    <input id="id" type="hidden" name="id" value="{{ item.id }}" />
+    <div id="cropped_result"></div>
+    {#<div id="editorRu" contenteditable="true">#}
+        {#{{ item.getArticleRu|raw }}#}
+    {#</div>#}
+
+    {#<div id="editorUa" contenteditable="true">#}
+        {#{{ item.getArticleUa|raw }}#}
+    {#</div>#}
+    {% if item.getCategory != 3 %}
+        <div class="uk-flex uk-margin">
+            <div class="uk-margin-right">
+                <a class="ch-simle-text" href="{{ path("news_item_read",{"id":item.getId, "lang":"ru"}) }}">{{ "PREVIEW_RU"|trans }}</a>
+            </div>
+            <div>
+                <a class="ch-simle-text" href="{{ path("news_item_read",{"id":item.getId,"lang":"ua"}) }}">{{ "PREVIEW_UA"|trans }}</a>
+            </div>
+        </div>
+        {{ form_start(form) }}
+                {{ form_widget(form) }}
+        {{ form_end(form) }}
+    {% endif %}
+    <div class="uk-margin-bottom">
+        <label class="ch-simle-text uk-form-label uk-text-large" for="isActive">{{ "Active"|trans }}</label>
+        <input class="uk-checkbox" id="isActive" type="checkbox" name="isActive" {% if item.getIsActive == 1 %}checked="checked"{% else %}{% endif %} />
+        <input type="hidden" id="token" value="{{ csrf_token('profile-form') }}" />
+        <button id="crop_button" class="simple-btn uk-button">{{ "CROP"|trans }}</button>
+        <button id="save" class="uk-button uk-button-primary">{{ "SAVE"|trans }}</button>
+        <button data-remove="{{ item.getId }}" class="uk-button uk-button-danger">{{ "REMOVE"|trans }}</button>
+    </div>
+
+
+{% endblock %}

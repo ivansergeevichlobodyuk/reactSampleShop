@@ -1,0 +1,99 @@
+CATALOG: Catalog
+SERVICES_TOP_MENU: Services
+DELIVERY_TOP_MENU: Delivery
+CONTACTS_TOP_MENU: Contact us
+MYORDERS_TOP_MENU: My orders
+SEARCH_GOODS: Search products
+FILTERS_SEARCH_GOODS: Filters
+FILTERS_SORT: Sort
+FILTERS_SORT_BY_PRICE: By price
+FILTERS_SORT_BY_NAME: By name
+VIEW_BY_PAGE: On page
+LIST_LABEL_PCS: pcs
+GOOD_ITEM_BRAND: Brand
+GOOD_ITEM_MADE_IN: Made in
+GOOD_ITEM_OPTIONS: More information
+GOOD_ITEM_ADD_BTN: Add to cart
+GOOD_ITEM_COUNT: Count
+MSG_ADDED_TO_WISH: Item was added to wish list
+MSG_ADDED_TO_CART: Item was added to cart
+ITEM_RECOMENDED_PRICE: Recomended price
+SET_MULTIPLY: Count in pack
+ITEM_OPT_PRICE: Opt price
+MAIN_PAGE_CONTACTS: Our contacts
+BUY_BTN_LIST: Add to cart
+FILTERS_LIST: Filters
+CART_LIST_HEADER: Cart
+CART_TOTAL_FOR_CART: Total
+CART_COUNT_PACK: pcs/pack
+CART_PCS_PRODUCT_TOTAL: pcs
+WISH_LIST_CART_UPDATED_MSG: Cart was updated
+CART_UPDATED_MSG: Cart was updated
+CART_CHECKOUT: Checkout
+CHECKOUT_FIRSTNAME: First name
+CHECKOUT_SECONDNAME: Second name
+CHECKOUT_CITY: City
+CHECKOUT_ADDRESS1: Address
+CHECKOUT_PHONE: Phone
+CHECKOUT_EMAIL: Email
+CHECKOUT_COUNT: Count
+CHECKOUT_TOTAL: Total
+CHEKCUT_PCS: PCS
+CHECKOUT_DESCRIPTION: Description
+SUCCESS_NEW_CREATED: Order creted! Check your email
+CHECKOUT_ORDER_CREATED_REDIRECT: Order created. Redirecting...
+ORDERS_PAGE_HEADER: Orders
+ORDER_VIEW_ON_PAGE: View by
+ORDER_ID: Id
+ORDER_DATE: Order date
+ORDER_TOTAL: Total
+ORDER_STATUS: Status
+ORDER_ITEM_HEADER: Order
+ORDER_ITEM_STATUS: Order status
+ORDER_PAYMENT: Order payment
+ORDER_DELIVERY_ADDR: Address
+ORDER_EMAIL: Email
+ORDER_PHONE_NUMBER: Number
+ORDER_NAME_USER: User
+ORDER_PRODUCT_ARTICLE: Article
+ORDER_PRODUCT_PRODUCT_NAME: Name
+ORDER_PRODUCT_CATEGORTY: Category
+ORDER_PRODUCT_QUANTITY: Count
+ORDER_PRODUCT_PRICE: Price
+ORDER_PRODUCT_TOTAL: Total
+ORDER_COMMENTS: Comments
+REPEAT_ORDER_OFFLINE: Repeat order offline
+SMART_FILTER_SUBMIT_BTN: Apply
+SMART_FILTER_CLEAR_BTN: Clear
+CART_NOTHING_FOUND: Cart nothing found
+STATIC_ARTICLE_HEADER: Article header
+QUESTION: Questions
+ARTICLE: In November 1991 the technical school was renamed into Hlukhiv agricultural school named after S. A. Kovpak. In 1995 it became an agrotechnical college. There are five departments at the college accounting, mechanical, managerial, building, electrification. It trains builders, mechanics, electricians, accountants, managers, financiers in fulltime and extra-mural forms of education
+OUR_BRANDS: Our brands
+ADD_TO_CART: Add to cart
+DELIVERY_INFO: Delivery info
+DELIVERY_TEXT: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+PAYMENT_INFO: Payment info
+PAYMENT_TEXT: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+DELIVERY_PAYMENT: Delivery and payment
+SERVICES: Our services
+EMAIL_ANY_QUESTIONS: Any questinons? Call
+EMAIL_ARTICLE: EMAIL_ARTICLE
+EMAIL_PRODUCT_NAME: EMAIL_PRODUCT_NAME
+EMAIL_PRODUCT_CATEGORY: EMAIL_PRODUCT_CATEGORY
+EMAIL_QUANTITY: EMAIL_QUANTITY
+EMAIL_PRICE: EMAIL_PRICE
+EMAIL_TOTAL: EMAIL_TOTAL
+EMAIL_SAMPLE_TEXT: Hi! This is new order!
+EMAIL_HEADER_ORDERS: OrderE
+EMAIL_PAYMENT: Payment
+EMAIL_ADDRESS: Address
+EMAIL_EMAIL: E-mail
+EMAIL_PHONE: Phone
+EMAIL_USER_NAME: User name
+ASK_QUESTIONS: Ask question
+PHONE_NUMBER: Phone
+SEND_QUESTION: Question
+ASK_NAME: Name
+CHECKOUT_SUBMIT_OFFLINE: Checkout offline
+ENTER_CORRECT_NUMBER: Введите нормальный номер телефона!

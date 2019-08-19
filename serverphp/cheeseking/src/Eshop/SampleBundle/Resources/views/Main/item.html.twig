@@ -1,0 +1,174 @@
+{% trans_default_domain 'translations' %}
+{%  extends '@!EshopSample/base.html.twig' %}
+{% block content %}
+    {% block title %}{{ attribute(goodItem, methodName) }}{% endblock %}
+        {% block metatags %}
+            {% if metaTags %}
+             <meta name="Description" content="{{ metaTags.description }}">
+             <meta name="Keywords" content="{{ metaTags.keywords }}">
+            {% endif  %}
+        {% endblock %}
+    {% javascripts
+    '@EshopSampleBundle/Resources/public/js/cart/additem.js' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    <div id="loaded-data" class="good-item-wrap uk-container uk-width-1-1 uk-padding-remove">
+        <input id="good-id" name="id" type="hidden" value="{{ goodItem.getId }}" />
+        <div class="uk-flex uk-flex-top uk-child-width-1-2@s uk-child-width-1-1 uk-flex-wrap">
+            <div class="good-item__main-image uk-padding-small  uk-position-relative uk-box-shadow-small">
+                {# here path to main image: ask Vitaliy #}
+                <div uk-slideshow="animation: fade">
+                    <ul class=" uk-slideshow-items" >
+                        <li>
+                            <img class="good-item__img" src="{{ asset('bundles/eshopsample/img/discount.png') }}" alt="" uk-cover>
+                        </li>
+                        <li>
+                            <img class="good-item__img" src="{{ asset('bundles/eshopsample/img/discount.png') }}" alt="" uk-cover>
+                        </li>
+                        <li>
+                            <img class="good-item__img" src="{{ asset('bundles/eshopsample/img/discount.png') }}" alt="" uk-cover>
+                        </li>
+                    </ul>
+                {# <div >
+                    {{ goodItem.getMainImage }}
+                </div> #}
+                
+                <div class="uk-position-bottom-center uk-position-small">
+                    <ul class="uk-thumbnav">
+                        <li uk-slideshow-item="0"><a href="#"><img class="good-item__img-small" src="{{ asset('bundles/eshopsample/img/discount.png') }}" width="100" alt=""></a></li>
+                        <li uk-slideshow-item="1"><a href="#"><img class="good-item__img-small" src="{{ asset('bundles/eshopsample/img/discount.png') }}" width="100" alt=""></a></li>
+                        <li uk-slideshow-item="2"><a href="#"><img class="good-item__img-small" src="{{ asset('bundles/eshopsample/img/discount.png') }}" width="100" alt=""></a></li>
+                    </ul>
+                        {# {% for image in images  %}
+                                <ul class="uk-thumbnav">
+                                    <li uk-slideshow-item="0"><a href="#"><img class="good-item__img" src="images/photo.jpg" width="100" alt=""></a></li>
+                                    <li uk-slideshow-item="1"><a href="#"><img class="good-item__img" src="images/dark.jpg" width="100" alt=""></a></li>
+                                    <li uk-slideshow-item="2"><a href="#"><img class="good-item__img" src="images/light.jpg" width="100" alt=""></a></li>
+                                </ul>
+                               <div>{{ image }}</div> 
+                           {% endfor %} #}
+                       </div>
+                   </div>
+               </div>
+               {# end block #}
+               <div>
+                <div class="uk-margin-left">
+                    <article class="uk-article">
+                        <h1 class="uk-article-title">{{ attribute(goodItem, methodName) }}</h1>
+                        <ul class="uk-list">
+                            <li>
+                                <p class="uk-article-meta">Good code: {{ goodItem.id }}</p>
+                            </li>
+                            <li>{{ "GOOD_ITEM_BRAND"|trans }} {{ goodItem.brand }}</li>
+                            <li>{{ "GOOD_ITEM_MADE_IN"|trans }} {{ goodItem.made }}</li>
+                        </ul>
+                    </article>
+                        {# <h3 class="uk-legend">{{ goodItem.getName }}</h3>
+                        <div class="uk-margin">
+                            <label class="uk-form-label" for="description">
+                                {{ "DESCRIPTION"|trans }}
+                            </label>
+                            <textarea id="description">{{ goodItem.getDescription }}</textarea>
+                        </div> #}
+                        <div class="uk-margin">
+                            <p class="goods-price uk-text-primary uk-text-bold">
+                                <span class="uk-text-emphasis">{{ "ITEM_RECOMENDED_PRICE"|trans }} - </span>{{ priceRecomended }} {{ curName }}.
+                            </p>
+                            {% if app.user %}
+                            <p class="goods-reteil-price uk-text-danger">
+                                <span>{{ "ITEM_OPT_PRICE"|trans }}</span> - {{ priceOpt }} {{ curName }}.
+                            </p>
+                            {% endif %}
+                        </div>
+                        <div class="uk-margin">
+                            <p class="">
+                                <span>{{ "SET_MULTIPLY"|trans }}</span> - <span>{{ goodItem.multiply }}</span>
+                            </p>
+                        </div>
+                       {#  <div class="uk-margin">
+                            <label>
+                                <div>{{ "OPT_PRICE"|trans }}</div>{{ goodItem.getPriceType2 }}
+                            </label>
+                        </div> #}
+                        {#<div class="uk-margin">#}
+                            {#<label class="uk-form-label">{{ "Warehouses"|trans }}</label>#}
+                            {#<div class="uk-form-controls">#}
+                                {#<ul class="uk-list">#}
+                                    {#{% for goodsToWarehouseItem in goodsWarehouses  %}#}
+                                        {#<li>#}
+                                            {#{{ goodsToWarehouseItem.warehouses.name }} #}
+                                            {#{% if goodsToWarehouseItem.countRemains > 0 %}#}
+                                                {#{{ "PRESENT"|trans }}#}
+                                            {#{% else %}#}
+                                                {#{{ "NOT PRESENT"|trans }}#}
+                                            {#{% endif %}#}
+                                        {#</li>#}
+                                    {#{% endfor %}#}
+                                {#</ul>#}
+                                {##}
+                                {# <select class="uk-select uk-width-medium@s" id="goods-warehouses">#}
+                                    {#{% for goodsToWarehouseItem in goodsWarehouses  %}#}
+                                        {#<option>#}
+                                            {#{{ goodsToWarehouseItem.warehouses.name }} #}
+                                            {#{% if goodsToWarehouseItem.countRemains > 0 %}#}
+                                                {#{{ "PRESENT"|trans }}#}
+                                            {#{% else %}#}
+                                                {#{{ "NOT PRESENT"|trans }}#}
+                                            {#{% endif %}#}
+                                        {#</option>#}
+                                        {#<tr>#}
+                                            {#<td>{{ goodsToWarehouseItem.warehouses.name }}</td>#}
+                                            {#{% if goodsToWarehouseItem.countRemains > 0 %}#}
+                                                {#<td>{{ "PRESENT"|trans }}</td>#}
+                                            {#{% else %}#}
+                                                {#<td>{{ "NOT PRESENT"|trans }}</td>#}
+                                            {#{% endif %}#}
+                                        {#</tr>#}
+                                    {#{% endfor %}#}
+                                {#</select> #}
+                            {#</div>#}
+                        {#</div>#}
+
+                        <div>
+                            <p>{{ "GOOD_ITEM_OPTIONS"|trans }}</p>
+                            <ul class="uk-list uk-margin-left">
+                                {% for filter in goodItem.getFilters %}
+
+                                    {% if filter.getRawValue %}
+                                        <li class="uk-text-small"><b>{{ attribute(filter.getFilter,methodName) }}</b>: {{ filter.getRawValue }} </li>
+                                    {% else %}
+                                        {% if attribute(filter.getValues,methodName) is defined %}
+                                            <li class="uk-text-small"><b>{{ attribute(filter.getFilter,methodName) }}</b>: {{ attribute(filter.getValues,methodName) }} </li>
+                                        {% endif %}
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div class="uk-margin">
+                            <label class="uk-form-label" for="count">{{ "GOOD_ITEM_COUNT"|trans }}</label>
+                            <div class="uk-flex uk-flex-middle">
+                                <span id="minus" class="item-count__btn minus uk-button">-</span>
+                                <input class="item-count__inp uk-input uk-text-center" id="count" type="text" placeholder="{{ "COUNT"| trans }}" value="1" />
+                                <span id="plus" class="item-count__btn plus uk-button">+</span>
+                            </div>
+                        </div>
+                        <div class="uk-margin">
+                            <button data-add="{{ path("cart_add") }}" class="uk-button goods-buy-btn uk-text-bold " type="button"><img class="goods-buy-btn__icon" src="{{ asset('bundles/eshopsample/img/cart-basket-icon.svg') }}" uk-svg> {{ "GOOD_ITEM_ADD_BTN"|trans }}</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div id="breadcrumbs-for-clone" class="main-content-top uk-margin-top">
+                <ul class="uk-breadcrumb">
+                    <li class="breadcrumb__item"><a href="{{ path("catalog_home") }}">{{ "CATALOG"|trans }}</a></li>
+                    {% for bredcrubs in categoriesBredcrubs %}
+                        <li class="breadcrumb__item ">
+                            <span class="breadcrumb--arrow"></span>
+                            <a href="{{ bredcrubs.path }}"> {{ bredcrubs.name }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    {% endblock %}

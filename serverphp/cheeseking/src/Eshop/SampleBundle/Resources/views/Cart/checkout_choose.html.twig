@@ -1,0 +1,42 @@
+{% trans_default_domain 'translations' %}
+	{%  extends '@!EshopSample/base.html.twig' %}
+	{% block content %}
+		<div id="loaded-data" class="uk-margin">
+			<div class="uk-flex uk-flex-around uk-flex-wrap uk-flex-middle">
+				<div uk-grid>
+					<div>
+						<div uk-grid>
+							<div class="uk-width-auto@m">
+								<ul class="uk-tab-left" uk-tab="connect: #component-tab-left; animation: uk-animation-fade">
+									<li><a href="#">{{ "LIQPAY"|trans }}</a></li>
+									<li><a href="#">{{ "BANK TRANS"|trans }}</a></li>
+									<li><a href="#">{{ "ON DELIVERY"|trans }}</a></li>
+								</ul>
+							</div>
+							<div class="uk-width-expand@m">
+								<ul id="component-tab-left" class="uk-switcher">
+									<li>{{ html|raw }}</li>
+									<li>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+									<li>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur, sed do eiusmod.</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					{#<fieldset class="uk-fieldset">#}
+						{#<legend class="uk-legend">{{ "PAYMENT TYPE"|trans }}</legend>#}
+						{#<select class="uk-select">#}
+							{#<option>{{ "LIQPAY"|trans }}</option>#}
+							{#<option>{{ "BANK TRANS"|trans }}</option>#}
+							{#<option>{{ "ON DELIVERY"|trans }}</option>#}
+						{#</select>#}
+					{#</fieldset>#}
+				</div>
+				{##}
+				{#<div>#}
+					{#{{ html|raw }}#}
+				{#</div>#}
+				
+			</div>
+
+		</div>
+	{% endblock %}

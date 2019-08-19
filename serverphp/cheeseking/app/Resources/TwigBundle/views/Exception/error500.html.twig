@@ -1,0 +1,18 @@
+{% trans_default_domain 'translations' %}
+{% extends 'base.html.twig' %}
+{% block body %}
+        <div class="uk-position-center">
+            <div class="uk-flex uk-flex-middle uk-flex-wrap">
+                <img class="uk-width-small uk-width-medium@s" src="{{ asset('bundles/eshopsample/img/error-page-img.png') }}">
+                <div class="ch-simle-text">
+                    <p class="uk-text-large">500 Error</p>
+                    <p class="uk-text-capitalize">Internet server error</p>
+                </div>
+
+            </div>
+            <div class="uk-text-center uk-margin-top">
+                <a class="ch-simle-text uk-button uk-text-large"href="{{ path("catalog_home") }}" title="{{ "Home page"|trans }} </a>">{{ "Home page"|trans }} </a>
+            </div>
+        </div>
+
+{% endblock %}

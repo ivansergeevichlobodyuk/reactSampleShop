@@ -1,0 +1,48 @@
+{% trans_default_domain 'translations' %}
+    {%  extends '@!EshopSample/main.html.twig' %}
+    {% block content %}
+        {% javascripts
+            '@EshopSampleBundle/Resources/public/js/register/verify.js' %}
+            <script src="{{ asset_url }}"></script>
+            <script>
+                var urlCheckCode = "{{ url("check_sms_code") }}";
+                var hash = "{{ verify }}";
+                var SMS_VERIFICATION_URL = "{{ url("send_sms_verification_form") }}";
+                {% if app.user %}
+                    var isLoggedIn = 1;
+                {% else %}
+                    var isLoggedIn = 0;
+                {% endif %}
+            </script>
+        {% endjavascripts %}
+
+        <div class="start-page-wrap">
+            <div class="uk-position-center  uk-border-rounded uk-width-1-2 uk-width-xlarge@s">
+                <div class="uk-text-center">
+                    <div class="uk-width-small uk-align-center">
+                        <a href="{{ path('catalog_home') }}"><img src="{{ asset ('bundles/eshopsample/img/logo-cheese.png') }}" alt="Сирний сомельє"></a>
+                    </div>
+                    <h3 class="ch-simle-text">
+                        {% if app.user %}
+                            {{ "PLZ_SEND_AND_PUT_SMS_FOR_VERIFICATION"|trans }}
+                        {% else %}
+                            {{ "PLZ_PUT_OR_SEND_SMS_FOR_VERIFICATION"|trans }}
+                        {% endif %}
+                    </h3>
+                </div>
+                <div class="start-page-grid uk-grid-divider uk-child-width-expand@s" uk-grid>
+                    <div>
+                        <form id="verify-form" class="uk-width-medium uk-align-center" method="post" >
+                            <label id="code-label" class="ch-simle-text uk-form-label {% if app.user %}uk-hidden{% endif %}" for="username">{{ "CODE"|trans }}</label>
+                            <input class="uk-input {% if app.user %}uk-hidden{% endif %}" type="text" id="code" name="code" value="" />
+                            <input id="token" type="hidden" name="token" value="{{ csrf_token('reset-form') }}"/>
+                            <div class="uk-margin-top uk-flex  uk-flex-wrap {% if app.user %}uk-flex-right{% else %}uk-flex-between{% endif %}">
+                                <button id="verify" class="simple-btn uk-button  {% if app.user %}uk-hidden{% endif %}" >{{ "SUBMITCODE"|trans }}</button>
+                                <button id="resend" class="simple-btn uk-button uk-margin-left ">{{ "RESEND"|trans }}</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endblock %}

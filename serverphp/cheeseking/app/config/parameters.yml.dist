@@ -1,0 +1,15 @@
+# This file is a "template" of what your parameters.yml file should look like
+# Set parameters here that may be different on each deployment target of the app, e.g. development, staging, production.
+# https://symfony.com/doc/current/best_practices/configuration.html#infrastructure-related-configuration
+# This file is auto-generated during the composer install
+# This file is auto-generated during the composer install
+parameters:
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: cheese
+    database_user: root
+    database_password: root
+    allow_online_payment: false
+    secret: 84e22b0fa290a2114d58fa8a9b02bb74
+    apisms_key: 228d8eb4857cc6b7e79ab99a8767047a54ee62f4
+    apisms_name: Sommelier

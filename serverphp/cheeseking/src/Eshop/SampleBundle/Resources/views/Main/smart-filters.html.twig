@@ -1,0 +1,60 @@
+{% trans_default_domain 'translations' %}
+    <ul id="smart-filter-wrap" class="filters-subnav__list uk-padding-small uk-box-shadow-small" uk-accordion="multiple: true">
+        {% for itemFilter in dataFilters %}
+            <li>
+                <a class="uk-accordion-title uk-text-small uk-text-bold" href="#">{{ itemFilter.name }}</a>
+                {% if itemFilter.type == 2 %}
+                    <div class="uk-accordion-content">
+                        <ul class="uk-list uk-text-right uk-margin-bottom">
+                            {% for filterName in itemFilter.values %}
+                                <li>
+                                    <label class="uk-form-label" for="filter-{{ filterName.id }}">{{ filterName.value }}</label>
+                                    <input {% if attribute(properties.checkboxes,itemFilter.filter_id) is defined  %}{% if filterName.id in attribute(properties.checkboxes,itemFilter.filter_id) %}checked="checked"{% endif %}{% endif %} data-value-fiter_id="{{ itemFilter.filter_id }}" data-value-id="{{ filterName.id }}" id="filter-{{ filterName.id }}" type="checkbox" class="uk-checkbox">
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% else %}
+                    <div class="uk-accordion-content">
+                        <ul class="uk-list uk-text-right uk-margin-bottom">
+                            <div class="range-property uk-flex uk-flex-middle uk-flex-between uk-width-medium@s" data-min="{{ itemFilter.values.min }}" data-max="{{ itemFilter.values.max }}">
+                                <div>
+                                   {#  <lable class="uk-form-label" for="min-{{ itemFilter.filter_id }}">MIN</lable> #}
+                                    <input type="hidden" id="min-hidden-{{ itemFilter.filter_id }}" value="{{ itemFilter.values.min }}" />
+                                    <input
+                                            data-filter-id="{{ itemFilter.filter_id }}"
+                                            id="min-{{ itemFilter.filter_id }}" type="text"
+                                            class="min filter-input uk-input uk-form-small uk-text-small uk-text-center" name="min" value="{% if properties.minmax[itemFilter.filter_id].min is defined %}{{ properties.minmax[itemFilter.filter_id].min }}{% else %}{{ itemFilter.values.min }}{% endif %}" />
+                                </div>
+                                <div>
+                                    <span class="uk-text-large" > - </span>
+                                </div>
+                                <div>
+                                    {# <lable class="uk-form-label" for="max-{{ itemFilter.filter_id }}">MAX</lable> #}
+                                    <input type="hidden" id="max-hidden-{{ itemFilter.filter_id }}" value="{{ itemFilter.values.max }}" />
+                                    <input data-filter-id="{{ itemFilter.filter_id }}" id="max-{{ itemFilter.filter_id }}" type="text" class="max filter-input uk-input uk-form-small uk-text-small uk-text-center" name="max" value="{% if properties.minmax[itemFilter.filter_id].max is defined %}{{ properties.minmax[itemFilter.filter_id].max }}{% else %}{{ itemFilter.values.max }}{% endif %}" />
+                                    <input id="min-allowed-{{ itemFilter.filter_id }}" type="hidden" value="{{ itemFilter.values.min }}" />
+                                    <input id="max-allowed-{{ itemFilter.filter_id }}" type="hidden" value="{{ itemFilter.values.max }}" />
+                                </div>
+                                {#<div>#}
+                                    {#<span>{{  }}</span>#}
+                                {#</div>#}
+                            </div>
+                            <div id="{{ itemFilter.filter_id }}" class="ranger uk-margin-top ">
+                            </div>
+                        </ul>
+                    </div>
+                {% endif %}
+            </li>
+        {% endfor %}
+        <hr>
+        <button id="submit" class="simple-btn uk-button uk-width-1-1">{{ "SMART_FILTER_SUBMIT_BTN"|trans }}</button>
+        <button id="clear" class="uk-button uk-button-default uk-width-1-1">{{ "SMART_FILTER_CLEAR_BTN"|trans }}</button>
+        <script>
+            $('.filters-subnav').click(function(){
+                if (screen.width < 960) {
+                    $('.filters-subnav__list').toggle();
+                }
+            });
+        </script>
+    </ul>

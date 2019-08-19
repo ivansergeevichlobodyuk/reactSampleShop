@@ -1,0 +1,306 @@
+{% trans_default_domain 'translations' %}
+<!DOCTYPE html>
+<html>
+<head>
+    {% block head %}
+        <meta charset="UTF-8"/>
+        <title>{% block title %}Сирний сомельє{% endblock %}</title>
+        <meta name="{% block description %}{% endblock %}" content="">
+        <meta name="{% block keywords %}{% endblock %}">
+        <meta name="robots" content="index, follow">
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+              integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+              crossorigin=""/>
+        <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+                integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+                crossorigin=""></script>
+    {% block head_scripts %}
+        {% javascripts combine=true
+            '@EshopSampleBundle/Resources/public/js/libs/jquery-2.2.4.min.js'
+            '@EshopSampleBundle/Resources/public/js/libs/jquery.cookie.js'
+            '@EshopSampleBundle/Resources/public/js/maps/map-init.js'
+            '@EshopSampleBundle/Resources/public/js/menu/menuloader.js'
+            '@EshopSampleBundle/Resources/public/js/menu/headmenu.js'
+            '@EshopSampleBundle/Resources/public/js/filters/filters.js'
+            '@EshopSampleBundle/Resources/public/js/menu/support.js'
+            '@EshopSampleBundle/Resources/public/js/menu/lang.js'
+            '@EshopSampleBundle/Resources/uikit/dist/js/uikit.min.js'
+            '@EshopSampleBundle/Resources/uikit/dist/js/components/notification.min.js' %}
+        <script src="{{ asset_url }}"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+        <script type="text/javascript">
+            var cartRouteUpdate = '{{ url("cart_list_get_data") }}';
+            var updateLang = '{{ url("user_update_lang") }}';
+            {% if app.user %}
+            var isLogged = true;
+            {% else %}
+            var isLogged = false;
+            {% endif %}
+            var confirmNo = '{{ "NO_CONF"|trans }}';
+            var confirmYes = '{{ "YES_CONF"|trans }}';
+            var supportPath = '{{ url('support_path') }}';
+            var confirmMessage = '{{ "SHURE_REMOVE_MSG"|trans }}';
+            var supportMessageOk = '{{ "SUPPORT_MSG_OK"|trans }}';
+            var supportMessageFail = '{{ "SUPPORT_MSG_FAIL"|trans }}';
+            var path_get_count = "{{ url("wishlist_count") }}";
+            var path_add_wish_list = "{{ url('add_wishlist') }}";
+            var message_added_wish_list = "{{ "MSG_ADDED_TO_WISH"|trans }}";
+        </script>
+        {% endjavascripts %}
+    {% endblock head_scripts %}
+
+    {% block styles %}
+        {% stylesheets combine=true
+            '@EshopSampleBundle/Resources/uikit/dist/css/uikit.my-theme.min.css' %}
+    <link href="{{ asset_url }}" type="text/css" rel="stylesheet"/>
+        {% endstylesheets %}
+    {% endblock styles %}
+    {% endblock head %}
+</head>
+<body>
+<div class="wrapper uk-offcanvas-content">
+    {% block body %}{% endblock %}
+    {% block javascripts %}{% endblock %}
+    <div>
+        <header>
+            <div class="ch-nav-mb uk-container uk-flex uk-flex-between ">
+                <div class="uk-flex uk-flex-middle uk-flex-around uk-width-1-2 uk-margin-top">
+                    <div class="uk-flex uk-flex-middle">
+                        <span class="ch-nav-mb__icon uk-margin-right">
+                            <img src="{{ asset ('bundles/eshopsample/img/operator-icon.svg') }}" uk-svg>
+                        </span>
+                        <ul class="uk-list uk-margin-remove">
+                            <li><a class="ch-nav-mb__text" href="tel:0501234567">0501234567</a></li>
+                            <li><a class="ch-nav-mb__text" href="tel:0501234567">0501234567</a></li>
+                        </ul>
+                    </div>
+                    <div class="uk-flex uk-flex-middle">
+                        <span class="ch-nav-mb__icon uk-margin-right">
+                            <img src="{{ asset ('bundles/eshopsample/img/local-icon.svg') }}" uk-svg>
+                        </span>
+                        <ul class="uk-list">
+                            <li class="ch-nav-mb__text">{{ "ADDR_STR_1"|trans }}</li>
+                            <li class="ch-nav-mb__text">{{ "ADDR_STR_2"|trans }}</li>
+                            <li class="ch-nav-mb__text">{{ "ADDR_STR_3"|trans }}</li>
+                            <li class="ch-nav-mb__text">{{ "ADDR_STR_4"|trans }}</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="uk-flex uk-flex-middle uk-flex-around uk-width-1-2 uk-margin-top">
+                    <div class="uk-flex uk-flex-middle">
+                        <span class="ch-nav-mb__icon uk-margin-right">
+                            <img src="{{ asset ('bundles/eshopsample/img/clock-icon.svg') }}" uk-svg>
+                        </span>
+                        <ul class="uk-list">
+                            <li class="ch-nav-mb__text">{{ "WORK_TIME_TITLE"|trans }}</li>
+                            <li class="ch-nav-mb__text">{{ "WORK_TIME_STR1"|trans }}</li>
+                            <li class="ch-nav-mb__text">{{ "WORK_TIME_STR2"|trans }}</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <ul class="uk-list">
+                            <li class="ch-nav-mb__text">{{ "WE_ON_SOCIAL"|trans }}</li>
+                            <li class="uk-text-center">
+                                <a class="ch-nav-mb__social-link" href="https://www.facebook.com/cheesesommeliersumy"
+                                   target="_blank">
+                                    <img src="{{ asset ('bundles/eshopsample/img/logo-facebook.svg') }}" uk-svg>
+                                </a>
+                                <a class="ch-nav-mb__social-link" href="https://www.instagram.com/cheesesommelier_sumy/"
+                                   target="_blank">
+                                    <img src="{{ asset ('bundles/eshopsample/img/logo-instagram.svg') }}" uk-svg>
+                                </a>
+                            </li>
+                        </ul>
+
+                    </div>
+                    <div class="uk-flex uk-flex-middle uk-flex-center uk-flex-wrap">
+
+                        {% if app.user %}
+                            <a href="{{ path("admin_profile_user") }}" class="ch-header__text uk-button">
+                                <img class="uk-margin-small-right"
+                                     src="{{ asset ('bundles/eshopsample/img/login-icon.svg') }}" uk-svg>
+                               <span class="ch-header__text">{{ "TO_CABINET"|trans }}</span></a>
+                        {% else %}
+
+                            <a class="ch-nav-mb__text uk-text-center uk-width-1-1 uk-margin-small-bottom"  href="{{ path("login") }}" class="">
+                                <img class="uk-margin-small-right"
+                                     src="{{ asset ('bundles/eshopsample/img/login-icon.svg') }}" uk-svg>{{ "LOGIN"|trans }}
+                            </a>
+                        {% endif %}
+                        <div>
+                            <select id="language" class="ch-header-nav__select-lng uk-select">
+                                {% for lang in ["ru","ua"] %}
+                                    <option {% if app.request.getLocale() == lang %}selected="selected"{% endif %}
+                                            value="{{ lang }}">{{ lang }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <ul class="ch-header__mb-nav uk-list uk-margin-small-right uk-margin-remove-vertical">
+                    <li class="uk-text-right">
+                        <a class="ch-nav-mb__social-link" href="https://www.facebook.com/cheesesommeliersumy"
+                           target="_blank">
+                            <img src="{{ asset ('bundles/eshopsample/img/logo-facebook.svg') }}" uk-svg>
+                        </a>
+                        <a class="ch-nav-mb__social-link" href="https://www.instagram.com/cheesesommelier_sumy/"
+                           target="_blank">
+                            <img src="{{ asset ('bundles/eshopsample/img/logo-instagram.svg') }}" uk-svg>
+                        </a>
+                    </li>
+                </ul>
+                <nav class="ch-header-nav uk-navbar-container uk-padding-small uk-position-relative" uk-navbar>
+
+                    <div class="ch-header__mb-nav uk-navbar-left">
+                        <div>
+                            <ul class="uk-list uk-margin-remove">
+                                <li><a class="ch-header__text uk-text-bold" href="tel:0501234567">0501234567</a></li>
+                                <li class="uk-margin-remove"><a class="ch-header__text uk-text-bold"
+                                                                href="tel:0501234567">0501234567</a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <a class="uk-position-center" href="{{ path("catalog_home") }}"><img class="ch-header-nav__logo"
+                                                                src="{{ asset ('bundles/eshopsample/img/logo-cheese.png') }}"
+                                                                alt="Сирний сомельє"></a>
+                    <div class="ch-header__mb-nav uk-navbar-right uk-flex-right">
+                        <div>
+                            <ul class="uk-list uk-text-right  uk-margin-remove">
+                                <li >
+                                    <select id="language" class="ch-header-nav__select-lng uk-select">
+                                        {% for lang in ["ru","ua"] %}
+                                            <option {% if app.request.getLocale() == lang %}selected="selected"{% endif %}
+                                                    value="{{ lang }}">{{ lang }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </li>
+                                <li class="uk-margin-remove">
+                                    {% if app.user %}
+                                        <a href="{{ path("admin_profile_user") }}" class="ch-header__text uk-button">
+                                            <img class="uk-margin-small-right"
+                                                 src="{{ asset ('bundles/eshopsample/img/login-icon.svg') }}" uk-svg></a>
+                                    {% else %}
+                                        <a class="ch-nav-mb__text" href="{{ path("login") }}" class="">
+                                            <img class="uk-margin-small-right"
+                                                 src="{{ asset ('bundles/eshopsample/img/login-icon.svg') }}" uk-svg>
+                                            {{ "LOGIN"|trans }}
+                                        </a>
+                                    {% endif %}
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+    </div>
+    <div class=" uk-flex uk-flex-wrap uk-container uk-margin-top uk-position-relative" style="min-height: 70vh">
+        <div id="loader" class="uk-hidden uk-position-top-center uk-position-z-index">
+            <img  src="{{  asset('bundles/eshopsample/img/loader.gif') }}" />
+        </div>
+{#        <div id="loader-overlay" class="uk-hidden uk-overlay-default uk-position-cover">#}
+        {% block content %}
+        {% endblock %}
+    </div>
+</div>
+<footer>
+    <div class="footer-block uk-container uk-padding-small">
+        <div class="uk-flex  uk-flex-wrap" itemscope="" itemtype="https://schema.org/Organization">
+            <div class="uk-width-1-1">
+                <h4 class="footer__text">{{ "MAIN_PAGE_CONTACTS"|trans }}</h4>
+                <hr>
+            </div>
+            <div class="uk-margin-right">
+                <div class=" uk-flex uk-flex-middle">
+                    <img class="footer__svg-icon" src="{{ asset ('bundles/eshopsample/img/services-phone.svg') }}"
+                         uk-svg="">
+                    <ul class="uk-list uk-margin-remove">
+                        <li class="uk-margin-remove uk-text-small"><a class="footer__link" href="tel: +47 815 00 888"
+                                                                      itemprop="telephone">+47 815 00 888</a>
+                        </li>
+                        <li class="uk-margin-remove uk-text-small"><a class="footer__link" href="tel: +47 815 00 888"
+                                                                      itemprop="telephone">+47 815 00 888</a>
+                        </li>
+                        <li class="uk-margin-remove uk-text-small"><a class="footer__link" href="tel: +47 815 00 888"
+                                                                      itemprop="telephone">+47 815 00 888</a>
+                        </li>
+                        <li class="uk-margin-remove uk-text-small"><a class="footer__link" href="tel: +47 815 00 888"
+                                                                      itemprop="telephone">+47 815 00 888</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer__text uk-margin-top" itemprop="address" itemscope=""
+                     itemtype="https://schema.org/PostalAddress">
+
+                    <span itemprop="postalCode" class="uk-hidden">40000</span>
+                    <div class="uk-flex uk-flex-middle">
+                        <div>
+                            <img class="footer__svg-icon" src="{{ asset ('bundles/eshopsample/img/local-icon.svg') }}"
+                                 uk-svg="">
+                        </div>
+                        <div class="uk-text-small">
+                            <div>
+                                <span itemprop="addressLocality">{{ "ADDR_STR1"|trans }}</span>,
+                                <span itemprop="streetAddress">{{ "ADDR_STR1_TEXT"|trans }}</span>
+                            </div>
+                            <div>
+                                <span itemprop="addressLocality">{{ "ADDR_STR2"|trans }}</span>,
+                                <span itemprop="streetAddress">{{ "ADDR_STR2_TEXT"|trans }}</span>
+                            </div>
+                            <div>
+                                <span itemprop="addressLocality">{{ "ADDR_STR3"|trans }}</span>,
+                                <span itemprop="streetAddress">{{ "ADDR_STR3_TEXT"|trans }}</span>
+                            </div>
+                            <div>
+                                <span itemprop="addressLocality">{{ "ADDR_STR4"|trans }}</span>,
+                                <span itemprop="streetAddress">{{ "ADDR_STR4_TEXT"|trans }}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="uk-width-3-4@l uk-width-1-1">
+                <div id="map"></div>
+            </div>
+        </div>
+    </div>
+</footer>
+{% if is_granted("ROLE_ADMIN") %}
+
+<div class="show-admin_panel uk-padding-small">
+    <span class="show-admin_panel__btn uk-animation-toggle" tabindex="0" uk-toggle="target: #admin_panel"><img src="{{ asset ('bundles/eshopsample/img/edit-icon.svg') }}" uk-svg></span>
+    <div id="admin_panel" hidden class="uk-animation-slide-right uk-margin-top">
+        <ul class="uk-list">
+            <li class="uk-margin-remove">
+                <a class="uk-link uk-link-reset" href="{{ url("admin_manage_pictures",{"category":1}) }}">{{ "SLIDER"|trans }}</a>
+            </li>
+            <li class="uk-margin-remove">
+                <a class="uk-link uk-link-reset" href="{{ url("admin_manage_pictures",{"category":2}) }}">{{ "BANNER"|trans }}</a>
+            </li>
+            <li class="uk-margin-remove">
+                <a class="uk-link uk-link-reset" href="{{ url("admin_manage_pictures",{"category":3}) }}">{{ "GALLERY"|trans }}</a>
+            </li>
+        </ul>
+    </div>
+</div>
+{% endif %}
+
+<div class="to-top">
+    <img class="to-top__img" src="{{ asset ('bundles/eshopsample/img/to-top-icon.svg') }}" alt="" uk-svg="">
+</div>
+
+</div>
+</body>
+</html>

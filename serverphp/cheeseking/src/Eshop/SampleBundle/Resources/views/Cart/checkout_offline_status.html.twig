@@ -1,0 +1,12 @@
+{% trans_default_domain 'translations' %}
+    {%  extends '@!EshopSample/base.html.twig' %}
+    {% block content %}
+        {% javascripts
+            '@EshopSampleBundle/Resources/public/js/cart/redirect_after_checkout.js' %}
+            <script src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+        <script type="text/javascript">
+            var redirectHome = "{{ path("catalog_home") }}"
+        </script>
+        <h1>{{ status|trans }}</h1>
+    {% endblock %}

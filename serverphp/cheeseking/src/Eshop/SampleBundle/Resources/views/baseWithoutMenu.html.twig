@@ -1,0 +1,295 @@
+{% trans_default_domain 'translations' %}
+<!DOCTYPE html>
+<html>
+<head>
+    {% block head %}
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% block head_scripts %}
+        {% javascripts combine=true
+        '@EshopSampleBundle/Resources/public/js/libs/jquery-2.2.4.min.js'
+        '@EshopSampleBundle/Resources/public/js/libs/jquery.cookie.js'
+        '@EshopSampleBundle/Resources/public/js/menu/menuloader.js'
+        '@EshopSampleBundle/Resources/uikit/dist/js/uikit.min.js'
+        '@EshopSampleBundle/Resources/uikit/dist/js/components/notification.min.js'
+
+        %}
+        <script src="{{ asset_url }}"></script>
+        <script type="text/javascript">
+            var cartRouteUpdate = '{{ url("cart_list_get_data") }}';
+            var updateLang = '{{ url("user_update_lang") }}';
+            var path_get_count = "{{ url("wishlist_count") }}";
+        </script>
+        {% endjavascripts %}
+    {% endblock head_scripts %}
+
+    {% block styles %}
+        {% stylesheets combine=true
+        '@EshopSampleBundle/Resources/uikit/dist/css/uikit.my-theme.min.css'
+        %}
+    <link href="{{ asset_url }}" type="text/css" rel="stylesheet" />
+        {% endstylesheets %}
+    {% endblock styles %}
+    {% endblock head %}
+</head>
+<body>
+{% block body %}{% endblock %}
+{% block javascripts %}{% endblock %}
+<div class="adaptive-bg" uk-sticky="top: 100; animation: uk-animation-slide-top; bottom: #sticky-on-scroll-up">
+    <header>
+        <nav class="uk-navbar-container" uk-navbar>
+            <div class="nav-default uk-width-1-3@s uk-width-1-4@l uk-margin-left uk-flex uk-flex-middle">
+                <a href="/"><img src="{{ asset('bundles/EshopSample/img/logo-leda.png') }}"></a>
+            </div>
+            <div class="nav-default uk-width-1-1@l uk-flex-between">
+                <ul class="nav-default__list uk-navbar-nav">
+                    <li>
+                        <a href="{{ path("catalog_home") }}" title="{{ "CATALOG"|trans }} ">
+                            <img class="header-nav__icon uk-margin-small-right" src="{{ asset('bundles/EshopSample/img/catalog-icon.png') }}" alt="">
+                            {{ "CATALOG"|trans }} </a>
+                    </li>
+                    <li>
+                        <a href="#" title="{{ "EXPORT"|trans }} ">
+                            <img class="header-nav__icon uk-margin-small-right" src="{{ asset('bundles/EshopSample/img/export-icon.png') }}" alt="" >
+                            {{ "EXPORT"|trans }} </a>
+                    </li>
+                    <li>
+                        <a href="#" title="{{ "FINANS"|trans }} ">
+                            <img class="header-nav__icon uk-margin-small-right" src="{{ asset('bundles/EshopSample/img/finans-icon.png') }}" alt="" >
+                            {{ "FINANS"|trans }} </a>
+                    </li>
+                    <li>
+                        <a href="{{ path("orders") }}" title="{{ "ORDERS"|trans }}">
+                            <img class="header-nav__icon uk-margin-small-right" src="{{ asset('bundles/EshopSample/img/orders-icon.png') }}" alt="">
+                            {{ "ORDERS"|trans }} </a>
+                    </li>
+                    <li>
+                        <a href="#" title="{{ "REKLAMS"|trans }}">
+                            <img class="header-nav__icon uk-margin-small-right" src="{{ asset('bundles/EshopSample/img/reklam-icon.png') }}" alt="">
+                            {{ "REKLAMS"|trans }} </a>
+                    </li>
+                </ul>
+                <ul class="uk-navbar-nav uk-flex-middle">
+                    <li class="uk-margin-small-right uk-position-relative">
+                        <div class="nav-default__loader uk-hidden uk-position-center" uk-spinner></div>
+                        <a id="cart-count" href="{{ path('cart_list') }}" class="uk-text-lowercase uk-position-relative"><img class="header-nav__icon uk-margin-small-right" src="{{ asset('bundles/EshopSample/img/basket-icon.png') }}">
+                            <span class="header-nav__basket-qty"></span>
+                            <div id="price"></div></a>
+                    </li>
+                    <li class="uk-margin-small-right">
+                        <select id="language" class="nav-adaptive__select">
+                            {% for lang in ["en","ua"] %}
+                                <option {% if app.request.getLocale() == lang %}selected="selected"{% endif %} value="{{ lang }}">{{ lang }}</option>
+                            {% endfor %}
+                        </select>
+                    </li>
+                    <li>
+                        {% if app.user %}
+                        <a href="#" class="uk-text-capitalize">
+                            {{ "CURRENCIES"|trans }} : {{ app.user.defaultCurrency.getCurCode }}
+                        </a>
+                        <div class="uk-navbar-dropdown">
+                            <ul class="uk-nav uk-navbar-dropdown-nav">
+                                {% for cur in app.user.currencies %}
+                                    {% if cur.id != app.user.defaultCurrency.id %}
+                                        <li>
+                                            <a class="currency" data-cur-id="{{ cur.id }}" data-redirect="{{ path(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) }}" href="{{ path("change_cur") }}">
+                                                {{ cur.getCurCode }}
+                                            </a>
+                                        </li>
+                                    {% else %}
+                                        <li class="uk-text-bold">{{ cur.getCurCode }}</li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </li>
+                    {% endif %}
+                    <li>
+                        {% if app.user %}
+                            <a href="#" class="uk-text-capitalize"><img class="header-nav__icon uk-margin-small-right" src="{{ asset('bundles/EshopSample/img/user-icon.png') }}">
+                                {{ app.user.name }} {{ app.user.surname }}</a>
+                            <div class="uk-navbar-dropdown">
+                                <ul class="uk-nav uk-navbar-dropdown-nav">
+                                    <li><a href="{{ path("logout") }}">Выход</a></li>
+                                </ul>
+                            </div>
+
+
+                        {% endif %}
+                    </li>
+
+                </ul>
+            </div>
+            {#  <div class="nav-default  uk-navbar-right uk-margin-small-right">
+                 <ul class="uk-navbar-nav uk-flex-middle">
+                     <li class="uk-margin-small-right uk-position-relative">
+                         <div class="nav-default__loader uk-hidden uk-position-center" uk-spinner></div>
+                         <a id="cart-count" href="{{ path('cart_list') }}" class="uk-text-lowercase uk-position-relative"><img class="header-nav__icon uk-margin-small-right" src="{{ asset('bundles/EshopSample/img/basket-icon.png') }}">
+                         <span class="header-nav__basket-qty"></span>
+                         <div id="price"></div></a>
+                     </li>
+                     <li class="uk-margin-small-right">
+                         <select id="language" class="nav-adaptive__select">
+                             {% for lang in ["en","ua"] %}
+                                 <option {% if app.request.getLocale() == lang %}selected="selected"{% endif %} value="{{ lang }}">{{ lang }}</option>
+                             {% endfor %}
+                         </select>
+                     </li>
+                     <li>
+                       {% if app.user %}
+                           <a href="#" class="uk-text-capitalize">
+                               {{ "CURRENCIES"|trans }} : {{ app.user.defaultCurrency.getCurCode }}
+                           </a>
+                               <div class="uk-navbar-dropdown">
+                                   <ul class="uk-nav uk-navbar-dropdown-nav">
+                                       {% for cur in app.user.currencies %}
+                                           {% if cur.id != app.user.defaultCurrency.id %}
+                                           <li>
+                                               <a class="currency" data-cur-id="{{ cur.id }}" data-redirect="{{ path(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) }}" href="{{ path("change_cur") }}">
+                                                   {{ cur.getCurCode }}
+                                               </a>
+                                           </li>
+                                           {% else %}
+                                               <li class="uk-text-bold">{{ cur.getCurCode }}</li>
+                                           {% endif %}
+                                       {% endfor %}
+                                   </ul>
+                               </div>
+                         </li>
+                     {% endif %}
+                     <li>
+                         {% if app.user %}
+                             <a href="#" class="uk-text-capitalize"><img class="header-nav__icon uk-margin-small-right" src="{{ asset('bundles/EshopSample/img/user-icon.png') }}">
+                             {{ app.user.name }} {{ app.user.surname }}</a>
+                             <div class="uk-navbar-dropdown">
+                                 <ul class="uk-nav uk-navbar-dropdown-nav">
+                                     <li><a href="{{ path("logout") }}">Выход</a></li>
+                                 </ul>
+                             </div>
+
+
+                         {% endif %}
+                     </li>
+
+                 </ul>
+             </div> #}
+            <div class="nav-adaptive uk-padding-small uk-flex-middle uk-flex-between uk-width-1-1">
+                <div>
+                    <a class="uk-display-block" href="#offcanvas-slide" uk-toggle>
+                        <img class="nav-adaptive__icon" src="{{ asset('bundles/EshopSample/img/menu-icon.png') }}">
+                    </a>
+                    <div id="offcanvas-slide" uk-offcanvas>
+                        <div class="uk-offcanvas-bar">
+                            <ul class="uk-nav uk-list-divider">
+                                <li class="uk-margin-bottom">
+                                    <a href="/"><img src="{{ asset('bundles/EshopSample/img/logo-leda.png') }}"></a>
+                                </li>
+                                <li>
+                                    <a href="#" title="{{ "CATALOG"|trans }} ">
+                                        <img class="header-nav__icon uk-margin-small-right" src="{{ asset('bundles/EshopSample/img/catalog-icon.png') }}" alt="">
+                                        {{ "CATALOG"|trans }} </a>
+                                </li>
+                                <li>
+                                    <a href="#" title="{{ "EXPORT"|trans }} ">
+                                        <img class="header-nav__icon uk-margin-small-right" src="{{ asset('bundles/EshopSample/img/export-icon.png') }}" alt="" >
+                                        {{ "EXPORT"|trans }} </a>
+                                </li>
+                                <li>
+                                    <a href="#" title="{{ "FINANS"|trans }} ">
+                                        <img class="header-nav__icon uk-margin-small-right" src="{{ asset('bundles/EshopSample/img/finans-icon.png') }}" alt="" >
+                                        {{ "FINANS"|trans }} </a>
+                                </li>
+                                <li>
+                                    <a href="{{ path("orders") }}" title="{{ "ORDERS"|trans }}">
+                                        <img class="header-nav__icon uk-margin-small-right" src="{{ asset('bundles/EshopSample/img/orders-icon.png') }}" alt="">
+                                        {{ "ORDERS"|trans }} </a>
+                                </li>
+                                <li>
+                                    <a href="#" title="{{ "REKLAMS"|trans }}">
+                                        <img class="header-nav__icon uk-margin-small-right" src="{{ asset('bundles/EshopSample/img/reklam-icon.png') }}" alt="">
+                                        {{ "REKLAMS"|trans }} </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class=" uk-flex uk-flex-middle uk-flex-between ">
+                    <a id="cart-count-adaptive" href="{{ path("cart_list") }}" class="uk-text-lowercase uk-position-relative">
+                        <img class="header-nav__icon uk-margin-small-right" src="{{ asset('bundles/EshopSample/img/basket-icon.png') }}">
+                        <span class="header-nav__basket-qty"></span>
+                        <div id="price-adaptive" class="uk-hidden"></div>
+                    </a>
+                    <div>
+                        <select id="language" class="nav-adaptive__select">
+                            {% for lang in ["en","ua"] %}
+                                <option {% if app.request.getLocale() == lang %}selected="selected"{% endif %} value="{{ lang }}">{{ lang }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div>
+                        {% if app.user %}
+                            <span class="nav-adaptive__link uk-text-bold uk-button-small">
+                                              {{ app.user.defaultCurrency.getCurCode }}
+                                          </span>
+                            <div uk-dropdown="mode: click">
+                                <ul class="uk-nav uk-navbar-dropdown-nav">
+                                    {% for cur in app.user.currencies %}
+                                        {% if cur.id != app.user.defaultCurrency.id %}
+                                            <li>
+                                                <a class="currency" data-cur-id="{{ cur.id }}" data-redirect="{{ path(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) }}" href="{{ path("change_cur") }}">
+                                                    {{ cur.getCurCode }}
+                                                </a>
+                                            </li>
+                                        {% else %}
+                                            <li>{{ cur.getCurCode }}</li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        {% endif %}
+                    </div>
+                    {% if app.user %}
+                        <span class="nav-adaptive__link uk-text-capitalize">
+                                              <img class="header-nav__icon uk-margin-small-right" src="{{ asset('bundles/EshopSample/img/user-icon.png') }}">
+                                            </span>
+                        <div class="uk-padding-remove-horizontal" uk-dropdown="mode: click">
+                            <ul class="uk-nav uk-navbar-dropdown-nav">
+                                <li class="nav-adaptive__dropdown-li">
+                                    <p>{{ app.user.name }} {{ app.user.surname }}</p>
+                                </li>
+                                <li>
+                                    <hr>
+                                </li>
+                                <li class="nav-adaptive__dropdown-li"><a href="{{ path("logout") }}">Выход</a></li>
+                            </ul>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </nav>
+    </header>
+</div>
+<div id="content" class="adaptive-bg">
+    <div class="uk-flex uk-flex-wrap uk-margin-remove-top">
+        {% block content %}
+        {% endblock %}
+    </div>
+</div>
+
+<div id="footer" class="adaptive-bg">
+</div>
+<a href="#menu-default" class="subnav-list-adaptive uk-position-center-left uk-position-fixed" uk-toggle>
+    <img class="subnav-list-adaptive__icon" src="{{ asset('bundles/EshopSample/img/menu-icon.png') }}">
+</a>
+<div class="to-top">
+                        <span class="uk-flex uk-flex-middle uk-align-center">
+                            <img  src="{{ asset('bundles/EshopSample/img/to-top-icon.png') }}">
+                        </span>
+</div>
+</body>
+
+</html>

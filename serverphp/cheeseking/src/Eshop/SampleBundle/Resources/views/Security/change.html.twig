@@ -1,0 +1,42 @@
+{% trans_default_domain 'translations' %}
+    {%  extends '@!EshopSample/main.html.twig' %}
+    {% block content %}
+        {% javascripts
+            '@EshopSampleBundle/Resources/public/js/register/change.js' %}
+            <script src="{{ asset_url }}"></script>
+            <script>
+                var urlChange = "{{ url("user_change_password", {"hashId":hash}) }}";
+                var messageWrongFormat = "{{ "WRONG_FORMAT"|trans }}";
+                var messageOkChanged = "{{ "CHECK_EMAIL_CHANGED"|trans }}";
+                var wrongPassEqual = "{{ "WRONG_PASS_EQ"|trans }}";
+                var hash = "{{ hash }}";
+                var redirect = "{{ url("catalog_home") }}"
+            </script>
+        {% endjavascripts %}
+
+        <div class="start-page-wrap">
+            <div class="uk-position-center  uk-border-rounded uk-width-1-2 uk-width-xlarge@s">
+                <div class="uk-text-center">
+                    <div class="uk-width-small uk-align-center">
+                        <a href="{{ path('catalog_home') }}"><img src="{{ asset ('bundles/eshopsample/img/logo-cheese.png') }}" alt="Сирний сомельє"></a>
+                    </div>
+                    <h3 class="ch-simle-text">{{ "RESET"|trans }}</h3>
+                </div>
+                <div class="start-page-grid uk-grid-divider uk-child-width-expand@s" uk-grid>
+                    <div>
+                        <div class="uk-width-medium uk-align-center">
+                            <label class="uk-form-label" for="username">{{ "PASSWORD1"|trans }}</label>
+                            <input class="uk-input" type="password" id="password1" name="password" value="" />
+                            <label class="uk-form-label" for="username">{{ "PASSWORD2"|trans }}</label>
+                            <input class="uk-input" type="password" id="password2" name="password2" value="" />
+                            <input id="token" type="hidden" name="token" value="{{ csrf_token('change-form') }}"/>
+                            <button id="change" class="simple-btn uk-button uk-margin-top uk-align-right">{{ "CHANGE"|trans }}</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    {% endblock %}
+
+

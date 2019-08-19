@@ -1,0 +1,22 @@
+{% trans_default_domain 'translations' %}
+    {%  extends '@!EshopSample/baseOther.html.twig' %}
+    {% block content %}
+
+        <div id="loaded-data" class="uk-container uk-width-1-1 uk-padding-remove uk-margin-remove" uk-grid>
+            <h1>{{ "SERVICES"|trans }}</h1>
+            <div class="services-wrap uk-grid-small uk-child-width-1-4@s uk-flex-center uk-text-center" uk-grid> 
+                {% for item in list %}
+                <div>
+                    <div class="uk-card uk-card-hover uk-card-body">
+                        <div class="uk-card-media-top">
+                            <img src="https://cdn4.iconfinder.com/data/icons/web-essential-4/64/42-web_essential-256.png" alt="">
+                        </div>
+                        <div class="uk-card-body">
+                            <h3 class="uk-card-title">{{ item.getName }}</h3>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endblock %}

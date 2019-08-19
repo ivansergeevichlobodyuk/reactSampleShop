@@ -1,0 +1,24 @@
+
+<table style="width: 500px; margin: 0 auto;">
+    <tbody>
+    <tr>
+        <td>{{ "HELLO"|trans }}, {{  item.getName }}!</td>
+    </tr>
+    <tr>
+        <td>
+            {{ "THNX_FOR_REGISTER"|trans }}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <strong>{{ password }}</strong> - {{ "YOU_NEW_PASS"|trans }}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            {{ "IF_YOU_WANT_CHANGE_GOTO"|trans }}
+            <a href="{{ url("user_change_password_show",{"hashId":item.getHash}) }}">{{ "LINK"|trans }}</a>
+        </td>
+    </tr>
+    </tbody>
+</table>

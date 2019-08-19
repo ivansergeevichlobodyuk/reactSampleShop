@@ -1,0 +1,98 @@
+{% trans_default_domain 'translations' %}
+    {%  extends '@!EshopSample/base.html.twig' %}
+    {% block content %}
+        {% javascripts
+            '@EshopSampleBundle/Resources/public/js/cart/additemlist.js' %}
+            <script src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+        <script type="text/javascript">
+            var cartChange = '{{ url("cart_list_update") }}';
+            var messageCartUpdated = '{{ "CART_UPDATED_MSG"|trans }}';
+        </script>
+        <div id="loaded-data" class="uk-hidden uk-container uk-width-1-1 uk-padding-remove" uk-grid>
+            <div class="checklist-wrap uk-width-1-1  uk-margin-bottom">
+                <h3>{{ "CART_LIST_HEADER"|trans }}</h3>
+                <hr>
+                {% if data is empty %}
+                    <div class="loader-data__not-found uk-text-center"><img src="{{ asset('bundles/eshopsample/img/sad-icon.png') }}" alt="{{ "CART_NOTHING_FOUND"|trans }}"> {{ "CART_NOTHING_FOUND"|trans }}</div>
+                    {#<div>{{ "CART_NOTHING_FOUND"|trans }}</div>#}
+                {% else %}
+                    <ul class="uk-list uk-list-divider">
+                        {% for key, item in data %}
+                            {% if item.count > 0 %}
+                                <li class="uk-position-relative" id="row-{{ key }}">
+
+                                    <span class="uk-width-1-1 uk-text-bold">
+                                        <a id="name-{{ key }}" data-load="{{ url("cart_item_modal",{"id":key}) }}" href="#cart-modal-item"  class=" uk-link uk-link-reset" uk-toggle>
+                                            {{ item.productName }}
+                                        </a>
+                                    </span>
+                                    <div class="checklist-content uk-flex uk-flex-middle uk-flex-wrap uk-flex-between uk-child-width-1-1 uk-child-width-1-3@s uk-position-relative">
+                                        <div class="uk-flex uk-flex-wrap uk-flex-middle">
+                                            <span class="uk-margin-small-right" >{{ item.price|round(2) }} {{ currency }}</span>
+                                            <span id="item-multiply" class="qty-in-pack-{{key}} uk-display-block goods-qty uk-text-lowercase" data-pack="{{ item.multiply }}">{{ item.multiply }} {{ "CART_COUNT_PACK"|trans }}</span>
+                                        </div>
+
+                                        <div class="number uk-flex uk-flex-middle uk-flex-center">
+                                            <span data-good="{{ key }}" data-action="-----" class="checklist__btn  minus"><img src="{{ asset ('bundles/eshopsample/img/minus-icon.svg') }}" uk-svg ></span>
+                                            <input class="checklist__qty uk-input" id="good_{{ key }}" type="text" name="item[{{ key }}][count]" value="{{ item.count }}" />
+                                            <span data-good="{{ key }}" data-action="++++" class="checklist__btn  plus"><img src="{{ asset ('bundles/eshopsample/img/plus-icon.svg') }}" uk-svg ></span>
+                                        </div>
+                                        {# <div class="number uk-flex uk-flex-middle uk-flex-center">
+                                            {% set totalCount = item.count * item.multiply  %}
+                                            <input class="checklist__qty uk-input" id="good_total_{{ key }}" type="text" name="item[{{ key }}][count_total]" value="{{ totalCount }}" />
+                                        </div> #}
+                                        {# <span>{{ item.multiply }} шт.</span> #}
+                                        <div class="uk-flex uk-flex-wrap uk-flex-middle" >
+                                            <div class="uk-margin-small-right">
+                                                <span data-total="{{ key }}" id="total_good_{{ key }}">{{ item.priceTotal }} </span>
+                                                <span>{{ currency }}</span>
+                                            </div>
+
+                                            {% set totalCount = item.count * item.multiply  %}
+                                            <div class="goods-qty uk-text-lowercase ">
+                                                <span  id="good_total_{{ key }}">{{ totalCount }} </span>
+                                                <span >{{ "CART_PCS_PRODUCT_TOTAL"|trans }}</span>
+                                            </div>
+                                            
+                                        </div>
+                                        
+                                    </div>
+                                    <span data-id-remove="{{ key }}" class="checklist__remove-btn remove uk-position-center-right" title="{{ "REMOVE"|trans }}"> <img src="{{ asset('bundles/eshopsample/img/remove-icon.svg') }}" uk-svg alt=""></span>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                        <li class="uk-text-right">
+                            {{ "CART_TOTAL_FOR_CART"|trans }} : <span class="uk-text-bold" id="total-cart">{{ total }} {{ currency }}</span>
+                        </li>
+                    </ul>
+                {% endif %}
+                <a class="uk-button cart-buy-btn" href="{{ path("checkoutStart") }}">{{ "CART_CHECKOUT"|trans }}</a>
+            </div>
+            <div id="cart-modal"  uk-modal >
+                <div class="uk-modal-dialog uk-margin-auto-vertical uk-width-medium" uk-overflow-auto >
+                    <div class="uk-modal-header">
+                        <p class="checklist__modal-title uk-text-bold"></p>
+                    </div>
+                    <div class="uk-modal-body ">
+                        <div class="number uk-flex uk-flex-middle uk-flex-center">
+                            <span class="checklist__modal-btn uk-button minus-btn">-</span>
+                            <input class=" checklist__modal-qty uk-input"  type="number" autofocus />
+                            <span  class="checklist__modal-btn uk-button plus-btn">+</span>
+                        </div>
+                    </div>
+                    <div class="uk-modal-footer uk-text-right">
+                        <button class="uk-button uk-button-default uk-modal-close" type="button">{{ "Cancel"|trans }}</button>
+                        <button class="uk-button checklist__modal-save-btn" type="button">{{ "Save"|trans }}</button>
+                    </div>
+                </div>
+            </div>
+            <div id="cart-modal-item" class="uk-flex-top" uk-modal>
+                <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
+                     <div id="loaded-modal-data" class="content">
+                     </div>
+                    <button class="uk-modal-close-default" type="button" uk-close></button>
+                </div>
+            </div>
+        </div>
+    {% endblock %}

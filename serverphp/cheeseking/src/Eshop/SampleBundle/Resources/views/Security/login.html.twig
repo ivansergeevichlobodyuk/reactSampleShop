@@ -1,0 +1,47 @@
+{% trans_default_domain 'translations' %}
+    {%  extends '@!EshopSample/main.html.twig' %}
+    {% block content %}
+       <div class="start-page-wrap">
+        <div class="uk-position-center  uk-border-rounded uk-width-1-2 uk-width-xlarge@s">
+            <div class="uk-text-center">
+                <div class="uk-width-small uk-align-center">
+                    <a href="{{ path('catalog_home') }}"><img src="{{ asset ('bundles/eshopsample/img/logo-cheese.png') }}" alt="Сирний сомельє"></a>
+                </div>
+                <h3 class="ch-simle-text">{{ "LOGIN"|trans }}</h3>
+            </div>
+            <div class="start-page-grid uk-grid-divider uk-child-width-expand@s" uk-grid>
+                <div>
+                    {% if error %}
+                        <div class="ch-simle-text uk-text-center" style="border-bottom: 2px solid red">
+                            <p>{{ error.messageKey|trans(error.messageData, 'security') }}</p>
+                        </div>
+                    {% endif %}
+                    <form class="uk-width-medium" action="{{ path('login') }}" method="post" >
+                        <label class="uk-form-label" for="username">{{ "EMAIL_OR_PHONE"|trans }}:</label>
+                        <input class="uk-input" type="text" id="username" name="_username" value="{{ last_username }}" />
+                        <label class="uk-form-label" for="password">{{ "PASSWORD"|trans }}:</label>
+                        <input class="uk-input" type="password" id="password" name="_password" />
+                        <input type="hidden" name="_csrf_token"
+                               value="{{ csrf_token('authenticate') }}">
+                        <button class="simple-btn uk-button  uk-align-center uk-margin-top uk-width-1-1" type="submit">{{ "GO_TO_SITE"|trans }}</button>
+                    </form>
+                </div>
+                <div class="ch-start-page__right-block uk-child-width-1-1 ">
+                    <ul class="uk-list">
+                        <li>
+                            <a class="simple-btn simple-btn--custom uk-button uk-width-small@s uk-width-1-1 " href="{{ path("user_registration") }}" title="">{{ "REGISTER"|trans }}</a>
+                        </li>
+                        <li>
+                            <a class="simple-btn simple-btn--custom uk-button uk-width-small@s uk-width-1-1 uk-margin-top" href="{{ path("user_reset_password_show") }}" title="">{{ "RESET_PASS"|trans }}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+{% endblock %}
+
+

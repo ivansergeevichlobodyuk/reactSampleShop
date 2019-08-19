@@ -1,0 +1,62 @@
+{% trans_default_domain 'translations' %}
+    <div id="serach-wrapper" data-filter="breadcrumb">
+        <div id="breadcrumbs-destination" class="main-content-top uk-margin-top">
+        </div>
+        {# <div data-filter="search" {% if dataFilters.isShowFilters %}class="main-content-search uk-position-relative uk-margin-top"{% else %}class="main-content-search uk-position-relative uk-margin-top uk-hidden"{% endif %}>
+            <form class="uk-flex uk-flex-middle">
+                <input id="search-field" class="uk-input uk-width-1-1" value="{{ dataFilters.search }}" type="text" placeholder="{{ "SEARCH_GOODS"|trans }}">
+                <img class="header-subnav__search-btn uk-position-center-right" src="{{ asset ('bundles/eshopsample/img/search-icon.svg') }}" alt="" uk-svg>
+            </form>
+        </div> #}
+    </div>
+    <div data-add="{{ path("cart_add") }}" data-filter="panel" {% if dataFilters.isShowFilters %}class="uk-margin-top"{% else %}class="uk-margin-top uk-hidden"{% endif %}>
+        <hr>
+        <div class="main-content-sort__bg uk-padding-small uk-padding-remove-vertical">
+            <div data-filter="search" class="main-content-search uk-position-relative uk-margin-bottom">
+                <form class="uk-flex uk-flex-middle">
+                    <input id="search-field" class="uk-input" value="{{ dataFilters.search }}" type="text" placeholder="{{ "FILTERS_SEARCH_GOODS"|trans }}">
+                    <button class="header-subnav__search" type="submit"><img class="header-subnav__search-btn" src="{{ asset ('bundles/eshopsample/img/search-icon.svg') }}" alt="" uk-svg></button>
+                </form>
+            </div>
+            <div class="uk-flex uk-flex-middle uk-flex-wrap uk-flex-right">
+                <div class="main-content-sort">
+                    <ul class="main-content-sort__tabs uk-navbar-nav  uk-margin-remove uk-flex-middle">
+                        <li class="main-content-sort__name uk-text-bold">{{ "FILTERS_SORT"|trans }} :</li>
+                        <li data-sorting="price" data-ordering="" class="main-content-sort__item uk-flex uk-flex-middle uk-text-small {% if dataFilters.sort.0 == 'price' %}active {{ dataFilters.sort.1 }}{% endif %}">
+                            <!-- <img id="price-icon" class="main-content-sort__icon" src="{{ asset('bundles/eshopsample/img/sort-price-icon.png') }}"> -->
+                            <span class="main-content-sort__icon-price "></span>
+                            {{ "FILTERS_SORT_BY_PRICE"|trans }}
+                        </li>
+                        <li data-sorting="name" data-ordering="" class="main-content-sort__item uk-flex uk-flex-middle uk-text-small {% if dataFilters.sort.0 == 'name' %}active {{ dataFilters.sort.1 }}{% endif %}">
+                            <!-- <img id="name-icon" class="main-content-sort__icon" src="{{ asset('bundles/eshopsample/img/sort-name-icon.png') }}"> -->
+                            <span class="main-content-sort__icon-name "></span>
+                            {{ "FILTERS_SORT_BY_NAME"|trans }}
+                        </li>
+                    </ul>
+                </div>
+                <div class="uk-flex uk-flex-middle">
+                    <ul class="uk-subnav uk-margin-remove uk-flex-middle">
+                        <li class="uk-text-bold">{{ "VIEW_BY_PAGE"|trans }} :</li>
+                        <li class="main-content-view__select">
+                            <select id="limit-paginator" class="uk-select">
+                                {% for limItem in dataFilters.limits %}
+                                    <option {% if limItem is same as(dataFilters.limit) %}selected="selected"{% endif %} value="{{ limItem }}">{{ limItem }}</option>
+                                {% endfor %}
+                            </select>
+                        </li>
+                    </ul>
+                    <ul id="view-type-wrapper" class="main-content-view__tabs uk-navbar-nav">
+                        <li class="main-content-view__item main-content-view__list {% if dataFilters.viewType == 1 %}active{% endif %}" id="list" data-view="1">
+                            <img class="main-content-view__icon" src="{{ asset('bundles/eshopsample/img/sort-to-list-icon.png') }}">
+                        </li>
+                        <li  class="main-content-view__item main-content-view__listcard {% if dataFilters.viewType == 2 %}active{% endif %}" id="listcart" data-view="2">
+                            <img class="main-content-view__icon" src="{{ asset('bundles/eshopsample/img/sort-to-listcard-icon.png') }}">
+                        </li>
+                        <li class="main-content-view__item main-content-view__card {% if dataFilters.viewType == 3 %}active{% endif %}" id="cart" data-view="3">
+                            <img class="main-content-view__icon" src="{{ asset('bundles/eshopsample/img/sort-to-card-icon.png') }}">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>

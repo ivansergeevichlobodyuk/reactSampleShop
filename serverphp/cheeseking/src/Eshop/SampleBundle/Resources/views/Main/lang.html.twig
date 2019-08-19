@@ -1,0 +1,9 @@
+<div>Language:
+{% for lang,link in links %}
+    {% if lang != current %}
+        <a href="{{ link }}">{{ lang }}</a>
+    {% else %}
+        <div class="current-lang">{{ lang }}</div>
+    {% endif %}
+{% endfor %}
+</div>

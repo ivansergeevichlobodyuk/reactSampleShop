@@ -1,0 +1,39 @@
+{% trans_default_domain 'translations' %}
+    {%  extends '@!EshopSample/main.html.twig' %}
+
+    {% block content %}
+        {% javascripts
+        '@EshopSampleBundle/Resources/public/js/register/register.js' %}
+            <script>
+                var MSG_OK_REG = "{{ "MSG_OK_REG"|trans }}";
+                var SMS_VERIFICATION_WAS_SEND = "{{ "SMS_VERIFICATION_WAS_SEND"|trans }}";
+                var SMS_VERIFICATION_URL = "{{ url("send_sms_verification_form") }}";
+            </script>
+            <script src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+<div class="start-page-wrap">
+        <div class="uk-width-medium@s uk-position-center uk-margin-remove-vertical uk-padding-small">
+            <div>
+                <h3 class="ch-simle-text uk-text-center">{{ "REGISTRATION"|trans }}</h3>
+            </div>
+            {{ form_start(form, {'attr':{'id': 'register', 'action':path('user_registration'),
+            'data-redirect': path("send_sms_verification_form")} }) }}
+            {{ form_row(form.email, {'label_attr': {'class': 'uk-form-label'}, 'attr':{'id':'email', 'class':'uk-input'}}) }}
+            {{ form_row(form.name, {'label_attr': {'class': 'uk-form-label'}, 'attr': {'class': 'uk-input'}}) }}
+            {{ form_row(form.surname, {'label_attr': {'class': 'uk-form-label'}, 'attr': {'class': 'uk-input'}}) }}
+            {{ form_row(form.phone, {'label_attr': {'class': 'uk-form-label'}, 'attr': {'class': 'uk-input'}}) }}
+            {{ form_row(form.plainPassword.first, {'label_attr': {'class': 'uk-form-label'}, 'attr': {'class': 'uk-input'}}) }}
+            {{ form_row(form.plainPassword.second, {'label_attr': {'class': 'uk-form-label'}, 'attr': {'class': 'uk-input'}}) }}
+            <button class="simple-btn uk-button uk-align-center uk-margin-top" type="submit">{{ "REGISTER"|trans }}</button>
+            {{ form_end(form) }}
+            <div clas="class" id="rec">
+                <div id="iden-rec" class="g-reCAPTCHA" data-sitekey="6Ld44KkUAAAAAH79ZQKSv4K3RkejgILydCbXVCM5">
+                </div>
+            </div>
+            <div class="uk-text-center">
+                <a class="ch-simle-text uk-link" href="{{ path('login') }}" title="">{{ "LOGIN"|trans }} / </a>
+                <a class="ch-simle-text uk-link" href="{{ path("user_reset_password_show") }}" title="">{{ "FORGOT_PASS"|trans }}</a>
+            </div>
+        </div>
+</div>
+    {% endblock %}

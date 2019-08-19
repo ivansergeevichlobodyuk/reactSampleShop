@@ -1,0 +1,17 @@
+{% trans_default_domain 'translations' %}
+    {%  extends '@!EshopSample/main.html.twig' %}
+    {% block content %}
+        <div class="start-page-wrap">
+            <div class="uk-position-center  uk-border-rounded uk-width-1-2@s uk-width-xlarge@s">
+                <div class="uk-text-center">
+                    <div class="uk-width-small uk-align-center">
+                        <a href="{{ path('catalog_home') }}"><img src="{{ asset ('bundles/eshopsample/img/logo-cheese.png') }}" alt="Сирний сомельє"></a>
+                    </div>
+                </div>
+                <div class="ch-simle-text uk-text-center">{{ "COUNT_SENDED_SMS_EXCEEDED"|trans }}</div>
+                <div class="uk-text-center uk-margin-top">
+                    <a class="simple-btn uk-button" href="{{ path('catalog_home') }}">{{ "HOME"| trans }}</a>
+                </div>
+            </div>
+        </div>
+    {% endblock %}

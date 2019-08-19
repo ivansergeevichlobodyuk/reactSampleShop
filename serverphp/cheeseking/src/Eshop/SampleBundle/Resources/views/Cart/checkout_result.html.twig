@@ -1,0 +1,32 @@
+{% trans_default_domain 'translations' %}
+    {%  extends '@!EshopSample/base.html.twig' %}
+    {% block content %}
+
+        {% set attributeName = '' %}
+        {% set attributeCategoryName = '' %}
+        {% if locale == 'en' %}
+            {% set attributeName = 'nameEn' %}
+            {% set attributeCategoryName = 'categoryNameEn' %}
+        {% elseif locale == 'ru' %}
+            {% set attributeName = 'nameRu' %}
+            {% set attributeCategoryName = 'categoryNameRu' %}
+        {% elseif locale == 'by' %}
+            {% set attributeName = 'nameBy' %}
+            {% set attributeCategoryName = 'categoryNameBy' %}
+        {% elseif locale == 'ua' %}
+            {% set attributeName = 'nameUa' %}
+            {% set attributeCategoryName = 'categoryNameUa' %}
+        {% endif %}
+
+        <div id="loaded-data" class="uk-margin">
+            {% if error_description %}
+                <div>{{ "ORDER_TEXT_1"|trans }}:</div>
+                <div>{{ order.getId }}</div>
+                {{ error_description }}
+            {% else %}
+                <div>{{ "ORDER_TEXT_1"|trans }}:</div>
+                <div>{{ order.getId }}</div>
+                <div>{{ attribute( order.getStatus, attributeName ) }}</div>
+            {% endif %}
+        </div>
+    {% endblock %}

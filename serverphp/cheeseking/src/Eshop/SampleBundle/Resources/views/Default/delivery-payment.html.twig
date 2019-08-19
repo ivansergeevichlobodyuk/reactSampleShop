@@ -1,0 +1,25 @@
+{% trans_default_domain 'translations' %}
+    {%  extends '@!EshopSample/baseOther.html.twig' %}
+    {% block content %}
+
+        <div id="loaded-data" class="uk-container uk-width-1-1 uk-padding-remove uk-margin-remove" uk-grid>
+            <h1>{{ "DELIVERY_PAYMENT"|trans }}</h1>
+            <div class=" uk-margin-bottom" > 
+                <div>
+                    <h3>{{ "DELIVERY_INFO"|trans }}</h3>
+                    <div>
+                        <p>{{ "DELIVERY_TEXT"|trans }}</p>
+                    </div>
+                </div>
+                <div>
+                    <h3>{{ "PAYMENT_INFO"|trans }}</h3>
+                    <div>
+                        <p>{{ "PAYMENT_TEXT"|trans }}</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}

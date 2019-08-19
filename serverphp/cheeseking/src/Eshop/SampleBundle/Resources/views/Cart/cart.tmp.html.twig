@@ -1,0 +1,63 @@
+{% trans_default_domain 'translations' %}
+    {%  extends '@!EshopSample/base.html.twig' %}
+    {% block content %}
+        {% javascripts
+        '@EshopSampleBundle/Resources/public/js/cart/additemlist.js' %}
+        <script src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+        <script type="text/javascript">
+        var cartChange = '{{ url("cart_list_update") }}';
+        var messageCartUpdated = '{{ "CART_UPDATED_MSG"|trans }}';
+        </script>
+        <div id="loaded-data" class="uk-margin-top">
+        </div>
+        <div class="checklist-wrap uk-width-xlarge@s">
+            <h3>{{ "Order"|trans }}</h3>
+            <hr>
+            <ul class=" uk-list uk-list-divider">
+                {% for key, item in data %}
+                    {% if item.count > 0 %}
+                        <li class="uk-position-relative">
+                            
+                            <span class="uk-width-1-1 uk-text-bold">{{ item.productName }}</span>
+                            <div class="uk-flex uk-flex-middle uk-flex-between uk-child-width-1-3">
+                                <span>{{ item.price|round(2) }} {{ app.user.defaultCurrency.curCode }}</span>
+                                <div class="number uk-flex uk-flex-middle uk-flex-center">
+                                    <span data-good="{{ key }}" data-action="-----" class="checklist__btn uk-button minus">-</span>
+                                    <input class="checklist__qty uk-input" id="good_{{ key }}" type="text" name="item[{{ key }}][count]" value="{{ item.count }}" />
+                                    <span data-good="{{ key }}" data-action="++++" class="checklist__btn uk-button plus">+</span>
+                                </div>
+                                {# <span>{{ item.multiply }} шт.</span> #}
+                                <div class="uk-text-right" data-total="{{ key }}" id="total_good_{{ key }}">{{ item.priceTotal }} {{ app.user.defaultCurrency.curCode }}</div>
+                                <span data-id-remove="{{ key }}" class="checklist__remove-btn remove " title="{{ "REMOVE"|trans }}"> <img src="{{ asset('bundles/EshopSample/img/remove-icon.png') }}" alt=""></span>
+                            </div>
+                            
+                        </li>
+                    {% endif %}
+                {% endfor %}
+                <li class="uk-text-right">
+                    {{ "TOTAL_FOR_CART"|trans }} : <span class="uk-text-bold">{{ total }} {{ app.user.defaultCurrency.curCode }}</span>
+                </li>
+            </ul>
+            <button class="uk-button uk-align-right">{{ "CHECKOUT"|trans }}</button>
+        </div>
+        <div id="cart-modal"  uk-modal >
+            <div class="uk-modal-dialog uk-margin-auto-vertical uk-width-medium" uk-overflow-auto >
+                <div class="uk-modal-header">
+                    <p class="uk-text-bold">hello</p>
+                </div>
+                <div class="uk-modal-body ">
+                    <div class="number uk-flex uk-flex-middle uk-flex-center">
+                        <span class="checklist__modal-btn uk-button minus-btn">-</span>
+                        <input class="checklist__qty checklist__modal-qty uk-input"  type="text"  />
+                        <span  class="checklist__modal-btn uk-button plus-btn">+</span>
+                    </div>
+                </div>
+                <div class="uk-modal-footer uk-text-right">
+                 <button class="uk-button uk-button-default uk-modal-close" type="button">{{ "Cancel"|trans }}</button>
+                 <button class="uk-button checklist__modal-save-btn" type="button">{{ "Save"|trans }}</button>
+             </div>
+         </div>
+     </div>
+   
+{% endblock %}

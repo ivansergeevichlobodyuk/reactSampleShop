@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+	<title>Фурнітура меблі</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="css/app.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.10/js/uikit.min.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
+</head>
+<body>
+	<div class="wrapper uk-offcanvas-content">
+		<div class="uk-container">
+			<header>
+				<div class="header-subnav uk-flex uk-flex-between uk-flex-middle uk-flex-wrap">
+					<ul class="uk-subnav uk-margin-remove-bottom uk-width-3-4 uk-flex-between uk-flex-middle">
+							<li class="header-subnav__list-child">
+								<a href="#" class="header-subnav__item header-subnav__item--logo">
+									<img src="img/fm-logo-mid-y.png" class="header-navbar__logo">
+								</a>
+							</li>
+					    <li class="header-subnav__item header-subnav__item-mb"><a href="#" class="header-subnav__link">Новини</a></li>
+					    <li class="header-subnav__item header-subnav__item-mb"><a href="#" class="header-subnav__link">Послуги</a></li>
+					    <li class="header-subnav__item header-subnav__item-mb"><a href="#" class="header-subnav__link">Доставка та оплата</a></li>
+					    <li class="header-subnav__item header-subnav__item-mb"><a href="#" class="header-subnav__link">Контакти</a></li>
+					    <li class="header-subnav__item header-subnav__item-mb uk-position-relative">
+					    	<form>
+					    		<input class="uk-input" type="text" name="" placeholder="Пошук...">
+					    		<button class="header-subnav__search" type="submit"><img class="header-subnav__search-btn" src="img/search-icon.svg" alt="" uk-svg></button>
+					    	</form>
+					    </li>
+					</ul>
+
+					<div class="header-subnav-right-block uk-flex uk-flex-middle">
+						<div class="basket">
+							<a href="#basket-modal" title="" uk-toggle>
+								<img class="basket__img" src="img/basket.svg" uk-svg>
+								<span class="basket__qty"></span>
+							</a>
+							<div id="basket-modal" class="uk-flex-top" uk-modal>
+							    <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical" uk-overflow-auto>
+							        <button class="uk-modal-close-default" type="button" uk-close></button>
+							        <h4 class="uk-text-center">Ваше замовлення</h4>
+							       	<div>
+							       		<table class="basket-modal__table uk-table uk-table-small uk-table-divider">
+							       			<tr>
+							       				<th class="basket-modal__title">Товар</th>
+								       			<th class="basket-modal__title">Ціна</th>
+								       			<th class="basket-modal__title">К-сть</th>
+								       			<th class="basket-modal__title">Сума</th>
+							       			</tr>
+							       			<tr>
+							       				<td>Назва товару</td>
+							       				<td>10.50 грн</td>
+							       				<td>10</td>
+							       				<td>105.00</td>
+							       			</tr>
+							       			<tr>
+							       				<td>Назва товару</td>
+							       				<td>10.50 грн</td>
+							       				<td>10</td>
+							       				<td>105.00</td>
+							       			</tr>
+							       			<tr>
+							       				<td colspan="3">Загальна сума:</td>
+							       				<td>210.00</td>
+							       			</tr>
+							       		</table>
+							       		<div class="basket-modal-btn">
+							       			<button class="uk-button uk-button-default uk-modal-close uk-width-1-1" type="button">Продовжити покупку</button>
+							       			<a href="#" class="uk-button uk-button-primary uk-width-1-1 uk-margin-top">Оформити замовлення</a>
+							       		</div>
+							       	</div>
+							    </div>
+							</div>
+						</div>
+						<a href="#" class="login-btn uk-button"><img class="login-btn--icon" src="img/login-icon.svg" uk-svg><span class="login-btn--text">Вхід</span></a>
+						<span class="header-subnav-right-block__btn uk-button" uk-toggle="target: #offcanvas-push"><img src="img/menu-icon.svg" uk-svg></span>
+						<div id="offcanvas-push" uk-offcanvas="mode: push; overlay: true">
+			        <div class="uk-offcanvas-bar">
+			            <button class="uk-offcanvas-close" type="button" uk-close></button>
+			            <ul class="uk-list">
+										<li class="header-subnav__item"><a href="#" class="header-subnav__link">Новини</a></li>
+								    <li class="header-subnav__item"><a href="#" class="header-subnav__link">Послуги</a></li>
+								    <li class="header-subnav__item"><a href="#" class="header-subnav__link">Доставка та оплата</a></li>
+								    <li class="header-subnav__item"><a href="#" class="header-subnav__link">Контакти</a></li>
+			            </ul>
+			        </div>
+						</div>
+				</div>
+				<div class="header-navbar uk-position-relative uk-width-1-1">
+					<nav class="header-navbar__mob">
+						<ul class="uk-nav-default" uk-nav>
+					        <li class="uk-parent header-navbar__item">
+					        	<a href="#" class="header-navbar__link">Плитні матеріали</a>
+					        	<ul class="uk-nav-sub uk-child-width-1-2" >
+				                            <li>
+				                                <ul class="">
+				                                    <li class="uk-active"><a href="#">Active</a></li>
+				                                    <li><a href="#">Item</a></li>
+				                                    <li class="uk-nav-header">Header</li>
+				                                    <li><a href="#">Item</a></li>
+				                                    <li><a href="#">Item</a></li>
+				                                    <li class="uk-nav-divider"></li>
+				                                    <li><a href="#">Item</a></li>
+				                                </ul>
+				                            </li>
+				                            <li>
+				                                <ul class="">
+				                                    <li class="uk-active"><a href="#">Active</a></li>
+				                                    <li><a href="#">Item</a></li>
+				                                    <li class="uk-nav-header">Header</li>
+				                                    <li><a href="#">Item</a></li>
+				                                    <li><a href="#">Item</a></li>
+				                                    <li class="uk-nav-divider"></li>
+				                                    <li><a href="#">Item</a></li>
+				                                </ul>
+				                            </li>
+				                            </ul>
+					        </li>
+					        <li class="uk-parent header-navbar__item">
+					            <a href="#" class="header-navbar__link">Меблева фурнітура</a>
+					            <ul class="uk-nav-sub">
+					                <li><a href="#">Sub item</a></li>
+					                <li><a href="#">Sub item</a></li>
+					            </ul>
+					        </li>
+					        <li class="uk-parent header-navbar__item">
+					            <a href="#" class="header-navbar__link">Крайка та пластики</a>
+					            <ul class="uk-nav-sub">
+					                <li><a href="#">Sub item</a></li>
+					                <li><a href="#">Sub item</a></li>
+					            </ul>
+					        </li>
+					        <li class="header-navbar__item"><a href="#" class="header-navbar__link">Item</a></li>
+					    </ul>
+					</nav>
+
+					<nav class="header-navbar__main uk-navbar-container" uk-navbar="dropbar: true">
+					    <div class="header-navbar__wrap uk-navbar-left uk-width-1-1">
+					        <ul class="header-navbar__list uk-navbar-nav uk-flex-middle uk-flex-between uk-width-1-1 ">
+					            <li class="header-navbar__item">
+					            	<a href="#" class="header-navbar__link">
+					            		<img class="header-navbar__icon" src="img/boards-icon.svg" uk-svg>
+					            		Плитні матеріали</a>
+					            	<div class="uk-navbar-dropdown uk-navbar-dropdown-width-2">
+				                        <div class="uk-navbar-dropdown-grid uk-child-width-1-2" uk-grid>
+				                            <div>
+				                                <ul class="uk-nav uk-navbar-dropdown-nav">
+				                                    <li class="uk-active"><a href="#">Active</a></li>
+				                                    <li><a href="#">Item</a></li>
+				                                    <li class="uk-nav-header">Header</li>
+				                                    <li><a href="#">Item</a></li>
+				                                    <li><a href="#">Item</a></li>
+				                                    <li class="uk-nav-divider"></li>
+				                                    <li><a href="#">Item</a></li>
+				                                </ul>
+				                            </div>
+				                            <div>
+				                                <ul class="uk-nav uk-navbar-dropdown-nav">
+				                                    <li class="uk-active"><a href="#">Active</a></li>
+				                                    <li><a href="#">Item</a></li>
+				                                    <li class="uk-nav-header">Header</li>
+				                                    <li><a href="#">Item</a></li>
+				                                    <li><a href="#">Item</a></li>
+				                                    <li class="uk-nav-divider"></li>
+				                                    <li><a href="#">Item</a></li>
+				                                </ul>
+				                            </div>
+				                        </div>
+				                    </div>
+					            </li>
+					            <li class="header-navbar__item">
+					            	<a href="#" class="header-navbar__link">
+					            		<img class="header-navbar__icon" src="img/screw-icon.svg" uk-svg>
+					            		Меблева фурнітура</a>
+					            </li>
+					            <li class="header-navbar__item">
+					            	<a href="#" class="header-navbar__link">
+					            		<img class="header-navbar__icon" src="img/plastic-icon.svg" uk-svg>
+					            		Крайка та пластики
+					            	</a>
+					            </li>
+					            <li class="header-navbar__item">
+					            	<a href="#" class="header-navbar__link">
+					            		<img class="header-navbar__icon" src="img/table-icon.svg" uk-svg>
+					            		Стільниці, Стінові панелі
+					            	</a>
+					            </li>
+					            <li class="header-navbar__item">
+					            	<a href="#" class="header-navbar__link">
+					            		<img class="header-navbar__icon" src="img/cupe-icon.svg" uk-svg>
+					            		Розсувні системи
+					            	</a>
+					            </li>
+					            <li class="header-navbar__item">
+					            	<a href="#" class="header-navbar__link">
+					            		<img class="header-navbar__icon" src="img/front-icon.svg" uk-svg>
+					            		Фасади
+					            	</a>
+					            </li>
+					            	
+					        	
+					        </ul>
+					    </div>
+					</nav>
+				</div>
+			</header>
+		</div>
+		<div class="main">
+			<div class="slider uk-container" >
+			    <div class="uk-position-relative uk-visible-toggle uk-light" uk-slideshow="min-height: 300; max-height: 600; autoplay: true">
+			        <ul class="uk-slideshow-items">
+			            <li>
+			                <!-- <img class="slider__img" src="img/slider-1.jpg" alt="" uk-cover> -->
+			                <div class="slider__img slider--img-1"></div>
+			            </li>
+			            <li>
+			                <!-- <img class="slider__img" src="img/slider-2.jpg" alt="" uk-cover> -->
+			                <div class="slider__img slider--img-2"></div>
+			            </li>
+			            <li>
+			                <!-- <img class="slider__img" src="img/slider-3.jpg" alt="" uk-cover> -->
+			                <div class="slider__img slider--img-3"></div>
+			            </li>
+			        </ul>
+			        <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
+			        <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
+			    </div>
+			    <ul class="slider-dotnav uk-slideshow-nav uk-dotnav uk-flex-center uk-margin uk-position-bottom-center"></ul>
+			</div>
+			<div class="special-discout uk-container uk-flex uk-flex-around uk-flex-wrap">
+				<a class="uk-margin-top" href="#" title=""><img class="special-discout__cart" src="img/discount.png" ></a>
+				<a class="uk-margin-top" href="#" title=""><img class="special-discout__cart" src="img/discount.png" ></a>
+				<a class="uk-margin-top" href="#" title=""><img class="special-discout__cart" src="img/discount.png" ></a>
+				<a class="uk-margin-top" href="#" title=""><img class="special-discout__cart" src="img/discount.png" ></a>
+			</div>
+			<div class="trade-marks uk-background-muted uk-section">
+				<div class="uk-container">
+					<h3 class="trade-marks__title uk-text-center">Торвогові марки</h3>
+					<div class="uk-flex uk-flex-between">
+						<a href="#"><img src="img/78515c603ec76350a76f892f4291243d.png"></a>
+						<a href="#"><img src="img/e38d761f26c59d6365474956b04dda9c.png"></a>
+						<a href="#"><img src="img/6a90896501c0cbad48d5caa9b84c7f65.png"></a>
+						<a href="#"><img src="img/8009dcdffcf65a2c2228bb25da03138c.png"></a>
+						<a href="#"><img src="img/34651668882c2ebcef39bff8e0cf4886.png"></a>
+					</div>
+				</div>
+			</div>
+			<div class="services uk-section ">
+				<div class="grid-align uk-container uk-child-width-1-3@s uk-text-center uk-margin-auto " uk-grid>
+					<div>
+						<h4 class="services__item ">Статус замовлення</h4>
+					    <div>
+					        <form>
+					           	<label for="order-status-inp">Введіть номер замовлення</label>
+					            <input type="text" id="order-status-inp" class="uk-input uk-width-medium" name="">
+					            <input class="services__btn uk-button uk-margin-top" type="submit" name="" value="Перевірити">
+					        </form>
+					    </div>
+					</div>
+					<div>
+						<h4 class="services__item ">Зворотній зв'язок</h4>
+					    <div>
+					        <form>
+					           	<div>
+					            	<label for="callback-name">Прізвище та ім'я</label>
+					            	<input type="text" id="callback-name" class="uk-input uk-width-medium" name="" placeholder="Іванов Іван Іванович">
+					            </div>
+					            <div>
+					            	<label for="callback-name">Номер телефону</label>
+					            	<input type="tel" id="callback-name" class="uk-input uk-width-medium" name="" placeholder="0501234567">
+					            </div>
+					            	<label for="callback-name">Коментар</label><br>
+					            	<textarea class="uk-textarea uk-width-medium" style="resize: none;"></textarea>
+					            	<input class="services__btn uk-button uk-margin-top" type="submit" name="" value="Замовити дзвінок">
+					        </form>
+					    </div>
+					</div>
+					<div>
+						<h4 class="services__item">Залишки</h4>
+					    <div class="uk-accordion-content">
+					   		<a href="#">Прайс 1</a>
+					   		<a href="#">Прайс 2</a>
+					    </div>
+					</div>
+					<!-- </div>
+					<ul class="uk-width-1-3" uk-accordion>
+					    <li>
+					        <a class="services__item uk-accordion-title" href="#">Статус замовлення</a>
+					        <div class="uk-accordion-content">
+					            <form>
+					            	<label for="order-status-inp">Введіть номер замовлення</label>
+					            	<input type="text" id="order-status-inp" class="uk-input uk-width-medium" name="">
+					            	<input class="services__btn uk-button uk-margin-top" type="submit" name="" value="Перевірити">
+					            </form>
+					        </div>
+					    </li>
+					    <li>
+					        <a class="services__item uk-accordion-title" href="#">Зворотній зв'язок</a>
+					        <div class="uk-accordion-content">
+					           <form>
+					           	<div>
+					            	<label for="callback-name">Прізвище та ім'я</label>
+					            	<input type="text" id="callback-name" class="uk-input uk-width-medium" name="" placeholder="Іванов Іван Іванович">
+					            </div>
+					            <div>
+					            	<label for="callback-name">Номер телефону</label>
+					            	<input type="tel" id="callback-name" class="uk-input uk-width-medium" name="" placeholder="0501234567">
+					            </div>
+					            	<label for="callback-name">Коментар</label><br>
+					            	<textarea class="uk-textarea uk-width-medium" style="resize: none;"></textarea>
+					            	<input class="services__btn uk-button uk-margin-top" type="submit" name="" value="Замовити дзвінок">
+					            </form>
+					        </div>
+					    </li>
+					    <li>
+					        <a class="services__item uk-accordion-title" href="#">Залишки</a>
+					        <div class="uk-accordion-content">
+					   			<a href="#">Прайс 1</a>
+					   			<a href="#">Прайс 2</a>
+					        </div>
+					    </li>
+					</ul> -->
+
+			</div>
+			<div class="about-us uk-container uk-section">
+				<h1 class="about-us__title uk-text-center">Фурнітура меблі</h1>
+				<p class="uk-text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				<p class="uk-text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				<p class="uk-text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			</div>
+		</div>
+		<footer class="uk-section">
+			<div class="footer-block grid-align uk-container" uk-grid>
+				<div class="uk-width-1-3@s">
+					<h4 class="footer__text">Інфорація</h4>
+					<hr>
+					<ul class="uk-list">
+						<li><a class="footer__link" href="#">Memu item</a></li>
+						<li><a class="footer__link" href="#">Memu item</a></li>
+						<li><a class="footer__link" href="#">Memu item</a></li>
+						<li><a class="footer__link" href="#">Memu item</a></li>
+						<li><a class="footer__link" href="#">Memu item</a></li>
+						<li><a class="footer__link" href="#">Memu item</a></li>
+					</ul>
+				</div>
+				<div class="uk-width-1-3@s">
+					<h4 class="footer__text">Послуги</h4>
+					<hr>
+					<ul class="uk-list">
+						<li><a class="footer__link" href="#">Послуга 1</a></li>
+						<li><a class="footer__link" href="#">Послуга 2</a></li>
+						<li><a class="footer__link" href="#">Послуга 3</a></li>
+						<li><a class="footer__link" href="#">Послуга 4</a></li>
+					</ul>
+				</div>
+				<div class=" uk-width-1-3@s" itemscope itemtype="http://schema.org/Organization">
+					<h4 class="footer__text">Контакти</h4>
+					<hr>
+					<div class="uk-flex uk-flex-top">
+						<img class="footer__svg-icon" src="img/services-phone.svg" uk-svg>
+						<ul class="uk-list uk-margin-remove-top">
+							<li><a class="footer__link" href="tel: +380501234567" itemprop="telephone">050-123-45-67</a></li>
+							<li><a class="footer__link" href="tel: +380501234567" itemprop="telephone">050-123-45-67</a></li>
+							<li><a class="footer__link" href="tel: +380501234567" itemprop="telephone">050-123-45-67</a></li>
+							<li><a class="footer__link" href="tel: +380501234567" itemprop="telephone">050-123-45-67</a></li>
+						</ul>
+					</div>
+
+					<div class="footer__text" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+						<img class="footer__svg-icon" src="img/local-icon.svg" uk-svg>
+						<span itemprop="postalCode">40000</span>,
+						<span itemprop="addressLocality">м.Суми</span>,
+				        <span itemprop="streetAddress">Тополянська, 24</span>
+				        <div>
+					    	<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2514.4095390705666!2d34.80788361617718!3d50.93463877954505!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4129024b961877d7%3A0xe70759f8c4cfc410!2z0KLQvtC_0L7Qu9GP0L3RgdC60LDRjyDRg9C7LiwgMjQsINCh0YPQvNGLLCDQodGD0LzRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCwgNDAwMDA!5e0!3m2!1sru!2sua!4v1532680620940" width="100%" height="225" frameborder="0" style="border:0" allowfullscreen></iframe>
+					    </div>
+				    </div>
+
+				</div>
+			</div>
+		</footer>
+		<div class="to-top">
+			<img class="to-top__img" src="img/to-top-icon.svg" alt="" uk-svg>
+		</div>
+	</div>
+</body>
+</html>

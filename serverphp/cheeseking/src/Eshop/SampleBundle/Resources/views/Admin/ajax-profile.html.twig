@@ -1,0 +1,27 @@
+<div id="save" class="uk-button">
+    {{ "SAVE"|trans }}
+</div>
+<div id="">
+    <div>{{ "NAME"|trans }}</div><div><input type="text" value="{{ user.getName }}"></div>
+    <div>{{ "SURNAME"|trans }}</div><div><input type="text" value="{{ user.getSurname }}"></div>
+    <div>{{ "Email"|trans }}</div><div><input type="text" value="{{ user.getEmail }}"></div>
+    <div>{{ "Address"|trans }}</div>
+    <div>
+        <input type="text" value="{{ user.getAddress }}" />
+    </div>
+    <div>
+        {% if user.getPromocode == 0 %}
+            <button id="generate" class="uk-button">
+                {{ "GENERATE"|trans }}
+            </button>
+        {% else %}
+            {{ bcHTMLRaw1|raw }}
+            {{ user.getPromocode }}
+            <br />
+            <br />
+            {{ bcHTMLRaw2|raw }}
+            <br />
+            <br />
+        {% endif %}
+    </div>
+</div>

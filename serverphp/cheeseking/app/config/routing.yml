@@ -1,0 +1,294 @@
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+
+ckfinder_connector:
+    resource: "@CKSourceCKFinderBundle/Resources/config/routing.yml"
+    prefix:   /
+
+catalog_home:
+    path: /
+    defaults: {_controller: EshopSampleBundle:Default:index}
+
+shop_all_products:
+  path: /shop
+  defaults: {_controller: EshopSampleBundle:Data:getMenuData}
+
+menu_load_page:
+    path: /shop/{category}/
+    defaults: {_controller: EshopSampleBundle:Data:getMenuData}
+
+menu_load_item:
+    path: /catalog/{category}/item/{id}/
+    defaults: {_controller: EshopSampleBundle:Data:getItemData}
+
+login:
+    path: /login
+    defaults: { _controller: EshopSampleBundle:Security:login }
+
+logout:
+    path: /logout
+
+user_registration:
+    path:     /register
+    defaults: { _controller: EshopSampleBundle:Registration:register }
+
+cart_add:
+    path: /cart/add/
+    defaults: { _controller: EshopSampleBundle:Cart:add }
+
+cart_list:
+    path: /cart/list/
+    defaults: { _controller: EshopSampleBundle:Cart:showList }
+
+cart_list_get_data:
+    path: /cart/get/
+    defaults:
+        _controller: EshopSampleBundle:Cart:showList
+        isRender: false
+
+cart_list_update:
+    path: /cart/update/
+    defaults:
+        _controller: EshopSampleBundle:Cart:update
+
+change_cur:
+    path: /user/currencies/change/
+    defaults:
+        _controller: EshopSampleBundle:Cart:changeUserCurrencies
+
+user_update_lang:
+    path: /user/update/lang/
+    defaults:
+        _controller: EshopSampleBundle:Default:switchLanguage
+
+cart_item_modal:
+    path: /cart/item/get/{id}
+    defaults:
+        _controller: EshopSampleBundle:Data:getItemData
+
+#orders:
+#    path: /orders
+#    defaults: { _controller: EshopSampleBundle:Orders:ordersList }
+#
+#orderItem:
+#    path: /order/item/{id}
+#    defaults: { _controller: EshopSampleBundle:Orders:orderDetail }
+
+#orderRepeatCheckout:
+#    path: /checkout/order/{id}
+#    defaults:
+#        _controller: EshopSampleBundle:Cart:checkoutOrderCart
+
+cacheMenu:
+    path: /caching/menu/
+    defaults:
+        _controller: EshopSampleBundle:Default:_setCachingMenu
+news:
+    path: /news
+    defaults:
+        _controller: EshopSampleBundle:Default:news
+contacts:
+    path: /contacts
+    defaults:
+        _controller: EshopSampleBundle:Default:contacts
+delivery_payment:
+    path: /delivery-payment
+    defaults:
+        _controller: EshopSampleBundle:Default:deliveryPayment
+
+services:
+    path: /services
+    defaults:
+        _controller: EshopSampleBundle:Default:servicesList
+
+support_path:
+    path: /support/send/
+    defaults:
+        _controller: EshopSampleBundle:Default:sendRequest
+
+# checkout first step
+checkoutStart:
+    path: /checkout/start/
+    defaults:
+        _controller: EshopSampleBundle:Cart:checkoutStart
+
+# checkout second step
+checkoutCart:
+    path: /checkout/cart/
+    defaults:
+        _controller: EshopSampleBundle:Cart:checkoutCart
+
+# checkout redirect to payment method
+checkoutChoose:
+    path: /checkout/choose/
+    defaults:
+        _controller: EshopSampleBundle:Cart:checkoutChoose
+
+# checkout redirect offline success message
+offline_checkout_success_page:
+    path: /checkout/offline/status/
+    defaults:
+        _controller: EshopSampleBundle:Cart:checkoutOfflineStatus
+
+callback_result:
+  path: /callback/liqpay
+  defaults:
+    _controller: EshopSampleBundle:Cart:callbackPayment
+
+callback_redirect:
+  path: /result/order/{orderId}
+  defaults:
+      _controller: EshopSampleBundle:Cart:callbackRedirect
+
+add_wishlist:
+    path: /wishlist/add/
+    defaults:
+       _controller: EshopSampleBundle:Favourite:addToWishList
+
+wishlist_count:
+    path: /wishlist/count/
+    defaults:
+        _controller: EshopSampleBundle:Favourite:wishListCount
+
+wishlist_list:
+    path: /wishlist/lists/
+    defaults:
+        _controller: EshopSampleBundle:Favourite:getWishList
+
+wishlist_remove:
+    path: /wishlist/remove/
+    defaults:
+        _controller: EshopSampleBundle:Favourite:removeFromList
+
+exchange_filters_filters:
+    path: /exchane/filters/add/
+    defaults:
+        _controller: EshopSampleBundle:ApiFilterExchange:loadFiltersEntity
+
+exchange_filters_values:
+    path: /exchane/filters/values/add/
+    defaults:
+        _controller: EshopSampleBundle:ApiFilterExchange:loadValuesEntity
+
+exchange_goods2filters_values:
+    path: /exchane/filters/goods2filters/add/
+    defaults:
+        _controller: EshopSampleBundle:ApiFilterExchange:loadGoodsToFilters
+
+exchange_category2filters_values:
+  path: /exchane/filters/category2filters/add/
+  defaults:
+    _controller: EshopSampleBundle:ApiFilterExchange:loadFiltertoCategory
+ 
+
+admin_manage_pictures:
+  path: /admin/pictures/
+  defaults:
+    _controller: EshopSampleBundle:Admin:listPictures
+
+admin_manage_picture_item:
+  path: /admin/picture/{id}
+  defaults:
+    _controller: EshopSampleBundle:Admin:getItem
+
+admin_manage_pictures_add:
+  path: /admin/pictures/add
+  defaults:
+    _controller: EshopSampleBundle:Admin:addPictures
+
+admin_manage_pictures_edit:
+  path: /admin/pictures/edit/{id}
+  defaults:
+    _controller: EshopSampleBundle:Admin:editPictures
+
+admin_update_pic:
+  path: /admin/pictures/update/
+  defaults:
+    _controller: EshopSampleBundle:Admin:loadPic
+
+admin_update_ordering:
+  path: /admin/pictures/ordering/update/
+  defaults:
+    _controller: EshopSampleBundle:Admin:updateOrdering
+
+admin_update_active:
+  path: /admin/pictures/active/update/
+  defaults:
+    _controller: EshopSampleBundle:Admin:updateActive
+
+admin_delete_item:
+  path: /admin/pictures/delete/
+  defaults:
+    _controller: EshopSampleBundle:Admin:remove
+
+admin_profile_user:
+  path: /user/profile/
+  defaults:
+    _controller: EshopSampleBundle:Admin:getUserData
+
+admin_profile_generate_code:
+  path: /user/profile/
+  defaults:
+    _controller: EshopSampleBundle:Admin:generateCode
+
+admin_user_profile_generate:
+  path: /user/profile/generate/
+  defaults:
+    _controller: EshopSampleBundle:Admin:generateNewCode
+
+news_item_read:
+  path: /news/item/read/{id}
+  defaults:
+    _controller: EshopSampleBundle:Admin:readArticle
+
+admin_user_profile_save:
+  path: /user/profile/save/
+  defaults:
+    _controller: EshopSampleBundle:Admin:updateProfile
+
+user_reset_password_show:
+  path: /reset/show
+  defaults:
+    _controller: EshopSampleBundle:Security:resetShow
+
+user_reset_password:
+  path: /profile/reset/
+  defaults:
+    _controller: EshopSampleBundle:Security:reset
+
+user_change_password_show:
+  path: /profile/change/show/
+  defaults:
+    _controller: EshopSampleBundle:Security:changeShow
+
+user_change_password:
+  path: /profile/changes/
+  defaults:
+    _controller: EshopSampleBundle:Security:change
+
+cropper:
+  path: /admin/cropper/image
+  defaults:
+    _controller: EshopSampleBundle:Default:cropper
+
+
+check_sms_code:
+  path: /register/check/code/
+  defaults:
+    _controller: EshopSampleBundle:Registration:checkCode
+
+show_sms_verification_form:
+  path: /register/verify/
+  defaults:
+    _controller: EshopSampleBundle:Registration:verifyShowSendUser
+
+send_sms_verification_form:
+    path: /register/send/verify/
+    defaults:
+      _controller: EshopSampleBundle:Registration:sendSMSVerificationCode
+
+render_smart_filter:
+  path: /filters/smart/{category}/
+  defaults:
+    _controller: EshopSampleBundle:Filters:renderSmartFilter

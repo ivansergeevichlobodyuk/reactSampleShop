@@ -1,0 +1,37 @@
+{% trans_default_domain 'translations' %}
+    {%  extends '@!EshopSample/baseOther.html.twig' %}
+    {% block content %}
+
+        <div id="loaded-data" class="uk-container uk-width-1-1 uk-padding-remove uk-margin-remove" uk-grid>
+
+            <div class="contacts-wrap uk-margin-bottom uk-width-1-1" >
+                <h1>Contacts</h1>
+                <div  uk-grid itemtype="http://schema.org/Organization">
+                    <div class=" uk-flex uk-flex-top">
+                        <img class="small-icon uk-margin-right" src="{{ asset ('bundles/eshopsample/img/services-phone.svg') }}" uk-svg="">
+                        <ul class="uk-list uk-margin-remove">
+                            <li><a class="uk-link-reset" href="tel:+380501234567" itemprop="telephone">0501236547</a></li>
+                            <li><a class="uk-link-reset" href="tel:+380501234567" itemprop="telephone">0501236547</a></li>
+                            <li><a class="uk-link-reset" href="tel:+380501234567" itemprop="telephone">0501236547</a></li>
+                            <li><a class="uk-link-reset" href="tel:+380501234567" itemprop="telephone">0501236547</a></li>
+
+                        </ul>
+                    </div>
+                    <div class="uk-width-3-4@s" class="" itemprop="address" itemscope="" itemtype="http://schema.org/PostalAddress">
+                        <div class="uk-margin-bottom">
+                            <img class="small-icon" src="{{ asset ('bundles/eshopsample/img/local-icon.svg') }}" uk-svg="">
+                            <span itemprop="postalCode">40000</span>,
+                            <span itemprop="addressLocality">м.Суми</span>,
+                            <span itemprop="streetAddress">Тополянська, 24</span>
+                        </div>
+                        <div>
+                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2514.4095390705666!2d34.80788361617718!3d50.93463877954505!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4129024b961877d7%3A0xe70759f8c4cfc410!2z0KLQvtC_0L7Qu9GP0L3RgdC60LDRjyDRg9C7LiwgMjQsINCh0YPQvNGLLCDQodGD0LzRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCwgNDAwMDA!5e0!3m2!1sru!2sua!4v1532680620940" width="100%" height="300" frameborder="0" style="border:0" allowfullscreen=""></iframe>
+                     </div>
+
+                 </div>
+             </div>
+
+         </div>
+     </div>
+
+ {% endblock %}

@@ -1,0 +1,67 @@
+{# <div class="order-title uk-flex uk-flex-middle uk-flex-between uk-flex-wrap">
+    <h3 class="uk-margin-remove">{{ "ORDERS"|trans }}</h3>
+    <div class="uk-flex uk-flex-middle">
+        <span class="uk-text-bold">{{ "View"|trans }}&ensp;: </span>
+        <select class="uk-select uk-margin-left">
+            <option>10</option>
+            <option>20</option>
+            <option>30</option>
+            <option>100</option>
+        </select>
+    </div>
+</div> #}
+{#<div>#}
+{#<div class="main-content-search uk-margin-top">#}
+{#<form class="uk-flex uk-flex-middle">#}
+{#<input id="search-field" class="uk-input uk-width-1-1" type="text" placeholder="{{ "SEARCH_Order"|trans }}">#}
+{#</form>#}
+{#</div>#}
+{#</div>#}
+{% set attributeName = '' %}
+		{% set attributeCategoryName = '' %}
+		{% if locale == 'en' %}
+            {% set attributeName = 'nameEn' %}
+            {% set attributeCategoryName = 'categoryNameEn' %}
+        {% elseif locale == 'ru' %}
+            {% set attributeName = 'nameRu' %}
+            {% set attributeCategoryName = 'categoryNameRu' %}
+        {% elseif locale == 'by' %}
+            {% set attributeName = 'nameBy' %}
+            {% set attributeCategoryName = 'categoryNameBy' %}
+        {% elseif locale == 'ua' %}
+            {% set attributeName = 'nameUa' %}
+            {% set attributeCategoryName = 'categoryNameUa' %}
+        {% endif %}
+<div>
+    <table class="order-table uk-table uk-table-hover uk-table-divider uk-table-middle uk-margin-top">
+        <thead>
+            <tr class="order-table__sort">
+                <th data-column-sorting="id" class="order-table__th order-table__sort--item {% if sorting[0] == 'id' %}  {{ sorting[1] }}{% endif %}">{{ "ORDER_ID"|trans }}</th>
+                <th data-column-sorting="date" class="order-table__th order-table__sort--item {% if sorting[0] == 'date' %} {{ sorting[1] }}{% endif %}">{{ "ORDER_DATE"|trans }}</th>
+                <th data-column-sorting="totalPriceOrder" class="order-table__th order-table__sort--item {% if sorting[0] == 'totalPriceOrder' %} {{ sorting[1] }}{% endif %}">{{ "ORDER_TOTAL"|trans }}</th>
+                <th data-column-sorting="status" class="order-table__th order-table__sort--item">{{ "ORDER_STATUS"|trans }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="order-table__loader uk-overlay-default uk-position-center uk-hidden">
+                <td class="uk-text-center uk-position-center" colspan="4"><img  src="{{  asset('bundles/EshopSample/img/loader.gif') }}" /></td>
+            </tr>
+            {% for item in list %}
+                <tr class="order-table__data">
+                    <td><a href="{{ url("orderItem",{'id':item.id}) }}" class="uk-display-block uk-link-reset">{{ item.id }}</a></td>
+                    <td>{{ item.date|date("m-d-Y") }}</td>
+                    <td>{{ item.totalPriceOrder }}</td>
+                    {% if item.status.id == 1 %}
+                        {% set statusClass = "order-status__in-process" %}
+                        {% elseif item.status.id == 2 %}
+                            {% set statusClass = "order-status__done" %}
+                            {% endif %}
+                            <td class="{{ statusClass }}">{{ attribute(item.status,attributeName) }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div class="uk-text-center">
+                {{ knp_pagination_render(list) }}
+            </div>
+        </div>

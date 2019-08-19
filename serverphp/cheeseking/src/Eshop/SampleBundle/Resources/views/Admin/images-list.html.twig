@@ -1,0 +1,106 @@
+{% trans_default_domain 'translations' %}
+{%  extends '@!EshopSample/base.html.twig' %}
+{% block content %}
+    {% javascripts
+        '@EshopSampleBundle/Resources/public/js/admin/addFiles.js'
+        '@EshopSampleBundle/Resources/public/js/admin/dropzone.js'
+    %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+        <script>
+            var urlPath = "{{ url("admin_manage_pictures_add",{"category":category}) }}";
+            //list of pictures ajax update
+            var urlUpdate = "{{ url("admin_manage_pictures",{"category":category}) }}";
+            var urlUpdateOrdering = "{{ url("admin_update_ordering") }}";
+            var urlUpdateActive = "{{ url("admin_update_active") }}";
+            var urlDeleteItem = "{{ url("admin_delete_item") }}";
+            var msg_updated = "{{ "ORDERING_WAS_UPDATED"|trans }}";
+            var msg_remove = "{{ "R_Y_SHURE_TO_REMOVE"|trans }}";
+            var msg_remove2 = "{{ "R_Y_SHURE_TO_REMOVE_2"|trans }}";
+            var msg_added = "{{ "MSG_ADDED"|trans }}"
+            var msg_remove_button = "{{ "REMOVE_BUTTON"|trans }}"
+        </script>
+    <div class="uk-width-1-2 uk-align-center">
+        <ul class="uk-list uk-flex uk-flex-middle uk-flex-around">
+            <li class="">
+                <a class="ch-simle-text" href="{{ url("catalog_home") }}">{{ "HOME"|trans }}</a>
+            </li>
+            <li class="uk-margin-remove {% if category == 1 %}ch-tab-active{% else %}{% endif %}">
+                <a class="ch-simle-text" href="{{ url("admin_manage_pictures",{"category":1}) }}">{{ "SLIDER"|trans }}</a>
+            </li>
+            <li class="uk-margin-remove {% if category == 2 %}ch-tab-active{% else %}{% endif %}">
+                <a class="ch-simle-text" href="{{ url("admin_manage_pictures",{"category":2}) }}">{{ "BANNER"|trans }}</a>
+            </li>
+            <li  class="uk-margin-remove {% if category == 3 %}ch-tab-active{% else %}{% endif %}">
+                <a class="ch-simle-text" href="{{ url("admin_manage_pictures",{"category":3}) }}">{{ "GALLERY"|trans }}</a>
+            </li>
+        </ul>
+
+    </div>
+    <div id="update">
+        <hr>
+        <table class="uk-width-1-1 uk-table uk-table-middle uk-table-small uk-table-divider">
+            <tr>
+                <th class="ch-simle-text">{{ "ACTIVE"|trans }}</th>
+                <th class="ch-simle-text">{{ "ORDERING"|trans }}</th>
+                <th class="ch-simle-text">{{ "FILE_NAME"|trans }}</th>
+                <th class="ch-simle-text">{{ "PICTURE"|trans }}</th>
+            </tr>
+            <tbody id="draggable">
+                {% for item in list %}
+                    <tr id="news-item-{{ item.getId }}" {% if item.getIsActive == 0 %}class="inactive"{% else %}{% endif %}>
+                        <td>
+                            <input class="uk-checkbox" data-active-id="{{ item.getId }}" type="checkbox" name="isActive" {% if item.getIsActive == true %}checked="checked"{% else %}{% endif %} />
+                        </td>
+                        <td>
+                            <div class="ch-simle-text ch-admin-panel__pos-btn ch-admin-panel__pos--up" data-id="{{ item.getId }}" data-action="plus">
+{#                                <img src="{{ asset ('bundles/eshopsample/img/select-arrow.svg') }}" uk-svg>#}
+                            </div>
+                            <div><input class="ch-admin-panel__pos-inp uk-input" id="ordering-{{ item.getId }}" disabled type="text" name="ordering" value="{{ item.getOrdering  }}"></div>
+                            <div class="ch-simle-text ch-admin-panel__pos-btn" data-id="{{ item.getId }}" data-action="minus">
+{#                                <img src="{{ asset ('bundles/eshopsample/img/select-arrow.svg') }}" uk-svg>#}
+                            </div>
+                        </td>
+                        <td><a class="ch-simle-text" href="{{ path("admin_manage_picture_item",{"id":item.id}) }}">{{ item.getFileName }}</td>
+                        <td>
+                            <img class="ch-admin-panel__prev-img" src="{{ asset ('bundles/eshopsample/files/'~item.getPhysicFileName) }}">
+                            <span data-remove="{{ item.getId }}" class="ch-admin-panel__btn-remove uk-button"><img src="{{ asset ('bundles/eshopsample/img/remove-icon.svg') }}" title="{{ "Remove"|trans }}" uk-svg>
+                            </span>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+
+            <div id="tpl">
+                <div class="dz-preview dz-file-preview">
+                    <div class="dz-details">
+                        <div class="dz-filename"><b><span  class="ch-dz-filename" data-dz-name></span></b></div>
+                        <i><div class="dz-size uk-danger" data-dz-size></div></i>
+                        <img data-dz-thumbnail />
+                    </div>
+                    <div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress></span></div>
+                    <div class="dz-success-mark uk-hidden"><span>✔</span></div>
+                    <div class="dz-error-mark uk-hidden"><span>✘</span></div>
+                    <div class="dz-error-message uk-hidden"><span id="error-message" data-dz-errormessage></span></div>
+                </div>
+            </div>
+            <div class="uk-position-relative uk-height-large">
+                <div class="uk-overlay-default uk-position-cover"></div>
+                <div class="uk-overlay uk-dark ">
+                    <div id="dropzone" class="ch-dropzone uk-position-center uk-height-1-1 uk-width-1-1">
+                        <div class="uk-position-center">
+{#                            <img src="{{ asset ('bundles/eshopsample/img/add-image-icon.svg') }}" uk-svg>#}
+{#                            <p>Drop your .png or .jpg files here! no more 5 items</p>#}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <input type="hidden" id="token" value="{{ csrf_token('profile-form') }}" />
+            <div>
+                <button id="add-file" class="simple-btn uk-button uk-align-right uk-margin-top uk-margin-bottom">{{ "ADD_FILE"|trans }}</button>
+            </div>
+
+{% endblock %}

@@ -1,0 +1,57 @@
+{% trans_default_domain 'translations' %}
+    <!DOCTYPE html>
+    <html>
+    <head>
+        {% block head %}
+            <meta charset="UTF-8" />
+            <title>{% block title %}Welcome!{% endblock %}</title>
+            {% block stylesheets %}{% endblock %}
+                <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+                {% block head_scripts %}
+                    {% javascripts combine=true
+                    '@EshopSampleBundle/Resources/public/js/libs/jquery-2.2.4.min.js'
+                    '@EshopSampleBundle/Resources/public/js/libs/jquery.cookie.js'
+                    '@EshopSampleBundle/Resources/uikit/dist/js/uikit.min.js'
+                    '@EshopSampleBundle/Resources/uikit/dist/js/components/notification.min.js'
+                    %}
+                    <script src="{{ asset_url }}"></script>
+                    {% endjavascripts %}
+                {% endblock head_scripts %}
+
+                {% block styles %}
+                    {% stylesheets combine=true
+                    '@EshopSampleBundle/Resources/uikit/dist/css/uikit.my-theme.min.css'
+                    %}
+                    <link href="{{ asset_url }}" type="text/css" rel="stylesheet" />
+                    {% endstylesheets %}
+                {% endblock styles %}
+            <script src="http://www.google.com/recaptcha/api.js?onload=recaptchaOnload&render=explicit" async defer></script>
+            {% endblock head %}
+        </head>
+        <body>
+            {% block body %}{% endblock %}
+                {% block javascripts %}{% endblock %}
+                    <div class="wrap">
+                        <div id="loader" class="uk-hidden uk-position-center uk-position-z-index">
+                            <img  src="{{  asset('bundles/eshopsample/img/loader.gif') }}" />
+                        </div>
+                        <div  class="loader-overlay uk-hidden uk-overlay-default uk-position-cover"></div>
+                        <div class="main-simple ">
+
+                            {% block content %}
+                            {% endblock %}
+                        </div>
+                        <div id="footer" class="adaptive-bg">
+                        </div>
+                    </div>
+
+
+                    <div class="to-top">
+                        <span class="uk-flex uk-flex-middle uk-align-center">
+                            <img  src="{{ asset('bundles/EshopSample/img/to-top-icon.png') }}">
+                        </span>
+                    </div>
+                </body>
+
+                </html>

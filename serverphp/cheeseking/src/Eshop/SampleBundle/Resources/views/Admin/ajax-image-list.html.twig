@@ -1,0 +1,33 @@
+
+<table class="uk-width-1-1 uk-table uk-table-middle uk-table-small uk-table-divider">
+    <tr>
+        <th class="ch-simle-text">{{ "ACTIVE"|trans }}</th>
+        <th class="ch-simle-text">{{ "ORDERING"|trans }}</th>
+        <th class="ch-simle-text">{{ "FILE_NAME"|trans }}</th>
+        <th class="ch-simle-text">{{ "PICTURE"|trans }}</th>
+    </tr>
+    <tbody id="draggable">
+    {% for item in list %}
+        <tr id="news-item-{{ item.getId }}" {% if item.getIsActive == 0 %}class="inactive"{% else %}{% endif %}>
+            <td>
+                <input class="uk-checkbox" data-active-id="{{ item.getId }}" type="checkbox" name="isActive" {% if item.getIsActive == true %}checked="checked"{% else %}{% endif %} />
+            </td>
+            <td>
+                <div class="ch-simle-text ch-admin-panel__pos-btn ch-admin-panel__pos--up" data-id="{{ item.getId }}" data-action="plus">
+{#                    <img src="{{ asset ('bundles/eshopsample/img/select-arrow.svg') }}" uk-svg>#}
+                </div>
+                <div><input class="ch-admin-panel__pos-inp uk-input" disabled id="ordering-{{ item.getId }}" type="text" name="ordering" value="{{ item.getOrdering  }}"></div>
+                <div class="ch-simle-text ch-admin-panel__pos-btn" data-id="{{ item.getId }}" data-action="minus">
+{#                    <img src="{{ asset ('bundles/eshopsample/img/select-arrow.svg') }}" uk-svg>#}
+                </div>
+            </td>
+            <td><a class="ch-simle-text" href="{{ path("admin_manage_picture_item",{"id":item.id}) }}">{{ item.getFileName }}</td>
+            <td>
+                <img class="ch-admin-panel__prev-img" src="{{ asset ('bundles/eshopsample/files/'~item.getPhysicFileName) }}">
+                <span data-remove="{{ item.getId }}" class="ch-admin-panel__btn-remove uk-button"><img src="{{ asset ('bundles/eshopsample/img/remove-icon.svg') }}" title="{{ "Remove"|trans }}" uk-svg>
+                        </span>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>

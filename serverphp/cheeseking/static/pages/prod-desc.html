@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+	<title>Фурнітура меблі</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="../css/app.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon"> 
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.10/js/uikit.min.js"></script>
+	<script type="text/javascript" src="../js/app.js"></script>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="uk-container">
+			<header>
+				<div class="header-subnav uk-flex uk-flex-between uk-flex-middle">
+					<ul class="uk-subnav uk-margin-remove-bottom uk-width-3-4 uk-flex-between uk-flex-middle">
+						<li><a href="#" class="header-subnav__item header-subnav__item--logo"><img src="../img/fm-logo-mid-y.png" class="header-navbar__logo"></a></li>
+					    <li class="header-subnav__item header-subnav__item-mb"><a href="#" class="header-subnav__link">Новини</a></li>
+					    <li class="header-subnav__item header-subnav__item-mb"><a href="#" class="header-subnav__link">Послуги</a></li>
+					    <li class="header-subnav__item header-subnav__item-mb"><a href="#" class="header-subnav__link">Доставка та оплата</a></li>
+					    <li class="header-subnav__item header-subnav__item-mb"><a href="#" class="header-subnav__link">Контакти</a></li>
+					    <li class="header-subnav__item header-subnav__item-mb uk-position-relative">
+					    	<form>
+					    		<input class="uk-input" type="text" name="" placeholder="Пошук...">
+					    		<button class="header-subnav__search" type="submit"><img class="header-subnav__search-btn" src="../img/search-icon.svg" alt="" uk-svg></button>
+					    	</form>
+					    </li>
+					</ul>
+					<div class="header-subnav-right-block uk-flex uk-flex-middle">
+						<div class="basket">
+							<a href="#basket-modal" title="" uk-toggle>
+								<img class="basket__img" src="../img/basket.svg" uk-svg>
+								<span class="basket__qty"></span>
+							</a>
+							<div id="basket-modal" class="uk-flex-top" uk-modal>
+							    <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical" uk-overflow-auto>
+							        <button class="uk-modal-close-default" type="button" uk-close></button>
+							        <h4 class="uk-text-center">Ваше замовлення</h4>
+							       	<div>
+							       		<table class="basket-modal__table uk-table uk-table-small uk-table-divider">
+							       			<tr>
+							       				<th class="basket-modal__title">Товар</th>
+								       			<th class="basket-modal__title">Ціна</th>
+								       			<th class="basket-modal__title">К-сть</th>
+								       			<th class="basket-modal__title">Сума</th>
+							       			</tr>
+							       			<tr>
+							       				<td>Назва товару</td>
+							       				<td>10.50 грн</td>
+							       				<td>10</td>
+							       				<td>105.00</td>
+							       			</tr>
+							       			<tr>
+							       				<td>Назва товару</td>
+							       				<td>10.50 грн</td>
+							       				<td>10</td>
+							       				<td>105.00</td>
+							       			</tr>
+							       			<tr>
+							       				<td colspan="3">Загальна сума:</td>
+							       				<td>210.00</td>
+							       			</tr>
+							       		</table>
+							       		<div class="basket-modal-btn">
+							       			<button class="uk-button uk-button-default uk-modal-close uk-width-1-1" type="button">Продовжити покупку</button>
+							       			<a href="#" class="uk-button uk-button-primary uk-width-1-1 uk-margin-top">Оформити замовлення</a>
+							       		</div>
+							       	</div>
+							    </div>
+							</div>
+						</div>
+						<a href="#" class="login-btn uk-button">Вхід</a>
+					</div>
+				</div>
+				<div class="header-navbar uk-position-relative">
+					<nav class="header-navbar__mob">
+						<ul class="uk-nav-default" uk-nav>
+							<li class="uk-parent header-navbar__item">
+								<a href="#" class="header-navbar__link">Меню</a>
+								<ul class="uk-nav-default" uk-nav>
+									<li class="uk-parent header-navbar__item">
+					        			<a href="#" class="header-navbar__link">Плитні матеріали</a>
+					        			<ul class="uk-nav-sub uk-child-width-1-2" >
+				                            <li>
+				                                <ul class="">
+				                                    <li class="uk-active"><a href="#">Active</a></li>
+				                                    <li><a href="#">Item</a></li>
+				                                    <li class="uk-nav-header">Header</li>
+				                                    <li><a href="#">Item</a></li>
+				                                    <li><a href="#">Item</a></li>
+				                                    <li class="uk-nav-divider"></li>
+				                                    <li><a href="#">Item</a></li>
+				                        		</ul>
+				                            </li>
+				                            <li>
+				                                <ul class="">
+				                                    <li class="uk-active"><a href="#">Active</a></li>
+				                                    <li><a href="#">Item</a></li>
+				                                    <li class="uk-nav-header">Header</li>
+				                                    <li><a href="#">Item</a></li>
+				                                    <li><a href="#">Item</a></li>
+				                                    <li class="uk-nav-divider"></li>
+			                                    	<li><a href="#">Item</a></li>
+					                            </ul>
+			                       			</li>
+			                    		</ul>
+				        			</li>
+							        <li class="uk-parent header-navbar__item">
+							            <a href="#" class="header-navbar__link">Меблева фурнітура</a>
+							            <ul class="uk-nav-sub">
+							                <li><a href="#">Sub item</a></li>
+							                <li><a href="#">Sub item</a></li>
+							            </ul>
+							        </li>
+							        <li class="uk-parent header-navbar__item">
+							            <a href="#" class="header-navbar__link">Крайка та пластики</a>
+							            <ul class="uk-nav-sub">
+							                <li><a href="#">Sub item</a></li>
+							                <li><a href="#">Sub item</a></li>
+							            </ul>
+							        </li>
+							        <li class="header-navbar__item"><a href="#" class="header-navbar__link">Item</a></li>
+								</ul>
+							</li>    
+					    </ul>
+					</nav>
+					<nav class="header-navbar__main uk-navbar-container" uk-navbar="dropbar: true">
+					    <div class="header-navbar__wrap uk-navbar-left">
+					        <ul class="header-navbar__list uk-navbar-nav uk-flex-middle">
+					            <li class="header-navbar__item">
+					            	<a href="#" class="header-navbar__link">Плитні матеріали</a>
+					            	<div class="uk-navbar-dropdown uk-navbar-dropdown-width-2">
+				                        <div class="uk-navbar-dropdown-grid uk-child-width-1-2" uk-grid>
+				                            <div>
+				                                <ul class="uk-nav uk-navbar-dropdown-nav">
+				                                    <li class="uk-active"><a href="#">Active</a></li>
+				                                    <li><a href="#">Item</a></li>
+				                                    <li class="uk-nav-header">Header</li>
+				                                    <li><a href="#">Item</a></li>
+				                                    <li><a href="#">Item</a></li>
+				                                    <li class="uk-nav-divider"></li>
+				                                    <li><a href="#">Item</a></li>
+				                                </ul>
+				                            </div>
+				                            <div>
+				                                <ul class="uk-nav uk-navbar-dropdown-nav">
+				                                    <li class="uk-active"><a href="#">Active</a></li>
+				                                    <li><a href="#">Item</a></li>
+				                                    <li class="uk-nav-header">Header</li>
+				                                    <li><a href="#">Item</a></li>
+				                                    <li><a href="#">Item</a></li>
+				                                    <li class="uk-nav-divider"></li>
+				                                    <li><a href="#">Item</a></li>
+				                                </ul>
+				                            </div>
+				                        </div>
+				                    </div>
+					            </li>
+					            <li class="header-navbar__item"><a href="#" class="header-navbar__link">Меблева фурнітура</a></li>
+					            <li class="header-navbar__item"><a href="#" class="header-navbar__link">Крайка та пластики</a></li>
+					            <li class="header-navbar__item"><a href="#" class="header-navbar__link">Стільниці, Стінові панелі</a></li>
+					            <li class="header-navbar__item"><a href="#" class="header-navbar__link">Розсувні системи</a></li>
+					            <li class="header-navbar__item"><a href="#" class="header-navbar__link">Фасади</a></li>
+					        </ul>
+					    </div>
+					</nav>
+				</div>
+			</header>
+		</div>
+		<div class="uk-container">
+			<div class="uk-section">
+				<div class="product-pg"  uk-grid>
+					<div class="product-pg-info--mb">
+							<h1 class="product-pg-info__name">Назва товару</h1>
+							<p class="product-pg-info__art">Код товару: 01234</p>
+							<a class="product-pg-info__brand" href="#">Бренд</a>
+						</div>
+					<div class="prod-img uk-position-relative uk-width-1-3@s uk-padding-small uk-height-1-1" uk-slideshow="animation: fade">
+
+					    <ul class="uk-slideshow-items">
+					        <li>
+					            <img src="../img/slider-1.jpg" alt="" uk-cover>
+					        </li>
+					        <li>
+					            <img src="../img/slider-2.jpg" alt="" uk-cover>
+					        </li>
+					        <li>
+					            <img src="../img/slider-3.jpg" alt="" uk-cover>
+					        </li>
+					    </ul>
+
+					    <div class="uk-position-bottom-center uk-position-small">
+					        <ul class="uk-thumbnav">
+					            <li uk-slideshow-item="0"><a href="#"><img class="prod-img__small-img" src="../img/slider-1.jpg" width="100" alt=""></a></li>
+					            <li uk-slideshow-item="1"><a href="#"><img class="prod-img__small-img" src="../img/slider-2.jpg" width="100" alt=""></a></li>
+					            <li uk-slideshow-item="2"><a href="#"><img class="prod-img__small-img" src="../img/slider-3.jpg" width="100" alt=""></a></li>
+					        </ul>
+					    </div>
+
+					</div>
+					<div class="uk-width-2-3@s">
+						<div class="product-pg-info uk-child-width-1-2">
+							<h1>Назва товару</h1>
+							<p>Код товару: 01234</p>
+							<a href="#">Бренд</a>
+							<p class="uk-text-center">2000.00 грн</p>
+						</div>
+						<div class="product-pg__grid-mb" uk-grid>
+							<span class="product-pg__price-mb uk-width-1-1 uk-text-center">2000.00 грн</span>
+							<div uk-grid class="uk-child-width-1-2 uk-width-1-2@s">
+								<div class="uk-child-width-1-1">
+									<input class=" uk-input"  type="number" name="" value="1">
+								</div>
+								<div class="uk-child-width-1-1">
+									<button class="prod-btn uk-button uk-button-primary">В кошик</button>
+									<button class="prod-btn uk-button uk-button-primary uk-margin-top">Купити в 1 клік</button>
+								</div>
+							</div>
+							<div class="prod-info uk-width-1-2">
+								<p class="prod-info-text"><img class="prod-info-icon" src="../img/calendar-icon.svg" alt="" uk-svg>Працюємо 7 днів на тиждень з 9:00 до 18:00 </p>
+								<p class="prod-info-text"><img class="prod-info-icon" src="../img/delivery-icon.svg" alt="" uk-svg>Доставка по всій Україні </p>
+								<p class="prod-info-text"><img class="prod-info-icon" src="../img/cash-icon.svg" alt="" uk-svg>Готівковий і безготівковий розрахунок</p>
+							</div>
+						</div>
+						<div class="prod-props">
+							<div class="uk-width-1-2@s">
+								<p class="prod-props__title">Характеристики товару</p>
+								<ul class="uk-list prod-props__list">
+									<li><span class="prod-props__item" >Характеристика мм:</span> 16</li>
+									<li><span class="prod-props__item" >Характеристика мм:</span> 16</li>
+									<li><span class="prod-props__item" >Характеристика мм:</span> 16</li>
+									<li><span class="prod-props__item" >Характеристика мм:</span> 16</li>
+									<li><span class="prod-props__item" >Характеристика мм:</span> 16</li>
+									<li><span class="prod-props__item" >Характеристика мм:</span> 16</li>
+									<li><span class="prod-props__item" >Характеристика мм:</span> 16</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<footer class="uk-section">
+			<div class="footer-block uk-container" uk-grid>
+				<div class="uk-width-1-3@s">
+					<h4 class="footer__text">Інфорація</h4>
+					<hr>
+					<ul class="uk-list">
+						<li><a class="footer__link" href="#">Memu item</a></li>
+						<li><a class="footer__link" href="#">Memu item</a></li>
+						<li><a class="footer__link" href="#">Memu item</a></li>
+						<li><a class="footer__link" href="#">Memu item</a></li>
+						<li><a class="footer__link" href="#">Memu item</a></li>
+						<li><a class="footer__link" href="#">Memu item</a></li>
+					</ul>
+				</div>
+				<div class="uk-width-1-3@s">
+					<h4 class="footer__text">Послуги</h4>
+					<hr>
+					<ul class="uk-list">
+						<li><a class="footer__link" href="#">Послуга 1</a></li>
+						<li><a class="footer__link" href="#">Послуга 2</a></li>
+						<li><a class="footer__link" href="#">Послуга 3</a></li>
+						<li><a class="footer__link" href="#">Послуга 4</a></li>
+					</ul>
+				</div>
+				<div class=" uk-width-1-3@s" itemscope itemtype="http://schema.org/Organization">
+					<h4 class="footer__text">Контакти</h4>
+					<hr>
+					<div class="uk-flex uk-flex-top">
+						<img class="footer__svg-icon" src="../img/services-phone.svg" uk-svg>
+						<ul class="uk-list uk-margin-remove-top">
+							<li><a class="footer__link" href="tel: +380501234567" itemprop="telephone">050-123-45-67</a></li>
+							<li><a class="footer__link" href="tel: +380501234567" itemprop="telephone">050-123-45-67</a></li>
+							<li><a class="footer__link" href="tel: +380501234567" itemprop="telephone">050-123-45-67</a></li>
+							<li><a class="footer__link" href="tel: +380501234567" itemprop="telephone">050-123-45-67</a></li>
+						</ul>
+					</div>
+					
+					<div class="footer__text footer__text--adress" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+						<img class="footer__svg-icon" src="../img/local-icon.svg" uk-svg>
+						<span itemprop="postalCode">40000</span>,
+						<span itemprop="addressLocality">м.Суми</span>,
+				        <span itemprop="streetAddress">Тополянська, 24</span>
+				        <div>
+					    	<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2514.4095390705666!2d34.80788361617718!3d50.93463877954505!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4129024b961877d7%3A0xe70759f8c4cfc410!2z0KLQvtC_0L7Qu9GP0L3RgdC60LDRjyDRg9C7LiwgMjQsINCh0YPQvNGLLCDQodGD0LzRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCwgNDAwMDA!5e0!3m2!1sru!2sua!4v1532680620940" width="400" height="225" frameborder="0" style="border:0" allowfullscreen></iframe>
+					    </div>
+				    </div>
+					
+				</div>
+			</div>
+		</footer>
+		<div class="to-top">
+			<img class="to-top__img" src="../img/to-top-icon.svg" alt="" uk-svg>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,113 @@
+CATALOG: Каталог
+EXPORT: Экспорт
+FINANS: Финансы
+ORDERS: Заказы
+REKLAMS: Рекламация
+SEARCH: Поиск
+SEARCH_GOODS: Поиск товара
+SEARCH_OPTIONS: Расширенный поиск
+Goods: Товары
+Sort: Сортировать
+Sort price: По цене
+Sort name: По названию
+View: Вид
+Buy now: Купить
+Home page: На главную
+ENTER_CORRECT_NUMBER: Введите корректный номер телефона!
+NO_CONF: Да
+YES_CONF: Нет
+SHURE_REMOVE_MSG: Вы желаете удалить?
+ADDR_STR_1: Сумы, ул.Харковская, 4
+ADDR_STR_2: Сумы, ул.Петропавловская, 72
+ADDR_STR_3: Сумы, ул.М.Лушпы, 45/1
+ADDR_STR_4: Сумы, ул.Илльинская, 7а
+ADDR_STR1: Сумы
+ADDR_STR2: Сумы
+ADDR_STR3: Сумы
+ADDR_STR4: Сумы
+ADDR_STR1_TEXT: ул.Харковская, 4
+ADDR_STR2_TEXT: ул.Петропавловская, 72
+ADDR_STR3_TEXT: ул.М.Лушпы, 45/1
+ADDR_STR4_TEXT: ул.Илльинская, 7а
+WORK_TIME_TITLE: Время работы
+WORK_TIME_STR1: Пн-Пт с 9-00 до 21-00
+WORK_TIME_STR2: Сб-Вс с 9-00 до 19-00
+WE_ON_SOCIAL: Мы в соц. сетях
+TO_CABINET: В кабинет
+LOGIN: Вход
+SLIDER: Слайдер
+BANNER: Баннер
+GALLERY: Галерея
+RESET: Сброс пароля
+PASSWORD1: Введите пароль
+PASSWORD2: Повторите пароль
+CHANGE: Изменить
+WRONG_FORMAT: Слишком простой пароль! Минимальная длина 8 символов, пароль должен содержать одну маленькую букву, одну большую и одну цифру. Например 1Ab2ryw2
+EMAIL: Почта
+PASSWORD: Пароль
+GO_TO_SITE: Войти
+REGISTER: Регистрация
+RESET_PASS: Сброс пароля
+RESET1: Сброс пароля 
+NOT_FOUND_USER: Пользователь с такой почтой отсутствует в системе!
+CHECK_EMAIL: Проверьте свою почту!
+WRONG_EMAIL: Неверный формат почты! Правильный формат xxxx@xxx.xx
+FORGOT_PASS: Забыли пароль?
+ABOUT_US: О нас
+ABOUT_US_TEXT: ed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
+REGISTRATION: Регистрация
+SURNAME: Фамилия
+PHONE: Телефон
+NAME: Имя
+REPEAT_PASSWORD: Повторите пароль
+This value is not valid.: Поля должны совпадать! Требования к паролю - длина 5 символов, пароль должен содержать буквы и цифры.
+YOUR PROMOCODE: Ваша дисконтная карта
+CHANGE YOUR DATA: Ваш профайл
+ADDRESS: Адрес
+SAVE: Сохранить
+HOME: На главную
+MAIN_PAGE_CONTACTS: Контакты
+PREVIEW_RU: Посмотреть русскую версию
+PREVIEW_UA: Посмотреть украинскую версию
+CROP: Обрезать
+REMOVE: Удалить
+Active: Активно
+LOGOUT: Выйти
+R_Y_SHURE_TO_REMOVE: Вы уверены что хотите удалить?
+R_Y_SHURE_TO_REMOVE_2: Эта статья и картинки удалятся безвозратно! Можно просто снять галочку с поля "Активно"
+ADD_FILE: Добавить файл
+ACTIVE: Активно
+ORDERING: Порядок
+FILE_NAME: Имя файла
+PICTURE: Картинка
+REMOVE_BUTTON: Удалить файл
+ORDERING_WAS_UPDATED: Последовательность была обновлена
+BAD_PASSWORD: Пароль должен быть - минимум 5 символов и состоять из був и цифр!
+WRONG_CAPTCHA: Капча не пройдена
+This value is already used.: Уже используется другим пользователем
+BAD_PHONE_NUMBER: Неверный формат номера телефона! +380 XXX XX XX
+BAD_USERNAMEFORMAT: Неверный формат почты!
+MSG_OK_REG: Вы удачно зарегистрировались! Проверьте почту!
+EMAIL_NOT_FOUND: Почта не найдена!
+CHECK_EMAIL_CHANGED: Пароль изменен! Проверьте свою почту!
+WRONG_PASS_EQ: Пароли не совпадают
+YOU_EDITED_ITEM: Ви редактируете картинку %number с раздела "%category"
+SMS_SERVICE_DOWN_LOGIN_WITH_YOU_CREDENTIALS_AND_TRY_LATER: Смс сервис временно недоступен. Зайдите на сайт используя свой номер телефона и пароль позже и попробуйте снова отправить смс для подтверждения
+SMS_WAS_SEND_OK: Вам было отправлено смс. Проверьте пожалуйста.
+COUNT_SENDED_SMS_EXCEEDED:  Вы превысили количество отправленных смс сообщений. Попробуйте позже.
+COUNT_PUT_CODE_TRYING_FROM_SMS_EXCEEDED: Вы превысили количество неверных вводов. Попробуйте позже
+ALREADY_VERIFIED: Уже верифицированы
+WRONG_HASHNAME: Ошибка. неверный идентификатор
+COUNT_EXPIRE_PLZ_TRY_AFTER_ONE_HOUR: Вы превысили количество неверных вводов. Попробуйте позже.
+CODE_OK_YOU_CAN_LOGIN_NOW: Поздравляем! Вы подтвердили свой аккаунт!
+CODE_WRONG: Введено неверный код с смс! Будьте внимательны!
+YOUR_PASSWORD_WAS_CHANGED: Ваш пароль был изменён!
+CANT_SEND_TRY_LATER: Мы не можем выполнить возобновление пароля сейчас. Попробуйте позже
+WRONG_PHONE: Неверный формат номера телефона
+PLZ_PUT_OR_SEND_SMS_FOR_VERIFICATION: Введите код с смс для верификации и нажмите кнопку "Отправить", если код не пришел на протяжении 2 минут, нажмите кнопку "Еще смс". Количество смс лимитировано!
+PLZ_SEND_AND_PUT_SMS_FOR_VERIFICATION: Чтобы верифицироваться на сайте отправьте себе смс с кодом верификации и введите его в появившемся поле
+RESEND: Еще смс
+SUBMITCODE: отправить
+CODE: Код
+YOUR_CODE: "Ваш код:"
+EMAIL_OR_PHONE: Почта или телефон

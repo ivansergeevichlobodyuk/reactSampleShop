@@ -1,0 +1,19 @@
+{% trans_default_domain 'translations' %}
+
+<table style="width: 500px; margin: 0 auto;">
+    <tbody>
+    <tr>
+        <td>{{ "HELLO"|trans }}, {{  item.getName }}!</td>
+    </tr>
+    <tr>
+        <td>
+            {{ "YOUR_PASSWORD_WAS_CHANGED"|trans }}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <s{{ pass }}{{ "YOU_NEW_PASS"|trans }}
+        </td>
+    </tr>
+    </tbody>
+</table>

@@ -1,0 +1,37 @@
+<div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical" uk-overflow-auto>
+    <button class="uk-modal-close-default" type="button" uk-close></button>
+    <h4 class="uk-text-center">Ваше замовлення</h4>
+    <div>
+        <table class="basket-modal__table uk-table uk-table-small uk-table-divider">
+            <tr>
+                <th class="basket-modal__title">Товар</th>
+                <th class="basket-modal__title">Ціна</th>
+                {#<th class="basket-modal__title">К-сть одиниць в упаковц</th>#}
+                <th class="basket-modal__title">К-сть</th>
+                <th class="basket-modal__title">Сума</th>
+            </tr>
+            {% for key,item in data %}
+            <tr>
+                <td>{{ item.productName }}</td>
+                <td>{{ item.price|round(2) }} {{ currency }}</td>
+                <td>
+                    <div class="number uk-flex uk-flex-middle uk-flex-center">
+                        <span data-good="{{ key }}" data-action="-----" class="checklist__btn uk-button minus">-</span>
+                        <input class="checklist__qty uk-input" id="good_{{ key }}" type="text" name="item[{{ key }}][count]" value="{{ item.count }}" />
+                        <span data-good="{{ key }}" data-action="++++" class="checklist__btn uk-button plus">+</span>
+                    </div>
+                </td>
+                <td>{{ item.priceTotal }} {{ currency }}</td>
+            </tr>
+            {% endfor %}
+            <tr>
+                <td colspan="3">Загальна сума:</td>
+                <td>{{ total }} {{ currency }}</td>
+            </tr>
+        </table>
+        <div class="basket-modal-btn">
+            <button class="uk-button uk-button-default uk-modal-close uk-width-1-1" type="button">Продовжити покупку</button>
+            <a href="#" class="uk-button uk-button-primary uk-width-1-1 uk-margin-top">Оформити замовлення</a>
+        </div>
+    </div>
+</div>
