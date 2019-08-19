@@ -206,7 +206,7 @@ class DefaultController extends Controller
      *
      * @return array
      */
-    public function getAllMenuSchemeAction( $requestParent,Request $request ){
+    public function getAllMenuSchemeAction( Request $request ){
         $time1 = microtime(true);
         $cached = $this->getCachingMenu();
         if ( $cached ){
@@ -219,14 +219,11 @@ class DefaultController extends Controller
         $time2 = microtime(true);
         $resultMenu = $time2-$time1;
         $locale = $request->getLocale();
-        $category = explode("-",$requestParent->get("category"));
+        $category = explode("-",$request->get("category"));
         $currentCategory = $category[count($category)-1];
-        return $this->render("@EshopSample/Main/menu.html.twig", array(
-            "menu" => $menu,
-            "category" => $category,
-            "currentCategory" => $currentCategory,
+        return new Response(json_encode(["menu" => $menu,
             "categoryNameField" => "categoryName".ucfirst($locale),
-            "locale" => $locale));
+            "locale" => $locale]),Response::HTTP_OK, array("content-type" => 'application/json'));
     }
 
     /**

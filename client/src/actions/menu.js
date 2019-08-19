@@ -22,7 +22,7 @@ export function receivedMenu(dataMenu){
  */
 export function getMenu(){
     return (dispatch, getState) => {
-        fetch('http://localhost:8331/menu/get/').then( (dataMenu) => {
+        fetch('http://localhost:8331/api/menuload/list/').then( (dataMenu) => {
             dispatch(receivedMenu())
         })
     }

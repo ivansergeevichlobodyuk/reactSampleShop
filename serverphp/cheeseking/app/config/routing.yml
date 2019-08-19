@@ -18,6 +18,11 @@ menu_load_page:
     path: /shop/{category}/
     defaults: {_controller: EshopSampleBundle:Data:getMenuData}
 
+menu_load_items:
+  path: /api/menuload/list/
+  defaults: {_controller: EshopSampleBundle:Default:getAllMenuScheme}
+
+
 menu_load_item:
     path: /catalog/{category}/item/{id}/
     defaults: {_controller: EshopSampleBundle:Data:getItemData}

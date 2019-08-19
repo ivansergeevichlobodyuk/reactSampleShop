@@ -29,25 +29,10 @@ class Menu extends Component {
      */
     render() {
         return(<div>
-            {this.props.isShowLoader == false ?(
-                this.props.menuList.length > 1 ?
-                    (<div>
-                            <ul>
-                                {this.props.menuList.map((menuItem)=> {
-                                    <li>
-
-                                    </li>
-                                })}
-                            </ul>
-                            )
-                    </div>):
-                    (<div>NO items find</div>)
-            ):(
-                <div>Loading......</div>
-            )
+            {this.props.isShowLoader === false ?(
+                <div></div>
+            ):(<div>Loading......</div>)
             }
-
-
         </div>);
     }
 }
@@ -56,6 +41,7 @@ class Menu extends Component {
 
 const mapStateToProps = (store) => {
     const {menuList,isShowLoader} = store.menu
+    console.log("menulist >>>> ",menuList);
     return {
         menuList:menuList,
         isShowLoader:isShowLoader
