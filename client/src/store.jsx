@@ -1,7 +1,7 @@
 import { createStore, combineReducers , applyMiddleware } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 // import { createLogger } from 'redux-logger'
-import dataReducer from './reducers/reducer'
+import getsMenu from './reducers/menu'
 // import {authentication} from './reducers/users.jsx'
 // const loggerMiddleware = createLogger()
 const middleware = [ thunkMiddleware ]
@@ -10,7 +10,7 @@ const middleware = [ thunkMiddleware ]
 export default function configureStore(preloadedState) {
     return createStore(
         combineReducers({
-                // users: dataReducer,
+                 menu: getsMenu,
                 // authetication:authentication
             }),
         applyMiddleware(

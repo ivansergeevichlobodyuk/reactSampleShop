@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Menu from './components/menu'
+
 
 export default class App extends Component{
     /**
@@ -10,8 +12,8 @@ export default class App extends Component{
 
     render(){
         return (
-            <div className="Main">
-                Hello!!!! Niggas
+            <div className="uk-danger">
+                <Menu/>
             </div>
         );
     }
