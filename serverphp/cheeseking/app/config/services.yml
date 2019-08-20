@@ -56,3 +56,8 @@ services:
     Eshop\SampleBundle\EventSubscriber\UserLocaleSubscriber:
          arguments: ['@session','%kernel.default_locale%', '@doctrine']
          tags: [kernel.event_subscriber]
+
+    get_set_method_normalizer:
+        class: Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer
+        public: false
+        tags: [serializer.normalizer]

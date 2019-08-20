@@ -6,12 +6,11 @@ import {getMenu} from '../actions/menu'
 
 class Menu extends Component {
 
-
     static propTypes = {
-        menuList: PropTypes.array,
-        isShowLoader: PropTypes.array
+        dataMenu: PropTypes.object,
+        isShowLoader: PropTypes.array,
+        menuKeys: PropTypes.array
     }
-
 
     /**
      * Mounting component and get all data
@@ -30,7 +29,14 @@ class Menu extends Component {
     render() {
         return(<div>
             {this.props.isShowLoader === false ?(
-                <div></div>
+                <div>
+                    { this.props.menuKeys.map( (key, inc) =>
+                         <li key={inc}>
+                             {this.props.dataMenu[key].data.categoryNameUa}
+                             { this.props.dataMenu[key].child.length > 0 ? <div>child here </div>:<div></div> }
+                         </li>
+                    )}
+                </div>
             ):(<div>Loading......</div>)
             }
         </div>);
@@ -40,10 +46,12 @@ class Menu extends Component {
 
 
 const mapStateToProps = (store) => {
-    const {menuList,isShowLoader} = store.menu
-    console.log("menulist >>>> ",menuList);
+    const {dataMenu,isShowLoader} = store.menu
+    console.log("menulist >>>> ",dataMenu);
+    console.log("is show loader ", isShowLoader);
     return {
-        menuList:menuList,
+        menuKeys: Object.keys(dataMenu),
+        dataMenu:dataMenu,
         isShowLoader:isShowLoader
     }
 }
@@ -53,7 +61,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         getMenu: () => {
            dispatch(getMenu())
-        },
+        }
     }
 }
 

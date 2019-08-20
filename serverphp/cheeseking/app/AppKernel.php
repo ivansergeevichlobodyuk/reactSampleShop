@@ -24,7 +24,9 @@ class AppKernel extends Kernel
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new BG\BarcodeBundle\BarcodeBundle(),
             new CKSource\Bundle\CKFinderBundle\CKSourceCKFinderBundle(),
-            new FOS\CKEditorBundle\FOSCKEditorBundle()
+            new FOS\CKEditorBundle\FOSCKEditorBundle(),
+            new Nelmio\CorsBundle\NelmioCorsBundle()
+
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test', 'prod'], true)) {

@@ -1,5 +1,7 @@
-export const RECEIVED_MENU = 'RECEIVED_MENU';
+import {config} from '../config';
+import {handleResponse} from "../helpers/response";
 
+export const RECEIVED_MENU = 'RECEIVED_MENU';
 
 /**
  * received menu:
@@ -22,8 +24,8 @@ export function receivedMenu(dataMenu){
  */
 export function getMenu(){
     return (dispatch, getState) => {
-        fetch('http://localhost:8331/api/menuload/list/').then( (dataMenu) => {
-            dispatch(receivedMenu())
+        fetch(config.apiUrl + 'menuload/list/').then( handleResponse ).then( json => {
+            dispatch(receivedMenu(json))
         })
     }
 }

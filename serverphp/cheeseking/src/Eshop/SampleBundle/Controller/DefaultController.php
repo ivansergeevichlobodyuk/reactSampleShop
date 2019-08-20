@@ -14,6 +14,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Eshop\SampleBundle\Entity\GoodsToCategory;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Serializer\SerializerInterface;
 
 
 class DefaultController extends Controller
@@ -201,12 +202,16 @@ class DefaultController extends Controller
         return $response;
     }
 
+
+
     /**
      * Gets all menu scheme action
      *
-     * @return array
+     * @param SerializerInterface $serializer
+     * @param Request $request
+     * @return Response
      */
-    public function getAllMenuSchemeAction( Request $request ){
+    public function getAllMenuSchemeAction( SerializerInterface $serializer, Request $request ){
         $time1 = microtime(true);
         $cached = $this->getCachingMenu();
         if ( $cached ){
@@ -221,9 +226,8 @@ class DefaultController extends Controller
         $locale = $request->getLocale();
         $category = explode("-",$request->get("category"));
         $currentCategory = $category[count($category)-1];
-        return new Response(json_encode(["menu" => $menu,
-            "categoryNameField" => "categoryName".ucfirst($locale),
-            "locale" => $locale]),Response::HTTP_OK, array("content-type" => 'application/json'));
+        $menu = $serializer->serialize($menu,'json');
+        return new Response($menu,Response::HTTP_OK);
     }
 
     /**

@@ -17,8 +17,7 @@ services:
     build:
       context: ./serverphp
     volumes:
-      - ./serverphp/cheeseking
-        :/var/www/html
+      - ./serverphp/cheeseking:/var/www/html
       - ./include/php/php.ini:/usr/local/etc/php/php.ini
     container_name: php-shop
     ports:
