@@ -3,9 +3,10 @@ import moment from 'moment';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {getMenu} from '../actions/menu'
-import {Subitem} from "./subitem";
+
 
 class Menu extends Component {
+
 
     static propTypes = {
         dataMenu: PropTypes.object,
@@ -22,6 +23,51 @@ class Menu extends Component {
         this.props.getMenu();
     }
 
+
+    /**
+     * Renders nested list with unlimited nested levels
+     *
+     *
+     * @param child
+     * @param nested
+     * @returns {*}
+     */
+    renderNestedList = ( child, nested = false ) => {
+            if ( nested == true ){
+                return (
+                 <ul>
+                 {
+                     Object.keys(child).map((keyChild) =>
+                         <li key={child[keyChild].data.id}>{child[keyChild].data.categoryNameBy}
+                         {this.renderNestedList(child[keyChild].child, true)}
+                         </li>
+                     )
+                 }
+                </ul>)
+            }else{
+                if ( Object.keys(child.child).length == 0 ){
+                    return (<li key={child.data.id}>{child.data.categoryNameBy}</li>)
+                }
+                if ( Object.keys(child.child).length > 0 ){
+                    console.log("child child ", child.child);
+                    return (
+                        <li key={child.data.id}>{child.data.categoryNameBy}
+                            <ul>
+                                {
+                                    Object.keys(child.child).map(key =>
+                                        <li key={key}>
+                                            {child.child[key].data.categoryNameBy}
+                                            {this.renderNestedList(child.child[key].child, true)}
+                                        </li>
+                                    )
+                                }
+                            </ul>
+                        </li>
+                    )
+                }
+            }
+    }
+
     /**
      * Renders menu
      *
@@ -32,22 +78,9 @@ class Menu extends Component {
             {this.props.isShowLoader === false ?(
                 <div>
                     { this.props.menuKeys.map( (key, inc) =>
-                         <li key={inc}>
-                             {this.props.dataMenu[key].data.categoryNameUa}
-                                {
-                                    Object.keys(this.props.dataMenu[key].child).length > 0 ?
-                                                (<ul>{
-                                                        Object.keys(this.props.dataMenu[key].child).map((itmKey) =>
-                                                        <li key={itmKey + key}>
-                                                            {this.props.dataMenu[key].child[itmKey].data.categoryNameBy} child-{itmKey}
-                                                        </li>)
-                                                    }
-                                                </ul>
-                                                )
-                                        :
-                                        ""
-                                }
-                         </li>
+                        <ul>
+                            { this.renderNestedList(this.props.dataMenu[key]) }
+                        </ul>
                     )}
                 </div>
             ):(<div>Loading......</div>)
@@ -58,9 +91,6 @@ class Menu extends Component {
 
 const mapStateToProps = (store) => {
     const {dataMenu,isShowLoader} = store.menu
-    console.log("menulist >>>> ",dataMenu);
-    console.log( "store menu ", store.menu );
-    console.log("is show loader ", isShowLoader);
     return {
         menuKeys: Object.keys(dataMenu),
         dataMenu:dataMenu,
