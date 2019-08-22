@@ -34,7 +34,19 @@ class Menu extends Component {
                     { this.props.menuKeys.map( (key, inc) =>
                          <li key={inc}>
                              {this.props.dataMenu[key].data.categoryNameUa}
-                             {typeof this.props.dataMenu[key].child === 'object'?(<Subitem key={key} subDataMenu={this.props.dataMenu[key].child}/>):('')}
+                                {
+                                    Object.keys(this.props.dataMenu[key].child).length > 0 ?
+                                                (<ul>{
+                                                        Object.keys(this.props.dataMenu[key].child).map((itmKey) =>
+                                                        <li key={itmKey + key}>
+                                                            {this.props.dataMenu[key].child[itmKey].data.categoryNameBy} child-{itmKey}
+                                                        </li>)
+                                                    }
+                                                </ul>
+                                                )
+                                        :
+                                        ""
+                                }
                          </li>
                     )}
                 </div>

@@ -16,15 +16,19 @@ export class Subitem extends Component{
     }
 
     handleData = (keys) => {
-        keys.map((itm,inx) => {
-           this.list = <li key={itm + inx}>{this.props.subDataMenu[itm].data.categoryNameBy}</li>
-        })
+        return keys.map((itm,inx) =>
+          <li key={itm + inx}>{this.props.subDataMenu[itm].data.categoryNameBy}</li>
+        )
     }
 
     render() {
         console.log('this list ', this.list);
         const li = this.handleData(Object.keys(this.props.subDataMenu));
-        return <ul>{ this.list}</ul>
+        return <ul>{li}</ul>;
+
+
+
+
     }
 
 }
