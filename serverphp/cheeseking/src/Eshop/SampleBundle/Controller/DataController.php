@@ -12,7 +12,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Eshop\SampleBundle\Entity\Favourites;
-
+use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
 
 class DataController extends Controller
 {
@@ -36,10 +39,11 @@ class DataController extends Controller
     /**
      * Gets data for menu item (proxy for rest required)
      *
+     * @param SerializerInterface $serializer
      * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
-    public function getMenuDataAction(  Request $request ){
+    public function getMenuDataAction(  SerializerInterface $serializer,Request $request ){
         $securityContext = $this->container->get('security.authorization_checker');
         $cookies = $request->cookies;
 
@@ -117,7 +121,32 @@ class DataController extends Controller
 
             $wishList = $this->_getsWishList($request, $this->getUser());
             //die;
-            if ( $request->isXmlHttpRequest() ){
+
+        $normalizer = new ObjectNormalizer();
+        $normalizer->setCircularReferenceLimit(2);
+        // Add Circular reference handler
+        $normalizer->setCircularReferenceHandler(function ($object) {
+            return $object->getId();
+        });
+        $normalizers = array($normalizer);
+        $serializer = new Serializer($normalizers,array('json' => new JsonEncoder()));
+
+
+            if ( true ){
+                $menu = $serializer->serialize(array(
+                    "pagination" => $pagination,
+                    "currency" => $currency,
+                    "categories" => $categories,
+                    "categoriesBredcrubs" => $breadcrumbsData,
+                    "dataPriceConvertedList" => $dataPriceConvertedList,
+                    "currencyName" => $currency->getCurCode(),
+                    "locale" => $locale,
+                    "wishList" => $wishList,
+                    "metaTags" => $dataCeoGroupped,
+                    "sortingData" => explode(" ",$sorting)?explode(" ",$sorting):[" "," "]
+                ),'json');
+                return new Response($menu,Response::HTTP_OK);
+
                 $response = $this->render($viewName, array(
                     "pagination" => $pagination,
                     "currency" => $currency,

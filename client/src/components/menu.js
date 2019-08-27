@@ -78,7 +78,7 @@ class Menu extends Component {
             {this.props.isShowLoader === false ?(
                 <div>
                     { this.props.menuKeys.map( (key, inc) =>
-                        <ul>
+                        <ul key={key}>
                             { this.renderNestedList(this.props.dataMenu[key]) }
                         </ul>
                     )}
@@ -91,6 +91,7 @@ class Menu extends Component {
 
 const mapStateToProps = (store) => {
     const {dataMenu,isShowLoader} = store.menu
+    console.log('data menu ', dataMenu);
     return {
         menuKeys: Object.keys(dataMenu),
         dataMenu:dataMenu,

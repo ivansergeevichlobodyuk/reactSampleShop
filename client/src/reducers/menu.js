@@ -11,7 +11,7 @@ const initialState = {
 export default function getsMenu(state = initialState, action){
         switch ( action.type ) {
             case RECEIVED_MENU:
-                console.log('data menu ', action.dataMenu);
+                console.log('data menu 33434 ', action.dataMenu);
                 return {
                         ...state,
                         dataMenu: action.dataMenu,

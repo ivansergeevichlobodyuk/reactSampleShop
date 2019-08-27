@@ -11,7 +11,7 @@ catalog_home:
     defaults: {_controller: EshopSampleBundle:Default:index}
 
 shop_all_products:
-  path: /shop
+  path: /api/shop
   defaults: {_controller: EshopSampleBundle:Data:getMenuData}
 
 menu_load_page:

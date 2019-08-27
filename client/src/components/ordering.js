@@ -28,9 +28,18 @@ export default class Ordering extends Component {
     render() {
         return(
             <ul>
-                <li className={this.props.orderingData == 'price'?'active':'inactive'}>SortByPrice:</li>
-                <li className={this.props.orderingData == 'title'?'active':'inactive'}>SortByTitle:</li>
+                <li className={this.props.orderingData == 'price'?'active':'inactive'} onClick={(e)=>{this.orderBy('price')}} >SortByPrice:</li>
+                <li className={this.props.orderingData == 'title'?'active':'inactive'} click={(e)=>{this.orderBy('name')}}>SortByTitle:</li>
             </ul>
         )
     }
 }
+//
+//const mapDispatchToProps = (dispatch) => {
+//     return {
+//         orderBy: ( orderValue ) =>{
+//            dispatch(orderDataBy(orderValue))
+//         }
+//
+//     }
+//}

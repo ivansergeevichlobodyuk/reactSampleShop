@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {getMenu} from '../actions/menu'
 import Menu from './menu'
-
+import Ordering from './ordering'
+import ListGoods from './listGoods'
 /**
  * Just a wrapper under list items
  *
@@ -23,25 +24,20 @@ export default class ProductsList extends Component {
         limitOffsetData: PropTypes.string
     }
 
-    /**
-     * Mounting component and get all data
-     *
-     * @param nextProps
-     */
-    componentDidMount(nextProps) {
-        this.props.getProductsList();
-    }
 
     /**
      * Renders menu
+     *
+     *                 <Menu categoryData={this.props.categoryData} />
+     *                 <Ordering orderingData={this.props.orderingData} />
+     *
      *
      * @returns {*}
      */
     render() {
         return(
             <div>
-                <Menu categoryData={this.props.categoryData} />
-                <Ordering orderingData={this.props.orderingData} />
+                <Menu />
                 <ListGoods categoryData={this.props.categoryData}
                            orderingData={this.props.orderingData}
                            limitOffset={this.props.limitOffsetData} />
@@ -49,3 +45,4 @@ export default class ProductsList extends Component {
         )
     }
 }
+

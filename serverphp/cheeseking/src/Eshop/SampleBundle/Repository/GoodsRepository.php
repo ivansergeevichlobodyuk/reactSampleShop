@@ -50,7 +50,7 @@ class GoodsRepository extends \Doctrine\ORM\EntityRepository
                 ->setParameter('name', "%".strtolower($search)."%");
         }
 
-        return $dql;
+        return $dql->getQuery();
     }
 
     /**
